@@ -1,0 +1,53 @@
+2014-12-02 18:08:14 INFO  main [mitsuba.cpp:275] Mitsuba version 0.5.0 (Linux, 64 bit), Copyright (c) 2014 Wenzel Jakob
+2014-12-02 18:08:14 INFO  main [mitsuba.cpp:377] Parsing scene description from "../../mitsuba/cbox/cbox.xml" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/myintegrator.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/ldsampler.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/gaussian.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/hdrfilm.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/perspective.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/diffuse.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/area.so" ..
+2014-12-02 18:08:14 INFO  main [PluginManager] Loading plugin "plugins/obj.so" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_luminaire.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_luminaire: 2 triangles, 4 vertices (merged 2 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_luminaire.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_floor.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_floor: 2 triangles, 4 vertices (merged 2 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_floor.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_ceiling.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_ceiling: 4 triangles, 8 vertices (merged 4 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_ceiling.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_back.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_back: 2 triangles, 4 vertices (merged 2 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_back.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_greenwall.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_greenwall: 2 triangles, 4 vertices (merged 2 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_greenwall.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_redwall.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_redwall: 2 triangles, 4 vertices (merged 2 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_redwall.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_smallbox.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_smallbox: 12 triangles, 24 vertices (merged 12 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_smallbox.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Loading geometry from "cbox_largebox.obj" ..
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] cbox_largebox: 12 triangles, 24 vertices (merged 12 vertices).
+2014-12-02 18:08:14 INFO  main [WavefrontOBJ] Done with "cbox_largebox.obj" (took 0 ms)
+2014-12-02 18:08:14 INFO  ren0 [KDTreeBase] Constructing a SAH kd-tree (38 primitives) ..
+2014-12-02 18:08:14 INFO  ren0 [KDTreeBase] Finished -- took 0 ms.
+2014-12-02 18:08:14 INFO  ren0 [SamplingIntegrator] Starting render job (512x512, 64 samples, 8 cores, SSE2 enabled) ..
+2014-12-02 18:08:15 INFO  ren0 [RenderJob] Render time: 1.6500s
+2014-12-02 18:08:15 INFO  ren0 [HDRFilm] Writing image to "/home/mathieu/Documents/Fac/TP/TGESI/build-mitsuba-Desktop-Default/binaries/../../mitsuba/cbox/cbox.exr" ..
+2014-12-02 18:08:15 INFO  main [statistics.cpp:142] Statistics:
+------------------------------------------------------------
+ * Loaded plugins :
+    -  plugins/area.so [Area light]
+    -  plugins/diffuse.so [Smooth diffuse BRDF]
+    -  plugins/gaussian.so [Gaussian reconstruction filter]
+    -  plugins/hdrfilm.so [High dynamic range film]
+    -  plugins/ldsampler.so [Low discrepancy sampler]
+    -  plugins/myintegrator.so [A contrived integrator]
+    -  plugins/obj.so [OBJ triangle mesh loader]
+    -  plugins/perspective.so [Perspective camera]
+ * Statistics:
+     none.
+------------------------------------------------------------

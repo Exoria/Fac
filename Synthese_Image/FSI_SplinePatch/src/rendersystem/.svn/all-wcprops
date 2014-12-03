@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/vanderha/!svn/ver/1031/Courses/M1/ASDSI/trunk/src/rendersystem
+END
+raytracer.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vanderha/!svn/ver/1031/Courses/M1/ASDSI/trunk/src/rendersystem/raytracer.h
+END
+glentity.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glentity.h
+END
+core_profile_attributes.mm
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/core_profile_attributes.mm
+END
+glintersectiondebug.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glintersectiondebug.h
+END
+texture.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/texture.h
+END
+renderer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vanderha/!svn/ver/1031/Courses/M1/ASDSI/trunk/src/rendersystem/renderer.cpp
+END
+glmesh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glmesh.cpp
+END
+mainwindow.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/mainwindow.h
+END
+bsplinepatch.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vanderha/!svn/ver/718/Courses/M1/ASDSI/trunk/src/rendersystem/bsplinepatch.h
+END
+kdtree.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/kdtree.h
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/main.cpp
+END
+glmaterial.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/glmaterial.h
+END
+openglwidget.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vanderha/!svn/ver/726/Courses/M1/ASDSI/trunk/src/rendersystem/openglwidget.cpp
+END
+glassert.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glassert.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/CMakeLists.txt
+END
+raytracer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vanderha/!svn/ver/1031/Courses/M1/ASDSI/trunk/src/rendersystem/raytracer.cpp
+END
+gllight.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/gllight.h
+END
+glentity.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glentity.cpp
+END
+glintersectiondebug.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/vanderha/!svn/ver/717/Courses/M1/ASDSI/trunk/src/rendersystem/glintersectiondebug.cpp
+END
+texture.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/texture.cpp
+END
+parametricmeshes.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/parametricmeshes.h
+END
+renderer.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/renderer.h
+END
+bsplinepatch.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/vanderha/!svn/ver/996/Courses/M1/ASDSI/trunk/src/rendersystem/bsplinepatch.cpp
+END
+mainwindow.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/mainwindow.cpp
+END
+kdtree.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/kdtree.cpp
+END
+glmaterial.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/src/rendersystem/glmaterial.cpp
+END
+glmesh.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/glmesh.h
+END
+timer.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/timer.h
+END
+opengl.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/opengl.h
+END
+gllight.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/gllight.cpp
+END
+parametricmeshes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/parametricmeshes.cpp
+END
+openglwidget.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/rendersystem/openglwidget.h
+END

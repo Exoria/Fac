@@ -1,0 +1,159 @@
+#ifndef KDTREE_H
+#define KDTREE_H
+#include "raytracer.h"
+#include <stack>
+
+namespace rendersystem {
+
+#define GREEDY_SAH
+#ifdef GREEDY_SAH
+// Plan de coupe
+class KdSplitPlane {
+    float pos;
+    int axis;
+    int nbTriLeft;
+    int nbTriRight;
+    int nbTriOnPlane;
+    float surfaceAreaLeft; // SA(Left)/SA(total)
+    float surfaceAreaRight;  // SA(Right)/SA(total)
+
+public:
+    KdSplitPlane(float p, int a, const RayTracer::RTBbox &bbox);
+    void classifyTriangle(const glm::vec3 &min, const glm::vec3 &max);
+};
+
+#endif
+    
+class KdTreeNode {
+    // Est-ce une feuille ?
+    bool leaf;
+    // Axe de découpe
+    int axis;
+    float split;
+    // Vecteur de Triangle
+    std::vector<RayTracer::RTTriangle *> triangles;
+    int triangleCount;
+    // Fils
+    KdTreeNode *left;
+    KdTreeNode *right;
+    // profondeur
+    int depth;
+    // bbox
+    RayTracer::RTBbox bbox;
+public:
+    KdTreeNode(int d=0):leaf(true), triangleCount(0), left(NULL), right(NULL), depth(d) {};
+
+    ~KdTreeNode(){
+        if (left) delete left;
+        if (right) delete right;
+    }
+
+    bool isleaf() {
+        return leaf;
+    }
+    void setLeaf(bool l) {
+        leaf = l;
+    }
+    void setAxis(int a) {
+        axis=a;
+    }
+    int getAxis(){
+        return axis;
+    }
+    void setSplit(float s) {
+        split=s;
+    }
+    float getSplit(){
+        return split;
+    }
+    std::vector<RayTracer::RTTriangle *>  &getTriangles() {
+        return triangles;
+    }
+    void updateTriangleCount() {
+        triangleCount = triangles.size();
+    }
+    int getTriangleCount(){
+        return triangleCount;
+    }
+    KdTreeNode *getLeft(){
+        return left;
+    }
+    void setLeft(KdTreeNode *l){
+        left=l;
+    }
+    KdTreeNode *getRight(){
+        return right;
+    }
+    void setRight(KdTreeNode *r){
+        right=r;
+    }
+    int getDepth(){
+        return depth;
+    }
+    void setBbox(const RayTracer::RTBbox &b){
+        bbox=b;
+    }
+    RayTracer::RTBbox &getBbox(){
+        return bbox;
+    }
+
+    void addTriangle(RayTracer::RTTriangle *t){
+        triangles.push_back(t);
+    }
+
+    void reserveTriangles(int number){
+        triangles.reserve(number);
+    }
+
+    bool intersectTriangles(RayTracer *tracer, const RayTracer::Ray& theRay, RayTracer::Intersection &theIntersection);
+};
+
+class TriangleComparator {
+    int axis;
+    TriangleComparator(){};
+public:
+    TriangleComparator(int a): axis(a) {}
+    bool operator()(RayTracer::RTTriangle *a, RayTracer::RTTriangle *b){
+        return a->min[axis] < b->min[axis];
+    }
+};
+
+class KdTree : public RayTracer::RTIntersector {
+    class StackNode {
+        StackNode(){};
+    public:
+        KdTreeNode *node;
+        float tmin;
+        float tmax;
+        StackNode(KdTreeNode *n, float t0, float t1):node(n), tmin(t0), tmax(t1){}
+    };
+
+    KdTreeNode *rootNode;
+    RayTracer *sceneHolder; // USELESS
+
+    int depthLimit;
+    int triangleLimit;
+
+    std::stack<StackNode *> theNodeStack;
+
+    KdTree (){}
+
+    void subdivide(KdTreeNode *theNode);
+
+    bool traverse(StackNode *currentNode, RayTracer *tracer, const RayTracer::Ray& theRay, RayTracer::Intersection &theIntersection);
+
+
+    ///@todo why do not set theNode->axis directly ?!
+    void selectSplit(KdTreeNode *theNode, int &axis, float &pos);
+
+public:
+    KdTree(RayTracer *tracer, int theDepthLimit = 32, int theTriangleLimit = 10);
+
+    ~KdTree();
+
+    bool intersect(RayTracer *tracer, const RayTracer::Ray& theRay, RayTracer::Intersection &theIntersection);
+
+};
+
+}
+#endif // KDTREE_H

@@ -1,0 +1,217 @@
+#ifndef RAYTRACER_H
+#define RAYTRACER_H
+
+#include "glentity.h"
+#include "gllight.h"
+
+/**
+  * Render system classes and functions.
+  */
+namespace rendersystem {
+class GlIntersectionDebug;
+class RayTracer
+{
+    friend class KdTree;
+public:
+    class RTTriangle;
+
+    class Ray{
+        Ray(){}
+    public:
+        glm::vec3 mOrigin;
+        glm::vec3 mDirection;
+        glm::vec3 mInvDirection;
+
+        Ray(glm::vec3 origin, glm::vec3 direction):mOrigin(origin), mDirection(direction), mInvDirection(1.f/direction){}
+    };
+
+    class Intersection {
+    public:
+        RTTriangle *triangle;
+        int material; // USELESS
+        float t;
+        float u;
+        float v;
+        bool valid;
+
+        Intersection(){valid = false; t = HUGE;}
+        Intersection(const Intersection &other){
+            triangle = other.triangle;
+            material = other.material;
+            t = other.t;
+            u = other.u;
+            v = other.v;
+            valid = other.valid;
+        }
+        bool operator <(const Intersection &it){
+            return (t<it.t);
+        }
+    };
+
+    class RTVertex {
+    public:
+        RTVertex (const glm::vec3& pos, const glm::vec3& norm, const glm::vec2& tex) : position(pos), normal(norm), texcoord(tex) {}
+        ~RTVertex(){}
+
+        glm::vec3 position;
+        glm::vec3 normal;
+        glm::vec2 texcoord;
+    };
+
+    class RTTriangle {
+    public:
+        int vertices[3];
+        int materialNumber;
+        glm::vec3 edge0;
+        glm::vec3 edge1;
+        glm::vec3 min;
+        glm::vec3 max;
+
+        RTTriangle (int v0, int v1, int v2, int material) {vertices[0]=v0;vertices[1]=v1;vertices[2]=v2;materialNumber=material;}
+        ~RTTriangle(){}
+
+        bool intersect(RayTracer *tracer, const Ray& r, Intersection &it);
+
+    };
+
+    class RTMaterial{
+        glm::vec3 mKd;
+        glm::vec3 mKs;
+        float mNs;
+        Texture *mTexture;
+    public:
+        RTMaterial(glm::vec3 kd, glm::vec3 ks, float n, Texture *t) : mKd(kd), mKs(ks), mNs(n), mTexture(t) {}
+        void getParameters(glm::vec3 &kd, glm::vec3 &ks, float &n, Texture *&t) {
+            kd = mKd;
+            ks = mKs;
+            n=mNs;
+            t = mTexture;
+        }
+    };
+
+    class RTBbox{
+        glm::vec3 min;
+        glm::vec3 max;
+    public :
+        RTBbox(){
+            min=glm::vec3(HUGE);
+            max=glm::vec3(-HUGE);
+        }
+
+        RTBbox(const RTBbox &box){
+            min=box.min;
+            max=box.max;
+        }
+
+        RTBbox(const glm::vec3 &mi, const glm::vec3 &ma){
+            min=mi;
+            max=ma;
+        }
+
+        void add(glm::vec3 point){
+            min = glm::min(min, point);
+            max = glm::max(max, point);
+        }
+
+        void getBounds(glm::vec3 &theMin, glm::vec3 &theMax) const{
+            theMin = min;
+            theMax = max;
+        }
+
+        void getSize(glm::vec3 &size) const {
+            size = max-min;
+        }
+
+        bool intersect(const Ray&r, float &t0, float &t1);
+
+        glm::vec3 getMin(){ return min; }
+        glm::vec3 getMax(){ return max; }
+    };
+
+    class RTObject{
+    public:
+        RTObject(){bbox = new RTBbox;}
+        bool intersect(RayTracer *tracer, const Ray& r, Intersection &it);
+        RTBbox *bbox;
+        int startFace;
+        int endFace;
+        int startVertex;
+        int endVertex;
+        int material;
+    };
+
+    class RTLights{
+    public:
+        RTLights():castShadows(true){};
+        glm::vec3 position;
+        glm::vec3 color;
+        bool castShadows;
+    };
+
+    class RTIntersector {
+    public:
+        RTIntersector(){}
+        virtual ~RTIntersector(){}
+
+        virtual bool intersect(RayTracer *tracer, const Ray& theRay, Intersection &theIntersection)=0;
+    };
+
+    class RTTrianleListIntersector : public RTIntersector{
+    public:
+        RTTrianleListIntersector(){}
+        bool intersect(RayTracer *tracer, const Ray& theRay, Intersection &theIntersection);
+    };
+
+    class RTObjectListIntersector : public RTIntersector{
+    public:
+        RTObjectListIntersector(){}
+        bool intersect(RayTracer *tracer, const Ray& theRay, Intersection &theIntersection);
+    };
+
+private:
+    std::vector<RTVertex *> mVertices;
+    std::vector<RTTriangle *> mTriangles;
+    std::vector<RTMaterial *> mMaterials;
+    std::vector<RTObject *> mObjects;
+    std::vector<RTLights *> mLights;
+
+    unsigned char *mImage;
+
+    int mWidth;
+    int mHeight;
+
+    RTIntersector *theIntersector;
+
+    bool computeShadows;
+
+    static GlIntersectionDebug *intersectionDebug;
+public:
+    RayTracer();
+
+    void setSize(int width, int height){
+        mWidth=width;
+        mHeight = height;
+        if (mImage)
+            delete mImage;
+        mImage = new unsigned char[mWidth*mHeight*3];
+    }
+    void setScene(const std::vector<MyGlEntity*>&entities);
+
+    void setLights(const std::vector<MyGlLight*>&lights, glm::mat4 g_viewMatrix);
+
+    void render(glm::mat4 g_viewMatrix);
+    void fillDebugInfo(glm::mat4 g_viewMatrix, const glm::vec2 &pixel, GlIntersectionDebug &ray);
+    void shade(const Ray &theRay, const Intersection &theIntersection, glm::vec3 &theColor, int rayDepth=0);
+
+    void save(std::string filename);
+
+    enum IntersectorType {TRIANGLE_INTERSECTOR=0, BBOX_INTERSECTOR, KDTREE_INTERSECTOR};
+    void setIntersector(IntersectorType intersector );
+
+    void setRayTracedShadow(bool set);
+
+};
+
+
+}
+#endif // RAYTRACER_H

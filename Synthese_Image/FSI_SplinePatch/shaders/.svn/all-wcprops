@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/shaders
+END
+vertexdefault.glsl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/shaders/vertexdefault.glsl
+END
+vertexline.glsl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/shaders/vertexline.glsl
+END
+fragmentdefault.glsl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/vanderha/!svn/ver/1003/Courses/M1/ASDSI/trunk/shaders/fragmentdefault.glsl
+END
+fragmentline.glsl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/shaders/fragmentline.glsl
+END

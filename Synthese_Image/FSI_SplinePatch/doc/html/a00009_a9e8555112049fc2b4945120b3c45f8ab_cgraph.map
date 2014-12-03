@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00009.html#a0e7976b09c57824b1241e7c3d30a67fd" title="loadFile" alt="" coords="104,32,171,61"/>
+<area shape="rect" id="node5" href="$a00009.html#ad20897c5c8bd47f5d4005989bead0e55" title="reset" alt="" coords="245,5,296,35"/>
+<area shape="rect" id="node11" href="$a00009.html#a4d539fd163f34d90b66ce39e30932cb8" title="setCurrentFile" alt="" coords="219,59,323,88"/>
+<area shape="rect" id="node7" href="$a00009.html#a395cfd3b5286442312051da532ffa579" title="resetCamera" alt="" coords="375,5,471,35"/>
+<area shape="rect" id="node9" href="$a00010.html#a0ca9011af09843d4bcfb7b68c0530101" title="gui::OpenGLWidget::resetView" alt="" coords="523,5,725,35"/>
+<area shape="rect" id="node13" href="$a00009.html#a637f43b7cda3ccf9706f7d5ffec636dc" title="strippedName" alt="" coords="372,59,473,88"/>
+</map>

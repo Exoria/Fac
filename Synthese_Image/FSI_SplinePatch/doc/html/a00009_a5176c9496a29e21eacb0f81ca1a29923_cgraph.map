@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00009.html#a9e8555112049fc2b4945120b3c45f8ab" title="open" alt="" coords="185,59,236,88"/>
+<area shape="rect" id="node9" href="$a00009.html#a395cfd3b5286442312051da532ffa579" title="resetCamera" alt="" coords="743,84,839,113"/>
+<area shape="rect" id="node17" href="$a00009.html#a34a60ccdf038127b8f0461e0cdf0b94b" title="reloadShaders" alt="" coords="159,163,263,192"/>
+<area shape="rect" id="node5" href="$a00009.html#a0e7976b09c57824b1241e7c3d30a67fd" title="loadFile" alt="" coords="392,59,459,88"/>
+<area shape="rect" id="node7" href="$a00009.html#ad20897c5c8bd47f5d4005989bead0e55" title="reset" alt="" coords="613,59,664,88"/>
+<area shape="rect" id="node13" href="$a00009.html#a4d539fd163f34d90b66ce39e30932cb8" title="setCurrentFile" alt="" coords="587,5,691,35"/>
+<area shape="rect" id="node11" href="$a00010.html#a0ca9011af09843d4bcfb7b68c0530101" title="gui::OpenGLWidget::resetView" alt="" coords="891,84,1093,113"/>
+<area shape="rect" id="node15" href="$a00009.html#a637f43b7cda3ccf9706f7d5ffec636dc" title="strippedName" alt="" coords="740,5,841,35"/>
+<area shape="rect" id="node19" href="$a00010.html#a34a60ccdf038127b8f0461e0cdf0b94b" title="gui::OpenGLWidget::reloadShaders" alt="" coords="312,163,539,192"/>
+</map>

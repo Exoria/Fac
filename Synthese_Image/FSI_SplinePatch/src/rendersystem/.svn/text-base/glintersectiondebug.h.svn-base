@@ -1,0 +1,42 @@
+#ifndef GLINTERSECTIONDEBUG_H
+#define GLINTERSECTIONDEBUG_H
+
+#include "raytracer.h"
+#include <vector>
+namespace rendersystem{
+class GlIntersectionDebug {
+    std::vector<glm::vec3> mVertices;
+    typedef std::vector<std::pair<RayTracer::RTBbox, bool> > BoxList;
+    BoxList mBoxes;
+
+    MyGLMesh *intersectionPoint;
+
+    GLuint mVertexArrayObject;
+    enum {VBO_VERTICES, VBO_INDICES};
+    GLuint mVertexBufferObjects[2];
+
+    GLuint mCubeVertexArrayObject;
+    GLuint mCubeVertexBufferObjects[2];
+
+    bool mValid;
+
+public:
+    GlIntersectionDebug() {}
+    void pushPoint(const glm::vec3 &p){ mVertices.push_back(p); }
+    void pushBox(const RayTracer::RTBbox &b, bool valid){ mBoxes.push_back(std::make_pair(b, valid)); }
+    void clear(){
+        mVertices.clear();
+        mBoxes.clear();
+        destroyGL();
+        delete intersectionPoint;
+    }
+    void drawGL(const glm::mat4x4 &sceneToViewMatrix, const glm::mat4x4 &projectionMatrix, int transformLocation[4], int colorLocation);
+
+
+    void compileGL();
+    void destroyGL();
+
+    void setValid(bool valid){ mValid = valid; }
+};
+}
+#endif // GLINTERSECTIONDEBUG_H

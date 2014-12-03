@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00058.html#ga068e536d6aa068dfd109f862cfd17b84" title="addRawVerticeNormalPart" alt="" coords="164,5,340,35"/>
+<area shape="rect" id="node5" href="$a00058.html#gab9d6ef6b7b658014c8267e2a8497cb68" title="addRawVerticeNormalTexturePart" alt="" coords="141,59,363,88"/>
+<area shape="rect" id="node7" href="$a00058.html#gaca43bd93250aec9113172ddcb415376c" title="addRawVerticePart" alt="" coords="185,112,319,141"/>
+<area shape="rect" id="node9" href="$a00058.html#gae3ea1dfbc37a05bebd977b5ba003eb69" title="addRawVerticeTexturePart" alt="" coords="163,165,341,195"/>
+<area shape="rect" id="node11" href="$a00058.html#ga41cfa418f3332378833540f18e9c2c86" title="addVerticeNormalPart" alt="" coords="177,219,327,248"/>
+<area shape="rect" id="node13" href="$a00058.html#ga46e8d1f27326d18e5d72c638593b78bb" title="addVerticeNormalTexturePart" alt="" coords="155,272,349,301"/>
+<area shape="rect" id="node15" href="$a00058.html#gaa7e542e6c72b4bbac36c2ec56b5ae0ad" title="addVerticePart" alt="" coords="199,325,305,355"/>
+<area shape="rect" id="node17" href="$a00058.html#gac5ccd0a395f4cd80817f5e9b62d08c7c" title="addVerticeTexturePart" alt="" coords="176,379,328,408"/>
+<area shape="rect" id="node19" href="$a00021.html#ac8377a9ac6b479650f7b1a4db575ca01" title="loaders::obj_mtl::ObjMesh::compile" alt="" coords="139,432,365,461"/>
+<area shape="rect" id="node21" href="$a00058.html#gaec31976dbe84753ddc557bd23ab36fc9" title="faceType" alt="" coords="215,485,289,515"/>
+</map>

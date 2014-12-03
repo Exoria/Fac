@@ -1,0 +1,511 @@
+#include "raytracer.h"
+#include "utils.h"
+#include "timer.h"
+#include "kdtree.h"
+
+#include "glintersectiondebug.h"
+
+
+#include <iostream>
+#include <cmath>
+
+#include <glm/gtc/matrix_access.hpp>
+
+#include <QImage>
+
+using namespace utils;
+
+namespace rendersystem {
+
+
+GlIntersectionDebug *RayTracer::intersectionDebug = NULL;
+
+bool RayTracer::RTTrianleListIntersector::intersect(RayTracer *tracer, const Ray& theRay, Intersection &theIntersection){
+    Intersection it;
+    // TODO TP1
+    //@BEGIN
+    for (std::vector<RTTriangle*>::iterator t=tracer->mTriangles.begin(); t!=tracer->mTriangles.end(); ++t){
+        if ( (*t)->intersect(tracer,theRay,it) )
+
+            // USELESS
+            if (it < theIntersection){
+                theIntersection = it;
+            }
+    }
+    //@END
+    return (theIntersection.valid);
+
+}
+
+bool RayTracer::RTObjectListIntersector::intersect(RayTracer *tracer, const Ray& theRay, Intersection &theIntersection){
+    // TODO TP1
+    //@BEGIN
+    for (std::vector<RTObject *>::iterator o = tracer->mObjects.begin(); o != tracer->mObjects.end(); ++o)
+        (*o)->intersect(tracer, theRay, theIntersection);
+    //@END
+    return (theIntersection.valid);
+}
+
+bool RayTracer::RTObject::intersect(RayTracer *tracer, const Ray& r, Intersection &theIntersection){
+    bool valid = false;
+
+    // TODO TP1
+    //@BEGIN
+    float tmin = 0;
+    float tmax = theIntersection.t;
+
+    if (bbox->intersect(r, tmin, tmax)){
+
+        Intersection it;
+        for ( int t=startFace; t<endFace; t++){
+            if ( tracer->mTriangles[t]->intersect(tracer,r,it) )
+                if (it < theIntersection){
+                    theIntersection = it;
+                }
+        }
+        valid=true;        
+    } else
+        valid=false;        
+    //@END
+    if(RayTracer::intersectionDebug) RayTracer::intersectionDebug->pushBox(*bbox, valid);
+    return valid;
+
+}
+
+bool RayTracer::RTTriangle::intersect(RayTracer *tracer, const Ray&r, Intersection &it){
+    glm::vec3 dir = -1.f * r.mDirection;
+    glm::vec3 org = r.mOrigin - tracer->mVertices[vertices[0]]->position;
+
+    float det = glm::dot(glm::cross(dir,edge0),edge1);
+    if (det != 0.f){
+        float t = glm::dot(glm::cross(org,edge0),edge1) / det;
+        if ( (t>0) && (t<it.t) ){
+            float u = glm::dot(glm::cross(dir,org),edge1) / det;
+            if ( (u >=0.f) && (u<=1.f) ) {
+                float v = glm::dot(glm::cross(dir,edge0),org) / det;
+                if ( (v>=0.f) && (v<=1.f) && ((1-u-v)>= 0.f) && ((1-u-v)<= 1.f) ){
+                    it.t = t;
+                    it.u = u;
+                    it.v = v;
+                    it.material = materialNumber;
+                    it.triangle = this;
+                    return (it.valid = true);
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool RayTracer::RTBbox::intersect(const Ray&r, float &t0, float &t1){
+    float tmin, tmax;
+    if (r.mInvDirection[0]>0) {
+        tmin = (min[0]-r.mOrigin[0])*r.mInvDirection[0];
+        tmax = (max[0]-r.mOrigin[0])*r.mInvDirection[0];
+    } else {
+        tmin = (max[0]-r.mOrigin[0])*r.mInvDirection[0];
+        tmax = (min[0]-r.mOrigin[0])*r.mInvDirection[0];
+    }
+    float tymin, tymax;
+    if (r.mInvDirection[1]>0) {
+        tymin = (min[1]-r.mOrigin[1])*r.mInvDirection[1];
+        tymax = (max[1]-r.mOrigin[1])*r.mInvDirection[1];
+    } else {
+        tymin = (max[1]-r.mOrigin[1])*r.mInvDirection[1];
+        tymax = (min[1]-r.mOrigin[1])*r.mInvDirection[1];
+    }
+    if ( (tmin > tymax) || (tymin > tmax) )
+        return false;
+    if (tymin > tmin)
+        tmin = tymin;
+    if (tymax < tmax)
+        tmax = tymax;
+    float tzmin, tzmax;
+    if (r.mInvDirection[2]>0) {
+        tzmin = (min[2]-r.mOrigin[2])*r.mInvDirection[2];
+        tzmax = (max[2]-r.mOrigin[2])*r.mInvDirection[2];
+    } else {
+        tzmin = (max[2]-r.mOrigin[2])*r.mInvDirection[2];
+        tzmax = (min[2]-r.mOrigin[2])*r.mInvDirection[2];
+    }
+    if ( (tmin > tzmax) || (tzmin > tmax) )
+        return false;
+    if (tzmin > tmin)
+      tmin = tzmin;
+    if (tzmax < tmax)
+      tmax = tzmax;
+    if ( (tmin < t1) && (tmax > t0) ) {
+        t0 = glm::max(t0, tmin);
+        t1 = glm::min(t1, tmax);
+        return true;
+    } else
+        return false;
+}
+
+
+RayTracer::RayTracer():mImage(NULL), computeShadows(true) {
+    theIntersector = new RTObjectListIntersector;
+}
+
+void RayTracer::setIntersector(IntersectorType intersector ){
+    if (theIntersector)
+        delete theIntersector;
+    switch (intersector) {
+    case TRIANGLE_INTERSECTOR:
+        theIntersector = new RTTrianleListIntersector;
+        break;
+    case BBOX_INTERSECTOR:
+        theIntersector = new RTObjectListIntersector;
+        break;
+    case KDTREE_INTERSECTOR:
+        theIntersector = new KdTree(this, 32, 10);
+    }
+}
+
+
+void RayTracer::setScene(const std::vector<MyGlEntity*>&entities) {
+    int startVertex = 0;
+    int startTriangle = 0;
+    int materialNumber=0;
+
+    for (std::vector<MyGlEntity*>::const_iterator it = entities.begin(); it != entities.end(); ++it){
+        glm::mat4 modelMatrix( (*it)->getModelMatrix() );
+        glm::mat4 normalMatrix = glm::transpose(glm::inverse(modelMatrix));
+        /* Objects */
+        RTObject *theObject = new RTObject;
+        theObject->startVertex = startVertex;
+        theObject->startFace = startTriangle;
+        mObjects.push_back(theObject);
+
+        /* Material */
+        MyGLMaterial *glMaterial = (*it)->getMaterial();
+        glm::vec3 kd;
+        glm::vec3 ks;
+        float n;
+        Texture *t;
+        glMaterial->getParameters(kd, ks, n, t);
+        mMaterials.push_back(new RTMaterial(kd, ks, n, t) );
+        theObject->material = materialNumber;
+
+        /* Geometry */
+        std::vector<float> vertexBuffer;
+        std::vector<int> triangleBuffer;
+        bool parametrized;
+        (*it)->getMesh()->getData (vertexBuffer, triangleBuffer, parametrized);
+
+        int nbVertices=0;
+        for (unsigned int i=0; i<vertexBuffer.size(); i+=8){
+            glm::vec4 point(vertexBuffer[i], vertexBuffer[i+1], vertexBuffer[i+2], 1);
+            glm::vec4 normal(vertexBuffer[i+3], vertexBuffer[i+4], vertexBuffer[i+5], 0);
+            glm::vec2 tex(vertexBuffer[i+6], vertexBuffer[i+7]);
+            point = modelMatrix*point;
+            normal = normalMatrix*normal;
+            mVertices.push_back(new RTVertex(glm::vec3(point), glm::vec3(normal), tex ));
+            theObject->bbox->add(glm::vec3(point));
+            nbVertices++;
+        }
+
+        /* Triangles*/
+        int nbTriangles=0;
+        for (unsigned int i=0; i<triangleBuffer.size(); i+=3){
+            RTTriangle *triangle = new RTTriangle(triangleBuffer[i]+startVertex, triangleBuffer[i+1]+startVertex, triangleBuffer[i+2]+startVertex, materialNumber);
+            triangle->edge0 = mVertices[triangle->vertices[1]]->position - mVertices[triangle->vertices[0]]->position;
+            triangle->edge1 = mVertices[triangle->vertices[2]]->position - mVertices[triangle->vertices[0]]->position;
+            triangle->min = glm::min(mVertices[triangle->vertices[0]]->position, mVertices[triangle->vertices[1]]->position);
+            triangle->min = glm::min(triangle->min, mVertices[triangle->vertices[2]]->position);
+            triangle->max = glm::max(mVertices[triangle->vertices[0]]->position, mVertices[triangle->vertices[1]]->position);
+            triangle->max = glm::max(triangle->max, mVertices[triangle->vertices[2]]->position);
+            mTriangles.push_back(triangle);
+            nbTriangles++;
+        }
+
+        startVertex += nbVertices;
+        startTriangle+=nbTriangles;
+        theObject->endVertex = startVertex;
+        theObject->endFace = startTriangle;
+
+        materialNumber+=1;
+    }
+
+    std::cerr << "Scene : " << std::endl;
+    std::cerr << "\tTriangles : " << mTriangles.size() << std::endl;
+    std::cerr << "\tVertices : " << mVertices.size() << std::endl;
+    std::cerr << "\tMaterials : " << mMaterials.size() << std::endl;
+}
+
+
+void RayTracer::fillDebugInfo(glm::mat4 g_viewMatrix, const glm::vec2 &pixel, GlIntersectionDebug &ray){
+
+    /* Compute camera configuration */
+
+    intersectionDebug = &ray;
+
+    glm::mat4 viewToScene = glm::inverse(g_viewMatrix);
+    float ratio = float(mWidth)/float(mHeight);
+
+    glm::vec3 imageX = ratio * glm::vec3(glm::row(g_viewMatrix, 0));
+    glm::vec3 imageY = glm::vec3(glm::row(g_viewMatrix, 1));
+    glm::vec3 viewDir = -1.0f * glm::vec3(glm::row(g_viewMatrix, 2));
+    glm::vec3 rayOrig = glm::vec3(viewToScene * glm::vec4(0.f, 0.f, 0.f, 1.f));
+    float dept = tan(M_PI/4.);
+    //glm::vec3 imagePos = rayOrig + dept*viewDir;
+    glm::vec3 imageToRayOrig = dept*viewDir; //imagePos - rayOrig;
+
+    std::cerr << "Camera : " << mWidth << "x" << mHeight <<  std::endl;
+    std::cerr << "\tO :" << rayOrig << std::endl;
+    std::cerr << "\tX :" << imageX << std::endl;
+    std::cerr << "\tY :" << imageY << std::endl;
+    std::cerr << "\tZ :" << viewDir << std::endl;
+
+    // compute picture
+
+    float x,y;
+    float incx = 2.f/mWidth;
+    float incy = 2.f/mHeight;
+    glm::vec3 horizontalRay;
+
+    Timer t;
+    t.start();
+    y = -1 + pixel.y * incy;
+    horizontalRay = imageToRayOrig + y*imageY;
+    x = -1 + pixel.x * incx;
+    // Build the ray
+    glm::vec3 rayDir = horizontalRay + x*imageX;
+    rayDir = glm::normalize(rayDir);
+    Ray theRay( rayOrig, rayDir );
+    ray.pushPoint(rayOrig);
+
+    // Intersect the scene
+    Intersection theIntersection;
+    theIntersector->intersect(this, theRay, theIntersection);
+
+    ray.pushPoint(rayOrig + theIntersection.t*rayDir);
+    ray.setValid(theIntersection.valid);
+    std::cerr << std::endl;
+    t.stop();
+    std::cerr << "... done : " << t.value() << std::endl;
+
+    intersectionDebug = NULL;
+}
+
+
+void RayTracer::render(glm::mat4 g_viewMatrix){
+    /*clear buffer*/
+    for (int i=0; i<mWidth*mHeight*3; i+=3){
+        mImage[i]=char(0*255);
+        mImage[i+1]=char(0.3*255);
+        mImage[i+2]=char(0.3*255);
+    }
+
+    /* Compute camera configuration */
+    glm::mat4 viewToScene = glm::inverse(g_viewMatrix);
+    float ratio = float(mWidth)/float(mHeight);
+
+    glm::vec3 imageX = ratio * glm::vec3(glm::row(g_viewMatrix, 0));
+    glm::vec3 imageY = glm::vec3(glm::row(g_viewMatrix, 1));
+    glm::vec3 viewDir = -1.0f * glm::vec3(glm::row(g_viewMatrix, 2));
+    glm::vec3 rayOrig = glm::vec3(viewToScene * glm::vec4(0.f, 0.f, 0.f, 1.f));
+    float dept = tan(M_PI/4.);
+    //glm::vec3 imagePos = rayOrig + dept*viewDir;
+    glm::vec3 imageToRayOrig = dept*viewDir; //imagePos - rayOrig;
+
+    std::cerr << "Camera : " << mWidth << "x" << mHeight <<  std::endl;
+    std::cerr << "\tO :" << rayOrig << std::endl;
+    std::cerr << "\tX :" << imageX << std::endl;
+    std::cerr << "\tY :" << imageY << std::endl;
+    std::cerr << "\tZ :" << viewDir << std::endl;
+
+    // compute picture
+
+    float x,y;
+    float incx = 2.f/mWidth;
+    float incy = 2.f/mHeight;
+    glm::vec3 horizontalRay;
+
+    Timer t;
+    t.start();
+
+    for (int j=0;j<mHeight;j++) {
+        if (j%10 == 0)
+            std::cerr << j << " - ";
+        y = -1 + j * incy;
+        horizontalRay = imageToRayOrig + y*imageY;
+        for (int i=0;i<mWidth;i++) {
+            glm::vec3 pixelColor;
+            x = -1 + i * incx;
+            // Build the ray
+//#define ANTIALIAS
+#ifdef ANTIALIAS
+#define NBSAMPLES 16
+            int index = ((mHeight-1-j)*mWidth+i)*3;
+
+            for (int k=0;k<NBSAMPLES;k++){
+                glm::vec3 sampleColor( ((float)mImage[index])/255.0, ((float)mImage[index+1])/255.0, ((float)mImage[index+2])/255.0);
+                double dx = drand48()-0.5;
+                double dy = drand48()-0.5;
+                x= -1 + ((dx+i) * incx);
+                y = -1 + ((dy+j) * incy);
+
+                glm::vec3 rayDir = imageToRayOrig + y*imageY + x*imageX;
+                rayDir = glm::normalize(rayDir);
+                Ray theRay( rayOrig, rayDir );
+
+                // Intersect the scene
+                Intersection theIntersection;
+                theIntersector->intersect(this, theRay, theIntersection);
+                // Shade if there is an intersection
+                if (theIntersection.valid){
+                    shade( theRay, theIntersection, sampleColor);
+                }
+                pixelColor = pixelColor + ((1.0f/NBSAMPLES) *sampleColor);
+            }
+
+            mImage[index]=static_cast<unsigned char>(pixelColor[0]*255);
+            mImage[index+1]=static_cast<unsigned char>(pixelColor[1]*255);
+            mImage[index+2]=static_cast<unsigned char>(pixelColor[2]*255);
+#else
+            glm::vec3 rayDir = horizontalRay + x*imageX;
+            rayDir = glm::normalize(rayDir);
+            Ray theRay( rayOrig, rayDir );
+            // Intersect the scene
+            Intersection theIntersection;
+            theIntersector->intersect(this, theRay, theIntersection);
+            // Shade if there is an intersection
+            if (theIntersection.valid){
+                // (mHeight-1)-j pour avoir l'image droite
+                int index = ((mHeight-1-j)*mWidth+i)*3;
+                shade( theRay, theIntersection, pixelColor);
+                mImage[index]=static_cast<unsigned char>(pixelColor[0]*255);
+                mImage[index+1]=static_cast<unsigned char>(pixelColor[1]*255);
+                mImage[index+2]=static_cast<unsigned char>(pixelColor[2]*255);
+
+            }
+#endif
+        }
+    }
+    std::cerr << std::endl;
+    t.stop();
+    std::cerr << "... done : " << t.value() << std::endl;
+}
+
+// Tone mapping ultime :D
+static float globalFactor = 0.75;
+
+// Pour éviter l'acné
+static float acneEpsilon = 0.001;
+
+void RayTracer::shade(const Ray &theRay, const Intersection &theIntersection, glm::vec3 &theColor, int rayDepth){
+    // Compute point to shade from intersection information
+    RTVertex *v0 = mVertices[ theIntersection.triangle->vertices[0] ];
+    RTVertex *v1 = mVertices[ theIntersection.triangle->vertices[1] ];
+    RTVertex *v2 = mVertices[ theIntersection.triangle->vertices[2] ];
+
+    glm::vec3 thePoint = theRay.mOrigin + theIntersection.t*theRay.mDirection;
+
+    glm::vec3 theNormal = theIntersection.u * v1->normal + theIntersection.v * v2->normal + (1 - theIntersection.u - theIntersection.v) * v0->normal;
+
+    theNormal = glm::normalize(theNormal);
+
+    //compute color
+    glm::vec3 kd, ks;
+    float n;
+    Texture *t;
+    mMaterials[theIntersection.triangle->materialNumber]->getParameters(kd,ks,n, t);
+
+
+    glm::vec2 theTexCoord = theIntersection.u * v1->texcoord + theIntersection.v * v2->texcoord + (1 - theIntersection.u - theIntersection.v) * v0->texcoord;
+    glm::vec3 texColor;
+    t->getPixel(theTexCoord.x, theTexCoord.y, texColor);
+    kd = texColor;
+
+    glm::vec3 color(0.f);
+
+    for (unsigned int l=0; l<mLights.size(); l++){
+        // compute light contribution
+        glm::vec3 lightDir = mLights[l]->position - thePoint;
+
+        // Note : initially, valid is set to false on an Intersection
+        Intersection inShadow;
+        inShadow.t = glm::length(lightDir);
+
+        lightDir = (1.f/inShadow.t) * lightDir;
+
+        // compute visibility
+        if (mLights[l]->castShadows && computeShadows) {
+            Ray shadowRay(thePoint+acneEpsilon*lightDir, lightDir);
+            theIntersector->intersect(this, shadowRay, inShadow);
+        }
+
+        if (!inShadow.valid){ // la source est visible
+            // Blinn-Phong lighting
+            glm::vec3 halfVector = glm::normalize(-1.f*theRay.mDirection + lightDir);
+            float costetha = glm::clamp(glm::dot(theNormal, lightDir), 0.f, 1.f);
+            float cosalphan = glm::pow(glm::clamp(glm::dot(halfVector, theNormal), 0.f, 1.f), n);
+
+            glm::vec3 lightingCoef = ((kd + (ks * cosalphan)) * costetha);
+
+            color = color + mLights[l]->color * lightingCoef;
+        }
+    }
+
+    if(rayDepth < 4){
+        glm::vec3 reflectVector = glm::normalize(theRay.mDirection-2.f*glm::dot(theNormal, theRay.mDirection)*theNormal);
+        Ray reflectRay= Ray(thePoint+acneEpsilon*reflectVector, reflectVector);
+        Intersection reflectIntersection;
+        theIntersector->intersect(this, reflectRay, reflectIntersection);
+        glm::vec3 reflectColor = glm::vec3(0.f);
+        if (reflectIntersection.valid){
+            shade(reflectRay, reflectIntersection, reflectColor, rayDepth+1);
+            color += ks*reflectColor;
+        }
+    }
+
+    color = globalFactor * color;
+    color = glm::clamp(color, glm::vec3(0.f), glm::vec3(1.f));
+
+    theColor = color;    
+}
+
+void RayTracer::save(std::string filename){
+    QString file(filename.c_str());
+    QImage theFinalImage( mImage, mWidth, mHeight, mWidth*3, QImage::Format_RGB888 );
+    if (theFinalImage.save(file,"PNG"))
+        std::cerr << "Saved to " << filename << std::endl;
+    else
+        std::cerr << "Not Saved" << std::endl;
+}
+
+void RayTracer::setRayTracedShadow(bool set){
+    computeShadows=set;
+}
+
+void RayTracer::setLights(const std::vector<MyGlLight*>&lights, glm::mat4 g_viewMatrix){
+    glm::mat4 viewToScene = glm::inverse(g_viewMatrix);
+    mLights.clear();
+
+    // set up lights
+    RTLights *theLight;
+
+    // Key light
+    theLight = new RTLights;
+    theLight->position = glm::vec3( viewToScene * glm::vec4(lights[0]->getPosition(), 1.f) );
+    theLight->color = lights[0]->getColor();
+    theLight->castShadows=lights[0]->castShadows();
+    mLights.push_back(theLight);
+
+    // Fill light
+    theLight = new RTLights;
+    theLight->position = glm::vec3( viewToScene * glm::vec4(lights[1]->getPosition(), 1.f) );
+    theLight->color = lights[1]->getColor();
+    theLight->castShadows=lights[1]->castShadows();
+    mLights.push_back(theLight);
+
+    // Back light
+    theLight = new RTLights;
+    theLight->position = glm::vec3( viewToScene * glm::vec4(lights[2]->getPosition(), 1.f) );;
+    theLight->color = lights[2]->getColor();
+    theLight->castShadows=lights[2]->castShadows();
+    mLights.push_back(theLight);
+
+}
+}

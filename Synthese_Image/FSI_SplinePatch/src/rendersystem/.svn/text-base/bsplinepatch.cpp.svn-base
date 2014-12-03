@@ -1,0 +1,449 @@
+#include "bsplinepatch.h"
+
+#include <iostream>
+
+namespace rendersystem{
+
+class BSplineCurveEvaluator {
+public :
+
+    static glm::vec3 evaluate (const std::vector<glm::vec3> &points,
+                               const std::vector<float> &knots,
+                               int order,
+                               float u){
+
+
+        glm::vec3 ret;
+        //@BEGIN    
+        // find [u_n, u_n1) that contains u
+        int interval = order-1;
+        for(unsigned int i=(unsigned int)(order); i<points.size()+1; ++i){
+            if(u<=knots[i]){
+                interval = i-1;
+                break;
+            }
+        }
+
+        if( (unsigned int)interval >= points.size()-1 )
+            interval = points.size()-1;
+
+        // evaluate using blossom
+        int pbegin = interval - (order-1);
+        int pend   = interval;
+        std::vector<glm::vec3> local_points = std::vector<glm::vec3>(points.begin()+pbegin, points.begin()+pend+1);
+        assert(local_points.size () == (unsigned int)(order));
+
+        int kbegin = interval - order + 2;
+        int kend   = interval + order - 1;
+        std::vector<float> local_knots    = std::vector<float>(knots.begin()+kbegin, knots.begin()+kend+1);
+        assert(local_knots.size() == order-1+local_points.size()-1);
+        ret = blossom(local_points, local_knots, order, u);
+
+        return ret;
+        //@END
+        //TODO TP1 G
+        return ret;
+    }
+
+    static glm::vec3 evaluateTan (const std::vector<glm::vec3> &points,
+                                  const std::vector<float> &knots,
+                                  int order,
+                                  float u){
+
+        glm::vec3 ret;
+        //@BEGIN ASDSI_G COR
+        std::vector<glm::vec3> local_pointsTmp = std::vector<glm::vec3>(points.begin(), points.end());
+        std::vector<float> local_knotsTmp = std::vector<float>(knots.begin(), knots.end());
+
+        for(unsigned int i=0; i<local_pointsTmp.size()-1; ++i){
+            int i1 = order+i;
+            int i2 = i+1;
+            glm::vec3 deltap = local_pointsTmp[i+1] - local_pointsTmp[i];
+
+            glm::vec3 v = float(order-1) * deltap/(knots[i1]-knots[i2]);
+            local_pointsTmp[i] = v;
+        }
+
+        int interval = order-1;
+        for(unsigned int i=(unsigned int)(order); i<points.size()+1; ++i){
+            if(u<=local_knotsTmp[i]){
+                interval = i-1;
+                break;
+            }
+        }
+
+        if( (unsigned int)interval >= points.size()-1 )
+            interval = points.size()-1;
+
+        int pbegin = interval-(order-1);
+        int pend   = interval-1;
+        std::vector<glm::vec3> local_points = std::vector<glm::vec3>(local_pointsTmp.begin()+pbegin, local_pointsTmp.begin()+pend+1);
+
+        int kbegin = interval - order + 3;
+        int kend   = interval + order - 2;
+        std::vector<float> local_knots    = std::vector<float>(local_knotsTmp.begin()+kbegin, local_knotsTmp.begin()+kend+1);
+
+        order = order-1;
+
+        // evaluate using blossom
+        assert(local_knots.size() == order-1+local_points.size()-1);
+        ret = blossom(local_points, local_knots, order, u);
+        //@END ASDSI_G COR
+        return ret;
+    }
+
+    static glm::vec3 blossom(std::vector<glm::vec3> &points,
+                             std::vector<float>   &knots,
+                             int order,
+                             float u){
+
+
+        //@BEGIN ASDSI_G COR
+
+        for(unsigned int i=0; i<points.size()-1; ++i){
+            int i1 = i;
+            int i2 = i+order-1;
+
+            assert((unsigned int)(i2)<knots.size());
+            float oneOverDiff = 1.f/(knots[i2]-knots[i1]);
+            float alpha0 = (knots[i2]-u)*oneOverDiff;
+            float alpha1 = (u-knots[i1])*oneOverDiff;
+
+            glm::vec3 v = alpha0*points[i] + alpha1*points[i+1];
+            points[i] = v;
+        }
+
+        if(order == 2 ) return points[0];
+
+        points.pop_back();
+
+        knots.pop_back();
+        knots.erase(knots.begin());
+
+        glm::vec3 ret =  blossom(points, knots, order-1, u);
+        return ret;
+
+        //@END
+        //@BEGIN ASDSI_G STU
+        //TODO TP1 G
+        return glm::vec3(0.f);
+        //@END
+    }
+
+
+};
+
+
+MyGLLinesMesh::MyGLLinesMesh (const glm::mat4 transform, BSplinePatch *mPatch)
+    :mModelToSceneMatrix(transform), mCurveSize(mPatch->_curveSize) {
+
+    mMesh.insert(mMesh.begin(), mPatch->_points.begin(), mPatch->_points.end());
+
+    float range = mPatch->_knots[mPatch->_n+1] - mPatch->_knots[mPatch->_order-1];
+
+    mSubdivSteps = 8;
+
+    for(int i=0; i<mPatch->_curveSize; ++i){
+        std::vector<glm::vec3> dir = mPatch->directricePointsU(i);
+
+//        std::cerr << mMesh.size() << " ";
+
+        for(int j=0; j<=mSubdivSteps; ++j) {
+            float u = range*float(j)/float(mSubdivSteps)+mPatch->_knots[mPatch->_order-1];
+            mMesh.push_back(BSplineCurveEvaluator::evaluate(dir, mPatch->_knots, mPatch->_order, u));
+        }
+
+//        std::cerr << mMesh.size()-1 << std::endl;
+    }
+
+    for(int i=0; i<mPatch->_curveSize; ++i){
+        std::vector<glm::vec3> dir = mPatch->directricePointsV(i);
+
+//        std::cerr << mMesh.size() << " ";
+
+        for(int j=0; j<=mSubdivSteps; ++j) {
+            float u = range*float(j)/float(mSubdivSteps)+mPatch->_knots[mPatch->_order-1];
+            mMesh.push_back(BSplineCurveEvaluator::evaluate(dir, mPatch->_knots, mPatch->_order, u));
+        }
+
+//        std::cerr << mMesh.size()-1 << std::endl;
+    }
+
+    for(unsigned int j = 0; j<mCurveSize; ++j ){
+        for(unsigned int i = 0; i<mCurveSize-1; ++i ){
+            mIndices.push_back(j*mCurveSize+ i);
+            mIndices.push_back(j*mCurveSize+i+1);
+            //std::cerr << j*mCurveSize+ i<< " " << j*mCurveSize+i+1<< "\t" ;
+        }
+//        std::cerr << std::endl;
+    }
+
+    for(unsigned int j = 0; j<mCurveSize; ++j ){
+        for(unsigned int i = 0; i<mCurveSize-1; ++i ){
+            mIndices.push_back(i*mCurveSize+ j);
+            mIndices.push_back((i+1)*mCurveSize+j);
+        }
+
+    }
+//    std::cerr << "indices "  << mIndices.size() << " " <<  2*2*mCurveSize*(mCurveSize-1) << std::endl;
+
+    int offset = mCurveSize*mCurveSize;
+    for(int i=0; i<mPatch->_curveSize; ++i){
+        for(int j=0; j<=mSubdivSteps; ++j) {
+            mIndices.push_back(offset+i*(mSubdivSteps+1)+j);
+        }
+    }
+    offset += mCurveSize*(mSubdivSteps+1);
+    for(int i=0; i<mPatch->_curveSize; ++i){
+        for(int j=0; j<=mSubdivSteps; ++j) {
+            mIndices.push_back(offset+i*(mSubdivSteps+1)+j);
+        }
+    }
+}
+
+
+void MyGLLinesMesh::compileGL() {
+    glAssert( glGenVertexArrays(1, &mVertexArrayObject) );
+    glAssert( glGenBuffers(2, mVertexBufferObjects) );
+    glAssert( glBindVertexArray(mVertexArrayObject) );
+    glAssert( glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferObjects[VBO_VERTICES]) );
+
+
+    glAssert( glBufferData(GL_ARRAY_BUFFER, mMesh.size() * sizeof(glm::vec3),  &(mMesh[0]), GL_STATIC_DRAW) );
+    GLuint stride = sizeof(glm::vec3);
+    GLboolean normalized = GL_FALSE;
+    GLenum type = GL_FLOAT;
+    // position
+    GLuint index = 0;
+    GLint size = 3;
+    GLvoid *pointer = BUFFER_OFFSET(0);
+    glAssert( glVertexAttribPointer(index, size, type, normalized, stride, pointer) );
+    glAssert( glEnableVertexAttribArray(index) );
+
+    glAssert( glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mVertexBufferObjects[VBO_INDICES]) );
+    glAssert( glBufferData(GL_ELEMENT_ARRAY_BUFFER, mIndices.size() * sizeof(int),  &(mIndices[0]), GL_STATIC_DRAW) );
+    glAssert( glBindVertexArray(0) );
+
+}
+
+void MyGLLinesMesh::destroyGL(){
+    glAssert(glDeleteVertexArrays(1, &mVertexArrayObject));
+    mVertexArrayObject = 0;
+    glAssert(glDeleteBuffers(2, mVertexBufferObjects));
+    mVertexBufferObjects[0] = 0;
+    mVertexBufferObjects[1] = 1;
+}
+
+
+void MyGLLinesMesh::drawGL(const glm::mat4x4 &sceneToViewMatrix, const glm::mat4x4 &projectionMatrix, int transformLocation[4], int colorLocation){
+    glm::mat4x4 localprojectionMatrix = projectionMatrix;
+    glm::mat4x4 localmodelViewMatrix = sceneToViewMatrix*mModelToSceneMatrix;
+    glm::mat4x4 normalMatrix = glm::transpose(glm::inverse(localmodelViewMatrix));
+    glm::mat4x4 MVP = localprojectionMatrix * localmodelViewMatrix;
+    glAssert( glUniformMatrix4fv( transformLocation[0], 1, GL_FALSE, glm::value_ptr(localmodelViewMatrix)) );
+    glAssert( glUniformMatrix4fv( transformLocation[1], 1, GL_FALSE, glm::value_ptr(localprojectionMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[2], 1, GL_FALSE, glm::value_ptr(normalMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[3], 1, GL_FALSE, glm::value_ptr(MVP)));
+
+    glAssert( glBindVertexArray(mVertexArrayObject) );
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    glEnable(GL_LINE_SMOOTH);
+    glm::vec4 color = glm::vec4(1,1,1,.5);
+    glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+
+    //@BEGIN
+    // TODO TP1 G -> changer le nombre de primitives à dessiner
+    glLineWidth(1.5f);
+    glAssert( glDrawElements(GL_LINES, 2*2*mCurveSize*(mCurveSize-1), GL_UNSIGNED_INT, NULL) );
+
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    color = glm::vec4(1,0,0,1);
+    glLineWidth(3.f);
+    glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+    int offset = (2*2*mCurveSize*(mCurveSize-1));
+    for(int i = 0; i<mCurveSize; ++i){
+        glAssert( glDrawElements(GL_LINE_STRIP, mSubdivSteps+1, GL_UNSIGNED_INT, BUFFER_OFFSET(offset*sizeof(int))) );
+        offset += mSubdivSteps+1;
+    }
+
+    color = glm::vec4(0,0,1,1);
+    glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+    for(int i = 0; i<mCurveSize; ++i){
+        glAssert( glDrawElements(GL_LINE_STRIP, mSubdivSteps+1, GL_UNSIGNED_INT, BUFFER_OFFSET(offset*sizeof(int))) );
+        offset += mSubdivSteps+1;
+    }
+
+    glLineWidth(1.f);
+
+    //@END
+    glDisable(GL_BLEND);
+}
+
+
+
+BSplinePatch::BSplinePatch( int degree, int knotVectorType, const std::vector<glm::vec3> &points, int curveSize)    
+    :  _degree(degree)
+    ,  _order(degree+1)
+    ,  _curveSize(curveSize)
+    , _n(_curveSize-1)
+    , _knotSize(_order+_curveSize)
+{
+    //@BEGIN ASDSI_G COR
+    if(knotVectorType == OpenUniform){
+        for(int i = 0; i<_order; i++){
+            _knots.push_back(0.f);
+        }
+        int K = _curveSize + _order - 2*_order;
+        for(int i = 1; i<=K; i++){
+            _knots.push_back(i);
+        }
+
+        for(int i = 0; i<_order; i++){
+            _knots.push_back(K+1);
+        }
+    }
+    else if(knotVectorType == Uniform){
+        int K = _order+_curveSize;
+        for(int i = 1; i<=K; i++){
+            _knots.push_back(i);
+        }
+    }
+
+    assert(_knots.size() == (unsigned int)(_knotSize));
+
+    for( std::vector<glm::vec3>::const_iterator itr = points.begin(), stop = points.end();
+         itr != stop;
+         ++itr){
+        _points.push_back(*itr);
+    }
+    assert(_points.size() == (unsigned int)(_curveSize*_curveSize));
+    //@END
+    //@BEGIN ASDSI_G STU
+    // TODO TP2/3 G
+    //@END
+
+}
+
+std::vector<glm::vec3> BSplinePatch::directricePointsU(int baseIndex) const{
+
+    //@BEGIN ASDSI_G COR
+    return std::vector<glm::vec3>(_points.begin()+baseIndex*_curveSize,
+                                  _points.begin()+baseIndex*_curveSize+_curveSize);
+
+    //@END
+    //@BEGIN ASDSI_G STU
+    // TODO TP2 G
+    return std::vector<glm::vec3>();
+    //@END
+}
+
+
+std::vector<glm::vec3> BSplinePatch::directricePointsV(int baseIndex) const{
+
+    // TODO TP2 G
+    //@BEGIN ASDSI_G COR
+    std::vector<glm::vec3>ret;
+    for(int i=0; i<_curveSize; ++i){
+        ret.push_back(_points[baseIndex + i*_curveSize]);
+    }
+    return ret;
+    //@END
+    //@BEGIN ASDSI_G STU
+    return std::vector<glm::vec3>();
+    //@END
+}
+glm::vec3 BSplinePatch::evalSurface(float u, float v) const {
+    //@BEGIN ASDSI_G COR
+    u = std::max(0.0f, std::min(1.0f, u));
+    v = std::max(0.0f, std::min(1.0f, v));
+    float range = _knots[_n+1] - _knots[_order-1];
+    v = range*v+_knots[_order-1];
+    u = range*u+_knots[_order-1];
+
+    // calcul de la génératrice
+    std::vector<glm::vec3> gen;
+    for(int i=0; i<_curveSize; i++){
+        std::vector<glm::vec3> dir = directricePointsU(i);
+        gen.push_back(BSplineCurveEvaluator::evaluate(dir, _knots, _order, u));
+    }
+
+    // calcul du point sur la surface
+    return BSplineCurveEvaluator::evaluate(gen, _knots, _order, v);    
+    //@END
+    //@BEGIN ASDSI_G STU
+    return glm::vec3(1.f, 0.f, 0.f);
+    //@END
+}
+
+glm::vec3 BSplinePatch::evalSurfaceNormal(float u, float v) const {
+    //@BEGIN ASDSI_G COR
+    u = std::max(0.0f, std::min(1.0f, u));
+    v = std::max(0.0f, std::min(1.0f, v));
+    float range = _knots[_n+1] - _knots[_order-1];
+    v = range*v+_knots[_order-1];
+    u = range*u+_knots[_order-1];
+
+    // calcul de la génératrice
+    std::vector<glm::vec3> gen;
+    for(int i=0; i<_curveSize; i++){
+        std::vector<glm::vec3> dir = directricePointsU(i);
+        gen.push_back(BSplineCurveEvaluator::evaluate(dir, _knots, _order, u));
+    }
+
+    // calcul du point sur la surface
+    glm::vec3 dx =  BSplineCurveEvaluator::evaluateTan(gen, _knots, _order, v);
+
+    gen.clear();
+    for(int i=0; i<_curveSize; i++){
+        std::vector<glm::vec3> dir = directricePointsV(i);
+        gen.push_back(BSplineCurveEvaluator::evaluate(dir, _knots, _order, v));
+    }
+    // calcul du point sur la surface
+    glm::vec3 dy =  BSplineCurveEvaluator::evaluateTan(gen, _knots, _order, u);
+
+    float eps = 0.01;
+    glm::vec3 dfdy =  evalSurface(u+eps,v)-evalSurface(u-eps,v);
+    glm::vec3 dfdx =  evalSurface(u,v+eps)-evalSurface(u,v-eps);
+
+    glm::vec3 n = glm::normalize(glm::cross(dx,dy));
+    glm::vec3 dfn = glm::normalize(glm::cross(dfdx,dfdy));
+//    std::cerr << glm::dot(n, dfn) << std::endl;
+    return n;
+    //@END
+    //@BEGIN ASDSI_G STU
+    return glm::vec3(1.f, 0.f, 0.f);
+    //@END
+}
+
+
+loaders::Mesh::Vertex ParametricBSplinePatch::evalSurface(float u, float v) const {
+    assert(u >= 0.f); assert(u <= 1.f);
+    assert(v >= 0.f); assert(v <= 1.f);
+
+    Vertex vert;
+    vert.texcoord = glm::vec2(u, v);
+
+    //@BEGIN ASDSI_G COR
+
+    // Mise à l'échelle des paramètres
+    // u et v sont entre [0,1]
+    // evaluate attends des parametres sur le domaine de définition des BSpline
+
+    vert.position = mPatch->evalSurface(u,v);
+    vert.normal  = mPatch->evalSurfaceNormal(u,v);
+    return vert;
+    //@END ASDSI_G COR
+    //@BEGIN ASDSI_G STU
+    // utiliser mPatch->evalSurface et evalSurfaceNormal
+    return ParametricMesh::evalSurface(u,v);
+    //@END
+}
+
+}
+
+
+
+
+

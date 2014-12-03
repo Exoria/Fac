@@ -1,0 +1,61 @@
+#ifndef BSPLINEPATCH_H
+#define BSPLINEPATCH_H
+
+#include "parametricmeshes.h"
+#include "utils.h"
+#include "glmesh.h"
+
+#include <iostream>
+#include <vector>
+using namespace utils;
+namespace rendersystem{
+
+
+class BSplinePatch{
+public:
+    BSplinePatch( int degree, int knotVectorType, const std::vector<glm::vec3> &points, int curveSize);
+    enum KnotVectorType {OpenUniform, Uniform};
+
+    glm::vec3 evalSurface(float u, float v) const;
+    glm::vec3 evalSurfaceNormal(float u, float v) const;
+    std::vector<glm::vec3> directricePointsU(int baseIndex) const;
+    std::vector<glm::vec3> directricePointsV(int baseIndex) const;
+
+  int _degree;
+  int _order;  //! _order = _degree+1
+  int _curveSize;
+  int _n; //! _n = _curveSize-1
+  int _knotSize;
+
+  std::vector<float> _knots;
+  std::vector<glm::vec3> _points;
+};
+
+class MyGLLinesMesh {
+private :
+    glm::mat4 mModelToSceneMatrix;
+    GLuint mVertexArrayObject;
+    enum {VBO_VERTICES, VBO_INDICES};
+    GLuint mVertexBufferObjects[2];
+    std::vector<glm::vec3> mMesh;
+    std::vector<int> mIndices;
+    int mCurveSize;
+    int mSubdivSteps;
+public:
+    MyGLLinesMesh (const glm::mat4 transform, BSplinePatch *mPatch);
+    void compileGL();
+    void destroyGL();
+    void drawGL(const glm::mat4x4 &sceneToViewMatrix, const glm::mat4x4 &projectionMatrix, int transformLocation[4], int colorLocation);
+};
+
+class ParametricBSplinePatch : public ParametricMesh {
+public:
+    ParametricBSplinePatch( BSplinePatch *patch ) : ParametricMesh(), mPatch(patch){}
+    enum KnotVectorType {OpenUniform, Uniform};
+protected:
+    Vertex evalSurface(float u, float v) const;
+    BSplinePatch *mPatch;
+};
+}
+
+#endif // BSPLINEPATCH_H

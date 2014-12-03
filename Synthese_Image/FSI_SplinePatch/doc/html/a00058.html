@@ -1,0 +1,3569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>M1 Informatique - IG3D - Minimal OpenGL Renderer: Alias/Wavefront OBJ and MTL file format.</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">M1 Informatique - IG3D - Minimal OpenGL Renderer&#160;<span id="projectnumber">2011-2012</span></div>
+   <div id="projectbrief">Outils logiciels pour la programmation d'une application de synthèse d'images en C++/OpenGL</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="dirs.html"><span>Répertoires</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('a00058.html','');
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Définition de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#enumval-members">Valeurs énumérées</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a> &#124;
+<a href="#friend-members">Amis</a>  </div>
+  <div class="headertitle">
+<h1>Alias/Wavefront OBJ and MTL file format.</h1>  </div>
+<div class="ingroups"><a class="el" href="a00057.html">Data loading software components.</a></div></div>
+<div class="contents">
+<div class="dynheader">
+Graphe de collaboration de Alias/Wavefront OBJ and MTL file format.:</div>
+<div class="dyncontent">
+<center><table><tr><td><img src="a00058.png" border="0" alt="" usemap="#a00058"/>
+<map name="a00058" id="a00058">
+<area shape="rect" id="node2" href="a00057.html" title="Set of utilities to load various file formats." alt="" coords="7,5,233,35"/></map>
+</td></tr></table></center>
+</div>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00014.html">mtl_parser</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to parse MTL file.  <a href="a00014.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html">obj_parser</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to parse OBJ file.  <a href="a00015.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html">ObjLoader</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Class to load geometry in OBJ/MTL format.  <a href="a00016.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html">ObjLoader::VertexObj</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ vertex.  <a href="a00020.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html">ObjLoader::Face</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ face.  <a href="a00017.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html">ObjLoader::Group</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ group.  <a href="a00018.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">ObjLoader::mtlMaterial</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ material.  <a href="a00019.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html">SmoothGroup</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ smooth group.  <a href="a00022.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html">ObjMesh</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">OBJ mesh.  <a href="a00021.html#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Définition de type</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; std::string, <br class="typebreak"/>
+mtlMaterial * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga34bf914fc651c703c6741150a52812c1">NamedMaterial</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; Face * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa1f0d89b79ee07d87ee5e7c126a6629c">FaceVertexElement</a> { <a class="el" href="a00058.html#ggaa1f0d89b79ee07d87ee5e7c126a6629ca7fbc5fc8021a1bda887fc4449cca4623">NORMALS</a> =  0, 
+<a class="el" href="a00058.html#ggaa1f0d89b79ee07d87ee5e7c126a6629cacecfde4c1e77b0cf811718fc24be7208">TEXTURES</a>
+ }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga461eba4998b5d5dac48d6102c8c63bec">FaceType</a> { <a class="el" href="a00058.html#gga461eba4998b5d5dac48d6102c8c63beca2fd33892864d1c342d3bead2f2d9ad56">TRIANGLE</a> =  0, 
+<a class="el" href="a00058.html#gga461eba4998b5d5dac48d6102c8c63becae1a12d53590e4fd25c9fd9006f19ab5c">QUAD</a>
+ }</td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa4a30d0d5a2c83148fecd6ff977a38db">~ObjLoader</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga980a2a667e8b9970943db084c2077703">load</a> (const QString &amp;filename, QString &amp;reason)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e">getObjects</a> (std::vector&lt; <a class="el" href="a00011.html">loaders::Mesh</a> * &gt; &amp;meshes)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga5778399fdcc052c5c0ac600c793e65d8">VertexObj</a> (const ObjLoader &amp;loader, int v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga3e942e8b34531edfcf36426c6341931c">VertexObj</a> (const ObjLoader &amp;loader, int v, int t, bool)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafcb2dc55b980605cb3367d751efd1896">VertexObj</a> (const ObjLoader &amp;loader, int v, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa539206d3e70236212266dd8fef07406">VertexObj</a> (const ObjLoader &amp;loader, int v, int t, int n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab4409fd6ba15cab3cea98c70ec0ee2c1">Face</a> (int s0, int s1, int s2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga58d9e33f7a94bd9907c0f1fc0732ac44">Face</a> (int s0, int s1, int s2, int s3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6b4d147871a268c86289e9231270f01a">Face</a> (int s0, int s1, int s2, int n0, int n1, int n2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga209c5a3935ff5769d6e7e32ad4151a80">Face</a> (int s0, int s1, int s2, int s3, int n0, int n1, int n2, int n3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga1436d675a7702e9ed7aadd71cdf7b90f">Face</a> (int s0, int s1, int s2, int t0, int t1, int t2, bool)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6a450afe58b364f2e9233c1621310ffa">Face</a> (int s0, int s1, int s2, int s3, int t0, int t1, int t2, int t3, bool)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga51ff4c5fcd8c45442764608d32a4ef0a">Face</a> (int s0, int s1, int s2, int n0, int n1, int n2, int t0, int t1, int t2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf4af6448770b9fbc59e0a4823edd634b">Face</a> (int s0, int s1, int s2, int s3, int n0, int n1, int n2, int n3, int t0, int t1, int t2, int t3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafc409727e7953fb62ab6c4ea00cbec1d">Group</a> (std::string n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gacc2c6c31537a565a78358b4c01b763c5">setSmoothGroup</a> (int s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga9872e5cce8b6c32e2e310244f6ae4161">setMaterial</a> (std::string m)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga069f82112fc5896fd0b0a0f18b591a86">getMaterial</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gac6ed6957cbd128493df0361f66d7f644">addFace</a> (Face *f)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">FaceList &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab32a72d40d6ff665bef0fffd2e3b2d56">getFaces</a> (int s=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaabcaafaabf2a3cf519ab8d1d6aa3ca10">mtlMaterial</a> (std::string n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaec31976dbe84753ddc557bd23ab36fc9">faceType</a> (Face *f)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga46e8d1f27326d18e5d72c638593b78bb">addVerticeNormalTexturePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga41cfa418f3332378833540f18e9c2c86">addVerticeNormalPart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gac5ccd0a395f4cd80817f5e9b62d08c7c">addVerticeTexturePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa7e542e6c72b4bbac36c2ec56b5ae0ad">addVerticePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab9d6ef6b7b658014c8267e2a8497cb68">addRawVerticeNormalTexturePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga068e536d6aa068dfd109f862cfd17b84">addRawVerticeNormalPart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae3ea1dfbc37a05bebd977b5ba003eb69">addRawVerticeTexturePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaca43bd93250aec9113172ddcb415376c">addRawVerticePart</a> (ObjMesh *mesh, FaceList &amp;faces, int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga0fdb975a2a45ccd7e096c0149bdf9574">info_callback</a> (const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafbe3328e6a7d34a2e36e314c9dfe975f">warning_callback</a> (const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga3175f52129456c23cd66d6b9d089470c">error_callback</a> (const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga31c745065be97574fcb1628d1251bd3e">vertex_callback</a> (float x, float y, float z)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gad3402e39bf64a8a6cacd3dbf6ec33292">normal_callback</a> (float nx, float ny, float nz)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf80c85f73ef15cec4326e692411049a2">texture_callback</a> (float u, float v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf397baad0cca83478d1fb3fe555cf7b8">add_face_T_vertices</a> (int i0, int i1, int i2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga96725c5f853c387715fb0814c4f8f9bc">add_face_Q_vertices</a> (int i0, int i1, int i2, int i3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga173cd7261a2bad6a1cb11cefefbdc6b6">add_face_T_vertices_textures</a> (const obj_mtl::index_2_tuple_type &amp;v1_vt1, const obj_mtl::index_2_tuple_type &amp;v2_vt2, const obj_mtl::index_2_tuple_type &amp;v3_vt3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga3a48cecdc1f0cc468ad7e24fb16820b6">add_face_Q_vertices_textures</a> (const obj_mtl::index_2_tuple_type &amp;v1_vt1, const obj_mtl::index_2_tuple_type &amp;v2_vt2, const obj_mtl::index_2_tuple_type &amp;v3_vt3, const obj_mtl::index_2_tuple_type &amp;v4_vt4)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae4cedee9d2c60bab465035991942d4a5">add_face_T_vertices_normals</a> (const obj_mtl::index_2_tuple_type &amp;v1_vn1, const obj_mtl::index_2_tuple_type &amp;v2_vn2, const obj_mtl::index_2_tuple_type &amp;v3_vn3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf6489fc7cfb021ff37ca716684b1bea9">add_face_Q_vertices_normals</a> (const obj_mtl::index_2_tuple_type &amp;v1_vn1, const obj_mtl::index_2_tuple_type &amp;v2_vn2, const obj_mtl::index_2_tuple_type &amp;v3_vn3, const obj_mtl::index_2_tuple_type &amp;v4_vn4)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafcd9b634c6eec7bd6c0e1a52eb58e6c8">add_face_T_vertices_textures_normals</a> (const obj_mtl::index_3_tuple_type &amp;v1_vtn1, const obj_mtl::index_3_tuple_type &amp;v2_vtn2, const obj_mtl::index_3_tuple_type &amp;v3_vtn3)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaebf5718528dc6916f87cbab3ceca7ca2">add_face_Q_vertices_textures_normals</a> (const obj_mtl::index_3_tuple_type &amp;v1_vtn1, const obj_mtl::index_3_tuple_type &amp;v2_vtn2, const obj_mtl::index_3_tuple_type &amp;v3_vtn3, const obj_mtl::index_3_tuple_type &amp;v4_vtn4)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga229db95a87d68493145c3ed280b0ea44">set_group</a> (const std::string &amp;name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga5eb51577365300bac98067737ed2fd03">smooth_group</a> (int num)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafb35d1a496a7f1faacef0622c8281273">set_material</a> (const std::string &amp;name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6c96423c9983a3fa68b4caf603b6650f">parse_material_library</a> (const std::string &amp;dirname, const std::string &amp;filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga964234199d699bf53a792586683d8c74">new_material</a> (const std::string &amp;name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga88a510814c38b07292b54c4677f9a1e4">material_map_Kd</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga4b06dd7b583c5e8b2244225544802b05">material_map_Ks</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab03faac44115943a7a5b8bc09c8eeb84">material_map_Ns</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gafb7f03d233bcb0265097ccc0f642a847">material_map_d</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga7ee9e368d6ae640fbc8e784aaa0f2c1a">material_bump</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6a64d6a76c97bc9c182892606bbd16ab">material_normal</a> (std::string texture)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaaf30e378f908e0bbe3540a52e8828a65">material_Ka</a> (float r, float g, float b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga2ea469cff17892ac56d7de2e42072ebc">material_Kd</a> (float r, float g, float b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gac23d75e528006d334a34296e22f40ad6">material_Ks</a> (float r, float g, float b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab4215acca2e90cb901fe72fb365efec8">material_Tf</a> (float r, float g, float b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga8b5bc2a4c2dd809fdf814ca2e773e166">material_shininess</a> (float n)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga8c2effda92f64cd776b3932e8ffff4c2">material_dissolve</a> (std::string d)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga03099bbfbc95d7684557e6a0fff8e834">lastParseMessage</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga2ecda3c6473b53d3aef5e0fd628bca9c">verticesTable</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae8f2640efa2f2e1875e75aee1bc7c248">vertices</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gad88b5d2aae58f99b7e27d505d29ce589">normalsTable</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga0454955e65bae5544f3ad2421d733838">normals</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; glm::vec3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga705b93c9cca84650c9a5370881ce3f91">texturesTable</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gabea595811679a87805c937ebf22b08dd">textures</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga536419e70d4d8c6e46c9105bc17c8085">mObjDir</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga22eb84db7df361705429fe16dbed5727">vertex</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga8e13f2bdbadc8fa553bd9eac5f0644d8">normal</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga8d94128f99dc497b6f32c84933378eb4">texcoord</a> [2]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga84c4efeab01d2782acc9c39112d658bf">have</a> [2]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae5383810974df2c2d9e22483fee4334a">vertices</a> [4]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf23e430460b100c4d8a43d6a01ff1ea5">normals</a> [4]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga7ca2a287b3636b86fa31373fa0574f52">textures</a> [4]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga84c4efeab01d2782acc9c39112d658bf">have</a> [2]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">FaceType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga236ecd4485575dd7b157c9280e146e69">type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga9b45b3e13bd9167aab02e17e08916231">name</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga22c8d4491d9c4aa32bec4d1c803ec09d">material</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga20e5aa14bdb9860597ef38ed9038ddb9">smoothGroup</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; int, FaceList &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gabd18287f20c2ee6522d1436314215db0">faces</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga9625b002313a3fef67010c74415e5911">empty</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Group *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga43b453546337816b82a09f8749a46829">currentGroup</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga2bf11ab7c6961f4146281305a93ced1a">currentName</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae86a2d135c900c7a78f5a32485799ef9">currentMaterialName</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, Group * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf3383ef24087437b5daac919dc5297a3">allgroups</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf78ebcf9b6862190c73d58ea274ad130">groupsNumber</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6c9d5bb00b136c381ddf2df61301a94c">Ka</a> [3]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga167055252bd697cd4af5dee7a9621094">Kd</a> [3]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga21011a32a06d1ee120824a3ecbe57e3d">Ks</a> [3]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa1f7b8c6066eda9e8317686b6b3670d0">Tf</a> [3]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga74c97cfa927d159f14342047994b6774">illum</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaaf01223c58664994607143edadcdfd15">shininess</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga916744f2d04ac7cab67b69b3f80c09f0">sharpness</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga10204eca7973569dd19e547cd464a968">dissolve</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga1c8360b0862e10953fb343dbee1aa457">ior</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gacad089876b503b72e36e68f3cec7ecc6">map_ka</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaef8e42088f0872abcfc7f494d4cf7abe">map_ka_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaff38cc5c3feba263651beb6361d4048d">map_kd</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga1aa4af0fdd0b7e9cf45c0b32b495576a">map_kd_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae3eb57129ebf332476d122913747d7c0">map_ks</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga5d94457084bf0b2cba9b9e328e87cbf1">map_ks_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga38f7e22af3d79990f19c41a252e7818d">map_Ns</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga893894a87e5e53a70c6f504fc8dbaeb1">map_Ns_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga6f622eb28facb22870af62e6749e8be1">map_d</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gae638349a908011991d0bdc8592e2d86f">map_d_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gad55f17f310f699da8cd0e5ebb53b232c">dispmap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaaf5474086b3a7455cc805de0b0703546">decalmap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga62f58489fda2ab18f655752440a464c2">normalmap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga68c2d661a19a1fe5dc41b1caec673ba2">bumpmap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga9a1b7c2d3ac103335f06f0106f106a06">bumpmap_scale</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaedbd7adc2f7a2f814d643d3f8b4e787d">reflmap</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">mtlMaterial *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaf40fbc85c5bac7fa81a5952d8c9adfde">currentMaterial</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <br class="typebreak"/>
+mtlMaterial * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gabf1a50096358471ee6904929fb410651">mtllib</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga58f5f9bde2f45b0884e6b3e9ffd716eb">materialNumber</a></td></tr>
+<tr><td colspan="2"><h2><a name="friend-members"></a>
+Amis</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga14b1aa9f3ce743bae77fa0fad7ffc9c5">operator&lt;</a> (const VertexObj &amp;a, const VertexObj &amp;b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga9b7703b62040cd681ef0204730e505a2">operator==</a> (const VertexObj &amp;a, const VertexObj &amp;b)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa4cb6347d335861fd4ab7b18c7709aca">operator&lt;&lt;</a> (std::ostream &amp;os, const VertexObj &amp;a)</td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga89a6dcafb6130e3e1bcd6d1285e0dd6f">size_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa511d4e3e646072967e8a42dc6c54194">index_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga4006252ff6772953667c24fa548f20ed">float_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::tr1::tuple<br class="typebreak"/>
+&lt; index_type, index_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">index_2_tuple_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::tr1::tuple<br class="typebreak"/>
+&lt; index_type, index_type, <br class="typebreak"/>
+index_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">index_3_tuple_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::tr1::tuple<br class="typebreak"/>
+&lt; float_type, float_type, <br class="typebreak"/>
+float_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00058.html#gab4e9780c27e012d0e037eab8e2088c14">float_3_tuple_type</a></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<dl class="author"><dt><b>Auteur:</b></dt><dd>Mathias Paulin &lt;<a href="mailto:Mathias.Paulin@irit.fr">Mathias.Paulin@irit.fr</a>&gt; </dd></dl>
+<hr/><h2>Documentation des définitions de type</h2>
+<a class="anchor" id="ga49b789d64f897daf658402bafdff4e25"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::FaceList" ref="ga49b789d64f897daf658402bafdff4e25" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;Face *&gt; FaceList<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00302">302</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab4e9780c27e012d0e037eab8e2088c14"></a><!-- doxytag: member="loaders::obj_mtl::float_3_tuple_type" ref="gab4e9780c27e012d0e037eab8e2088c14" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tr1::tuple&lt;float_type, float_type, float_type&gt; float_3_tuple_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00042">42</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4006252ff6772953667c24fa548f20ed"></a><!-- doxytag: member="loaders::obj_mtl::float_type" ref="ga4006252ff6772953667c24fa548f20ed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef float float_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00039">39</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga334cde7a2e1c2c3a81dbac0ddf05807d"></a><!-- doxytag: member="loaders::obj_mtl::index_2_tuple_type" ref="ga334cde7a2e1c2c3a81dbac0ddf05807d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tr1::tuple&lt;index_type, index_type&gt; index_2_tuple_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00040">40</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa980617de7f905759d0204f4778f6741"></a><!-- doxytag: member="loaders::obj_mtl::index_3_tuple_type" ref="gaa980617de7f905759d0204f4778f6741" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tr1::tuple&lt;index_type, index_type, index_type&gt; index_3_tuple_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00041">41</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa511d4e3e646072967e8a42dc6c54194"></a><!-- doxytag: member="loaders::obj_mtl::index_type" ref="gaa511d4e3e646072967e8a42dc6c54194" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int index_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00038">38</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga34bf914fc651c703c6741150a52812c1"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::NamedMaterial" ref="ga34bf914fc651c703c6741150a52812c1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::pair&lt;std::string, mtlMaterial *&gt; NamedMaterial<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00086">86</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga89a6dcafb6130e3e1bcd6d1285e0dd6f"></a><!-- doxytag: member="loaders::obj_mtl::size_type" ref="ga89a6dcafb6130e3e1bcd6d1285e0dd6f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::size_t size_type</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00038_source.html#l00037">37</a> du fichier <a class="el" href="a00038_source.html">objfileparser.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga461eba4998b5d5dac48d6102c8c63bec"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::FaceType" ref="ga461eba4998b5d5dac48d6102c8c63bec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum FaceType<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga461eba4998b5d5dac48d6102c8c63beca2fd33892864d1c342d3bead2f2d9ad56"></a><!-- doxytag: member="TRIANGLE" ref="gga461eba4998b5d5dac48d6102c8c63beca2fd33892864d1c342d3bead2f2d9ad56" args="" -->TRIANGLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga461eba4998b5d5dac48d6102c8c63becae1a12d53590e4fd25c9fd9006f19ab5c"></a><!-- doxytag: member="QUAD" ref="gga461eba4998b5d5dac48d6102c8c63becae1a12d53590e4fd25c9fd9006f19ab5c" args="" -->QUAD</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00191">191</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa1f0d89b79ee07d87ee5e7c126a6629c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::FaceVertexElement" ref="gaa1f0d89b79ee07d87ee5e7c126a6629c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum FaceVertexElement<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="ggaa1f0d89b79ee07d87ee5e7c126a6629ca7fbc5fc8021a1bda887fc4449cca4623"></a><!-- doxytag: member="NORMALS" ref="ggaa1f0d89b79ee07d87ee5e7c126a6629ca7fbc5fc8021a1bda887fc4449cca4623" args="" -->NORMALS</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ggaa1f0d89b79ee07d87ee5e7c126a6629cacecfde4c1e77b0cf811718fc24be7208"></a><!-- doxytag: member="TEXTURES" ref="ggaa1f0d89b79ee07d87ee5e7c126a6629cacecfde4c1e77b0cf811718fc24be7208" args="" -->TEXTURES</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00103">103</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga96725c5f853c387715fb0814c4f8f9bc"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_Q_vertices" ref="ga96725c5f853c387715fb0814c4f8f9bc" args="(int i0, int i1, int i2, int i3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_Q_vertices </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00415">415</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf6489fc7cfb021ff37ca716684b1bea9"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_Q_vertices_normals" ref="gaf6489fc7cfb021ff37ca716684b1bea9" args="(const obj_mtl::index_2_tuple_type &amp;v1_vn1, const obj_mtl::index_2_tuple_type &amp;v2_vn2, const obj_mtl::index_2_tuple_type &amp;v3_vn3, const obj_mtl::index_2_tuple_type &amp;v4_vn4)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_Q_vertices_normals </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vn3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v4_vn4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00454">454</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga3a48cecdc1f0cc468ad7e24fb16820b6"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_Q_vertices_textures" ref="ga3a48cecdc1f0cc468ad7e24fb16820b6" args="(const obj_mtl::index_2_tuple_type &amp;v1_vt1, const obj_mtl::index_2_tuple_type &amp;v2_vt2, const obj_mtl::index_2_tuple_type &amp;v3_vt3, const obj_mtl::index_2_tuple_type &amp;v4_vt4)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_Q_vertices_textures </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vt1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vt2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vt3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v4_vt4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00430">430</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaebf5718528dc6916f87cbab3ceca7ca2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_Q_vertices_textures_normals" ref="gaebf5718528dc6916f87cbab3ceca7ca2" args="(const obj_mtl::index_3_tuple_type &amp;v1_vtn1, const obj_mtl::index_3_tuple_type &amp;v2_vtn2, const obj_mtl::index_3_tuple_type &amp;v3_vtn3, const obj_mtl::index_3_tuple_type &amp;v4_vtn4)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_Q_vertices_textures_normals </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vtn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vtn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vtn3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v4_vtn4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00481">481</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf397baad0cca83478d1fb3fe555cf7b8"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_T_vertices" ref="gaf397baad0cca83478d1fb3fe555cf7b8" args="(int i0, int i1, int i2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_T_vertices </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00412">412</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae4cedee9d2c60bab465035991942d4a5"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_T_vertices_normals" ref="gae4cedee9d2c60bab465035991942d4a5" args="(const obj_mtl::index_2_tuple_type &amp;v1_vn1, const obj_mtl::index_2_tuple_type &amp;v2_vn2, const obj_mtl::index_2_tuple_type &amp;v3_vn3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_T_vertices_normals </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vn3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00443">443</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga173cd7261a2bad6a1cb11cefefbdc6b6"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_T_vertices_textures" ref="ga173cd7261a2bad6a1cb11cefefbdc6b6" args="(const obj_mtl::index_2_tuple_type &amp;v1_vt1, const obj_mtl::index_2_tuple_type &amp;v2_vt2, const obj_mtl::index_2_tuple_type &amp;v3_vt3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_T_vertices_textures </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vt1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vt2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">obj_mtl::index_2_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vt3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00419">419</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafcd9b634c6eec7bd6c0e1a52eb58e6c8"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::add_face_T_vertices_textures_normals" ref="gafcd9b634c6eec7bd6c0e1a52eb58e6c8" args="(const obj_mtl::index_3_tuple_type &amp;v1_vtn1, const obj_mtl::index_3_tuple_type &amp;v2_vtn2, const obj_mtl::index_3_tuple_type &amp;v3_vtn3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void add_face_T_vertices_textures_normals </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1_vtn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2_vtn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00058.html#gaa980617de7f905759d0204f4778f6741">obj_mtl::index_3_tuple_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>v3_vtn3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00467">467</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac6ed6957cbd128493df0361f66d7f644"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::addFace" ref="gac6ed6957cbd128493df0361f66d7f644" args="(Face *f)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addFace </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00017.html">Face</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00319">319</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga068e536d6aa068dfd109f862cfd17b84"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addRawVerticeNormalPart" ref="ga068e536d6aa068dfd109f862cfd17b84" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addRawVerticeNormalPart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00567">567</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00110">ObjLoader::VertexObj::normal</a>, <a class="el" href="a00040_source.html#l00191">ObjLoader::TRIANGLE</a>, et <a class="el" href="a00040_source.html#l00109">ObjLoader::VertexObj::vertex</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_ga068e536d6aa068dfd109f862cfd17b84_icgraph.png" border="0" usemap="#a00058_ga068e536d6aa068dfd109f862cfd17b84_icgraph" alt=""/></div>
+<map name="a00058_ga068e536d6aa068dfd109f862cfd17b84_icgraph" id="a00058_ga068e536d6aa068dfd109f862cfd17b84_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="232,5,317,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gab9d6ef6b7b658014c8267e2a8497cb68"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addRawVerticeNormalTexturePart" ref="gab9d6ef6b7b658014c8267e2a8497cb68" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addRawVerticeNormalTexturePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00484">484</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00110">ObjLoader::VertexObj::normal</a>, <a class="el" href="a00040_source.html#l00111">ObjLoader::VertexObj::texcoord</a>, <a class="el" href="a00040_source.html#l00191">ObjLoader::TRIANGLE</a>, et <a class="el" href="a00040_source.html#l00109">ObjLoader::VertexObj::vertex</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gab9d6ef6b7b658014c8267e2a8497cb68_icgraph.png" border="0" usemap="#a00058_gab9d6ef6b7b658014c8267e2a8497cb68_icgraph" alt=""/></div>
+<map name="a00058_gab9d6ef6b7b658014c8267e2a8497cb68_icgraph" id="a00058_gab9d6ef6b7b658014c8267e2a8497cb68_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="275,5,360,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gaca43bd93250aec9113172ddcb415376c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addRawVerticePart" ref="gaca43bd93250aec9113172ddcb415376c" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addRawVerticePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00713">713</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00191">ObjLoader::TRIANGLE</a>, et <a class="el" href="a00040_source.html#l00109">ObjLoader::VertexObj::vertex</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gaca43bd93250aec9113172ddcb415376c_icgraph.png" border="0" usemap="#a00058_gaca43bd93250aec9113172ddcb415376c_icgraph" alt=""/></div>
+<map name="a00058_gaca43bd93250aec9113172ddcb415376c_icgraph" id="a00058_gaca43bd93250aec9113172ddcb415376c_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="189,5,275,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gae3ea1dfbc37a05bebd977b5ba003eb69"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addRawVerticeTexturePart" ref="gae3ea1dfbc37a05bebd977b5ba003eb69" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addRawVerticeTexturePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00642">642</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00111">ObjLoader::VertexObj::texcoord</a>, <a class="el" href="a00040_source.html#l00191">ObjLoader::TRIANGLE</a>, et <a class="el" href="a00040_source.html#l00109">ObjLoader::VertexObj::vertex</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gae3ea1dfbc37a05bebd977b5ba003eb69_icgraph.png" border="0" usemap="#a00058_gae3ea1dfbc37a05bebd977b5ba003eb69_icgraph" alt=""/></div>
+<map name="a00058_gae3ea1dfbc37a05bebd977b5ba003eb69_icgraph" id="a00058_gae3ea1dfbc37a05bebd977b5ba003eb69_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="232,5,317,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ga41cfa418f3332378833540f18e9c2c86"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addVerticeNormalPart" ref="ga41cfa418f3332378833540f18e9c2c86" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addVerticeNormalPart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00257">257</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00191">ObjLoader::QUAD</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_ga41cfa418f3332378833540f18e9c2c86_icgraph.png" border="0" usemap="#a00058_ga41cfa418f3332378833540f18e9c2c86_icgraph" alt=""/></div>
+<map name="a00058_ga41cfa418f3332378833540f18e9c2c86_icgraph" id="a00058_ga41cfa418f3332378833540f18e9c2c86_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="205,5,291,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ga46e8d1f27326d18e5d72c638593b78bb"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addVerticeNormalTexturePart" ref="ga46e8d1f27326d18e5d72c638593b78bb" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addVerticeNormalTexturePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00179">179</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00191">ObjLoader::QUAD</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_ga46e8d1f27326d18e5d72c638593b78bb_icgraph.png" border="0" usemap="#a00058_ga46e8d1f27326d18e5d72c638593b78bb_icgraph" alt=""/></div>
+<map name="a00058_ga46e8d1f27326d18e5d72c638593b78bb_icgraph" id="a00058_ga46e8d1f27326d18e5d72c638593b78bb_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="248,5,333,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa7e542e6c72b4bbac36c2ec56b5ae0ad"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addVerticePart" ref="gaa7e542e6c72b4bbac36c2ec56b5ae0ad" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addVerticePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00409">409</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00191">ObjLoader::QUAD</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gaa7e542e6c72b4bbac36c2ec56b5ae0ad_icgraph.png" border="0" usemap="#a00058_gaa7e542e6c72b4bbac36c2ec56b5ae0ad_icgraph" alt=""/></div>
+<map name="a00058_gaa7e542e6c72b4bbac36c2ec56b5ae0ad_icgraph" id="a00058_gaa7e542e6c72b4bbac36c2ec56b5ae0ad_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="163,5,248,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gac5ccd0a395f4cd80817f5e9b62d08c7c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::addVerticeTexturePart" ref="gac5ccd0a395f4cd80817f5e9b62d08c7c" args="(ObjMesh *mesh, FaceList &amp;faces, int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addVerticeTexturePart </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00021.html">ObjMesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00058.html#ga49b789d64f897daf658402bafdff4e25">FaceList</a> &amp;&#160;</td>
+          <td class="paramname"><em>faces</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00333">333</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00191">ObjLoader::QUAD</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gac5ccd0a395f4cd80817f5e9b62d08c7c_icgraph.png" border="0" usemap="#a00058_gac5ccd0a395f4cd80817f5e9b62d08c7c_icgraph" alt=""/></div>
+<map name="a00058_gac5ccd0a395f4cd80817f5e9b62d08c7c_icgraph" id="a00058_gac5ccd0a395f4cd80817f5e9b62d08c7c_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="205,5,291,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ga3175f52129456c23cd66d6b9d089470c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::error_callback" ref="ga3175f52129456c23cd66d6b9d089470c" args="(const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void error_callback </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00068">68</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab4409fd6ba15cab3cea98c70ec0ee2c1"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="gab4409fd6ba15cab3cea98c70ec0ee2c1" args="(int s0, int s1, int s2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00203">203</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga58d9e33f7a94bd9907c0f1fc0732ac44"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga58d9e33f7a94bd9907c0f1fc0732ac44" args="(int s0, int s1, int s2, int s3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00210">210</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6b4d147871a268c86289e9231270f01a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga6b4d147871a268c86289e9231270f01a" args="(int s0, int s1, int s2, int n0, int n1, int n2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00219">219</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga209c5a3935ff5769d6e7e32ad4151a80"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga209c5a3935ff5769d6e7e32ad4151a80" args="(int s0, int s1, int s2, int s3, int n0, int n1, int n2, int n3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00231">231</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga1436d675a7702e9ed7aadd71cdf7b90f"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga1436d675a7702e9ed7aadd71cdf7b90f" args="(int s0, int s1, int s2, int t0, int t1, int t2, bool)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00245">245</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6a450afe58b364f2e9233c1621310ffa"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga6a450afe58b364f2e9233c1621310ffa" args="(int s0, int s1, int s2, int s3, int t0, int t1, int t2, int t3, bool)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00257">257</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga51ff4c5fcd8c45442764608d32a4ef0a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="ga51ff4c5fcd8c45442764608d32a4ef0a" args="(int s0, int s1, int s2, int n0, int n1, int n2, int t0, int t1, int t2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00271">271</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf4af6448770b9fbc59e0a4823edd634b"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::Face" ref="gaf4af6448770b9fbc59e0a4823edd634b" args="(int s0, int s1, int s2, int s3, int n0, int n1, int n2, int n3, int t0, int t1, int t2, int t3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Face </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00285">285</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaec31976dbe84753ddc557bd23ab36fc9"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::faceType" ref="gaec31976dbe84753ddc557bd23ab36fc9" args="(Face *f)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int faceType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00017.html">Face</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td><code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00166">166</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gaec31976dbe84753ddc557bd23ab36fc9_icgraph.png" border="0" usemap="#a00058_gaec31976dbe84753ddc557bd23ab36fc9_icgraph" alt=""/></div>
+<map name="a00058_gaec31976dbe84753ddc557bd23ab36fc9_icgraph" id="a00058_gaec31976dbe84753ddc557bd23ab36fc9_icgraph">
+<area shape="rect" id="node3" href="a00058.html#gaab2a186f26924656a41cac89527cdc0e" title="getObjects" alt="" coords="131,5,216,35"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gab32a72d40d6ff665bef0fffd2e3b2d56"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::getFaces" ref="gab32a72d40d6ff665bef0fffd2e3b2d56" args="(int s=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FaceList&amp; getFaces </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s</em> = <code>0</code></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00320">320</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga069f82112fc5896fd0b0a0f18b591a86"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::getMaterial" ref="ga069f82112fc5896fd0b0a0f18b591a86" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string getMaterial </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00318">318</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaab2a186f26924656a41cac89527cdc0e"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::getObjects" ref="gaab2a186f26924656a41cac89527cdc0e" args="(std::vector&lt; loaders::Mesh * &gt; &amp;meshes)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getObjects </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="a00011.html">loaders::Mesh</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>meshes</em></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00779">779</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+<p>Références <a class="el" href="a00039_source.html#l00567">ObjLoader::addRawVerticeNormalPart()</a>, <a class="el" href="a00039_source.html#l00484">ObjLoader::addRawVerticeNormalTexturePart()</a>, <a class="el" href="a00039_source.html#l00713">ObjLoader::addRawVerticePart()</a>, <a class="el" href="a00039_source.html#l00642">ObjLoader::addRawVerticeTexturePart()</a>, <a class="el" href="a00039_source.html#l00257">ObjLoader::addVerticeNormalPart()</a>, <a class="el" href="a00039_source.html#l00179">ObjLoader::addVerticeNormalTexturePart()</a>, <a class="el" href="a00039_source.html#l00409">ObjLoader::addVerticePart()</a>, <a class="el" href="a00039_source.html#l00333">ObjLoader::addVerticeTexturePart()</a>, <a class="el" href="a00040_source.html#l00325">ObjLoader::allgroups</a>, <a class="el" href="a00041_source.html#l00057">ObjMesh::compile()</a>, <a class="el" href="a00040_source.html#l00313">ObjLoader::Group::empty</a>, <a class="el" href="a00040_source.html#l00312">ObjLoader::Group::faces</a>, <a class="el" href="a00039_source.html#l00166">ObjLoader::faceType()</a>, et <a class="el" href="a00040_source.html#l00309">ObjLoader::Group::name</a>.</p>
+
+<p><div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><img src="a00058_gaab2a186f26924656a41cac89527cdc0e_cgraph.png" border="0" usemap="#a00058_gaab2a186f26924656a41cac89527cdc0e_cgraph" alt=""/></div>
+<map name="a00058_gaab2a186f26924656a41cac89527cdc0e_cgraph" id="a00058_gaab2a186f26924656a41cac89527cdc0e_cgraph">
+<area shape="rect" id="node3" href="a00058.html#ga068e536d6aa068dfd109f862cfd17b84" title="addRawVerticeNormalPart" alt="" coords="164,5,340,35"/><area shape="rect" id="node5" href="a00058.html#gab9d6ef6b7b658014c8267e2a8497cb68" title="addRawVerticeNormalTexturePart" alt="" coords="141,59,363,88"/><area shape="rect" id="node7" href="a00058.html#gaca43bd93250aec9113172ddcb415376c" title="addRawVerticePart" alt="" coords="185,112,319,141"/><area shape="rect" id="node9" href="a00058.html#gae3ea1dfbc37a05bebd977b5ba003eb69" title="addRawVerticeTexturePart" alt="" coords="163,165,341,195"/><area shape="rect" id="node11" href="a00058.html#ga41cfa418f3332378833540f18e9c2c86" title="addVerticeNormalPart" alt="" coords="177,219,327,248"/><area shape="rect" id="node13" href="a00058.html#ga46e8d1f27326d18e5d72c638593b78bb" title="addVerticeNormalTexturePart" alt="" coords="155,272,349,301"/><area shape="rect" id="node15" href="a00058.html#gaa7e542e6c72b4bbac36c2ec56b5ae0ad" title="addVerticePart" alt="" coords="199,325,305,355"/><area shape="rect" id="node17" href="a00058.html#gac5ccd0a395f4cd80817f5e9b62d08c7c" title="addVerticeTexturePart" alt="" coords="176,379,328,408"/><area shape="rect" id="node19" href="a00021.html#ac8377a9ac6b479650f7b1a4db575ca01" title="loaders::obj_mtl::ObjMesh::compile" alt="" coords="139,432,365,461"/><area shape="rect" id="node21" href="a00058.html#gaec31976dbe84753ddc557bd23ab36fc9" title="faceType" alt="" coords="215,485,289,515"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="gafc409727e7953fb62ab6c4ea00cbec1d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::Group" ref="gafc409727e7953fb62ab6c4ea00cbec1d" args="(std::string n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Group </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00315">315</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga0fdb975a2a45ccd7e096c0149bdf9574"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::info_callback" ref="ga0fdb975a2a45ccd7e096c0149bdf9574" args="(const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void info_callback </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00058">58</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga980a2a667e8b9970943db084c2077703"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::load" ref="ga980a2a667e8b9970943db084c2077703" args="(const QString &amp;filename, QString &amp;reason)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool load </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString &amp;&#160;</td>
+          <td class="paramname"><em>reason</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00074">74</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7ee9e368d6ae640fbc8e784aaa0f2c1a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_bump" ref="ga7ee9e368d6ae640fbc8e784aaa0f2c1a" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_bump </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00653">653</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga8c2effda92f64cd776b3932e8ffff4c2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_dissolve" ref="ga8c2effda92f64cd776b3932e8ffff4c2" args="(std::string d)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_dissolve </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00715">715</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaaf30e378f908e0bbe3540a52e8828a65"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_Ka" ref="gaaf30e378f908e0bbe3540a52e8828a65" args="(float r, float g, float b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_Ka </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00691">691</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2ea469cff17892ac56d7de2e42072ebc"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_Kd" ref="ga2ea469cff17892ac56d7de2e42072ebc" args="(float r, float g, float b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_Kd </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00696">696</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac23d75e528006d334a34296e22f40ad6"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_Ks" ref="gac23d75e528006d334a34296e22f40ad6" args="(float r, float g, float b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_Ks </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00701">701</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafb7f03d233bcb0265097ccc0f642a847"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_map_d" ref="gafb7f03d233bcb0265097ccc0f642a847" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_map_d </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00624">624</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga88a510814c38b07292b54c4677f9a1e4"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_map_Kd" ref="ga88a510814c38b07292b54c4677f9a1e4" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_map_Kd </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00538">538</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga4b06dd7b583c5e8b2244225544802b05"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_map_Ks" ref="ga4b06dd7b583c5e8b2244225544802b05" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_map_Ks </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00567">567</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab03faac44115943a7a5b8bc09c8eeb84"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_map_Ns" ref="gab03faac44115943a7a5b8bc09c8eeb84" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_map_Ns </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00595">595</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6a64d6a76c97bc9c182892606bbd16ab"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_normal" ref="ga6a64d6a76c97bc9c182892606bbd16ab" args="(std::string texture)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_normal </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>texture</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00681">681</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga8b5bc2a4c2dd809fdf814ca2e773e166"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_shininess" ref="ga8b5bc2a4c2dd809fdf814ca2e773e166" args="(float n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_shininess </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00711">711</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab4215acca2e90cb901fe72fb365efec8"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::material_Tf" ref="gab4215acca2e90cb901fe72fb365efec8" args="(float r, float g, float b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void material_Tf </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00706">706</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaabcaafaabf2a3cf519ab8d1d6aa3ca10"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::mtlMaterial" ref="gaabcaafaabf2a3cf519ab8d1d6aa3ca10" args="(std::string n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mtlMaterial </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00373">373</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga964234199d699bf53a792586683d8c74"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::new_material" ref="ga964234199d699bf53a792586683d8c74" args="(const std::string &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void new_material </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00526">526</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad3402e39bf64a8a6cacd3dbf6ec33292"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::normal_callback" ref="gad3402e39bf64a8a6cacd3dbf6ec33292" args="(float nx, float ny, float nz)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void normal_callback </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>nz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00408">408</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6c96423c9983a3fa68b4caf603b6650f"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::parse_material_library" ref="ga6c96423c9983a3fa68b4caf603b6650f" args="(const std::string &amp;dirname, const std::string &amp;filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void parse_material_library </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dirname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00128">128</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga229db95a87d68493145c3ed280b0ea44"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::set_group" ref="ga229db95a87d68493145c3ed280b0ea44" args="(const std::string &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_group </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00499">499</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafb35d1a496a7f1faacef0622c8281273"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::set_material" ref="gafb35d1a496a7f1faacef0622c8281273" args="(const std::string &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_material </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00519">519</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9872e5cce8b6c32e2e310244f6ae4161"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::setMaterial" ref="ga9872e5cce8b6c32e2e310244f6ae4161" args="(std::string m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMaterial </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00317">317</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gacc2c6c31537a565a78358b4c01b763c5"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::setSmoothGroup" ref="gacc2c6c31537a565a78358b4c01b763c5" args="(int s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setSmoothGroup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00316">316</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga5eb51577365300bac98067737ed2fd03"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::smooth_group" ref="ga5eb51577365300bac98067737ed2fd03" args="(int num)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void smooth_group </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00515">515</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf80c85f73ef15cec4326e692411049a2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::texture_callback" ref="gaf80c85f73ef15cec4326e692411049a2" args="(float u, float v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void texture_callback </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00409">409</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga31c745065be97574fcb1628d1251bd3e"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::vertex_callback" ref="ga31c745065be97574fcb1628d1251bd3e" args="(float x, float y, float z)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vertex_callback </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00407">407</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafcb2dc55b980605cb3367d751efd1896"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::VertexObj" ref="gafcb2dc55b980605cb3367d751efd1896" args="(const ObjLoader &amp;loader, int v, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertexObj </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00016.html">ObjLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00126">126</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00094">ObjLoader::normalsTable</a>, et <a class="el" href="a00040_source.html#l00092">ObjLoader::verticesTable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga3e942e8b34531edfcf36426c6341931c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::VertexObj" ref="ga3e942e8b34531edfcf36426c6341931c" args="(const ObjLoader &amp;loader, int v, int t, bool)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertexObj </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00016.html">ObjLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00119">119</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00096">ObjLoader::texturesTable</a>, et <a class="el" href="a00040_source.html#l00092">ObjLoader::verticesTable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa539206d3e70236212266dd8fef07406"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::VertexObj" ref="gaa539206d3e70236212266dd8fef07406" args="(const ObjLoader &amp;loader, int v, int t, int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertexObj </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00016.html">ObjLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00133">133</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00094">ObjLoader::normalsTable</a>, <a class="el" href="a00040_source.html#l00096">ObjLoader::texturesTable</a>, et <a class="el" href="a00040_source.html#l00092">ObjLoader::verticesTable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga5778399fdcc052c5c0ac600c793e65d8"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::VertexObj" ref="ga5778399fdcc052c5c0ac600c793e65d8" args="(const ObjLoader &amp;loader, int v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VertexObj </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00016.html">ObjLoader</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00114">114</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Références <a class="el" href="a00040_source.html#l00092">ObjLoader::verticesTable</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafbe3328e6a7d34a2e36e314c9dfe975f"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::warning_callback" ref="gafbe3328e6a7d34a2e36e314c9dfe975f" args="(const std::string &amp;filename, std::size_t line_number, const std::string &amp;message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void warning_callback </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>line_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00064">64</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa4a30d0d5a2c83148fecd6ff977a38db"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::~ObjLoader" ref="gaa4a30d0d5a2c83148fecd6ff977a38db" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">~ObjLoader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00039_source.html#l00052">52</a> du fichier <a class="el" href="a00039_source.html">objloader.cpp</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Documentation des variables</h2>
+<a class="anchor" id="gaf3383ef24087437b5daac919dc5297a3"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::allgroups" ref="gaf3383ef24087437b5daac919dc5297a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, Group *&gt; allgroups<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00325">325</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga68c2d661a19a1fe5dc41b1caec673ba2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::bumpmap" ref="ga68c2d661a19a1fe5dc41b1caec673ba2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string bumpmap<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00368">368</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9a1b7c2d3ac103335f06f0106f106a06"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::bumpmap_scale" ref="ga9a1b7c2d3ac103335f06f0106f106a06" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 bumpmap_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00369">369</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga43b453546337816b82a09f8749a46829"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::currentGroup" ref="ga43b453546337816b82a09f8749a46829" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Group* currentGroup<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00322">322</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf40fbc85c5bac7fa81a5952d8c9adfde"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::currentMaterial" ref="gaf40fbc85c5bac7fa81a5952d8c9adfde" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mtlMaterial* currentMaterial<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00381">381</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae86a2d135c900c7a78f5a32485799ef9"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::currentMaterialName" ref="gae86a2d135c900c7a78f5a32485799ef9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string currentMaterialName<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00324">324</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2bf11ab7c6961f4146281305a93ced1a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::currentName" ref="ga2bf11ab7c6961f4146281305a93ced1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string currentName<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00323">323</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaaf5474086b3a7455cc805de0b0703546"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::decalmap" ref="gaaf5474086b3a7455cc805de0b0703546" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string decalmap<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00364">364</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad55f17f310f699da8cd0e5ebb53b232c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::dispmap" ref="gad55f17f310f699da8cd0e5ebb53b232c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string dispmap<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00362">362</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga10204eca7973569dd19e547cd464a968"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::dissolve" ref="ga10204eca7973569dd19e547cd464a968" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float dissolve<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00343">343</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9625b002313a3fef67010c74415e5911"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::empty" ref="ga9625b002313a3fef67010c74415e5911" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool empty<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00313">313</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gabd18287f20c2ee6522d1436314215db0"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::faces" ref="gabd18287f20c2ee6522d1436314215db0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, FaceList&gt; faces<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00312">312</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf78ebcf9b6862190c73d58ea274ad130"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::groupsNumber" ref="gaf78ebcf9b6862190c73d58ea274ad130" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int groupsNumber<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00326">326</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga84c4efeab01d2782acc9c39112d658bf"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::have" ref="ga84c4efeab01d2782acc9c39112d658bf" args="[2]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool have[2]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00112">112</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga84c4efeab01d2782acc9c39112d658bf"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::have" ref="ga84c4efeab01d2782acc9c39112d658bf" args="[2]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool have[2]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00200">200</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga74c97cfa927d159f14342047994b6774"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::illum" ref="ga74c97cfa927d159f14342047994b6774" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int illum<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00340">340</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga1c8360b0862e10953fb343dbee1aa457"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::ior" ref="ga1c8360b0862e10953fb343dbee1aa457" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ior<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00344">344</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6c9d5bb00b136c381ddf2df61301a94c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::Ka" ref="ga6c9d5bb00b136c381ddf2df61301a94c" args="[3]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Ka[3]<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00335">335</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga167055252bd697cd4af5dee7a9621094"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::Kd" ref="ga167055252bd697cd4af5dee7a9621094" args="[3]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Kd[3]<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00336">336</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga21011a32a06d1ee120824a3ecbe57e3d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::Ks" ref="ga21011a32a06d1ee120824a3ecbe57e3d" args="[3]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Ks[3]<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00337">337</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga03099bbfbc95d7684557e6a0fff8e834"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::lastParseMessage" ref="ga03099bbfbc95d7684557e6a0fff8e834" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string lastParseMessage<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00089">89</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga6f622eb28facb22870af62e6749e8be1"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_d" ref="ga6f622eb28facb22870af62e6749e8be1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string map_d<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00359">359</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae638349a908011991d0bdc8592e2d86f"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_d_scale" ref="gae638349a908011991d0bdc8592e2d86f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 map_d_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00360">360</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gacad089876b503b72e36e68f3cec7ecc6"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_ka" ref="gacad089876b503b72e36e68f3cec7ecc6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string map_ka<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00347">347</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaef8e42088f0872abcfc7f494d4cf7abe"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_ka_scale" ref="gaef8e42088f0872abcfc7f494d4cf7abe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 map_ka_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00348">348</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaff38cc5c3feba263651beb6361d4048d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_kd" ref="gaff38cc5c3feba263651beb6361d4048d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string map_kd<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00350">350</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga1aa4af0fdd0b7e9cf45c0b32b495576a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_kd_scale" ref="ga1aa4af0fdd0b7e9cf45c0b32b495576a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 map_kd_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00351">351</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae3eb57129ebf332476d122913747d7c0"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_ks" ref="gae3eb57129ebf332476d122913747d7c0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string map_ks<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00353">353</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga5d94457084bf0b2cba9b9e328e87cbf1"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_ks_scale" ref="ga5d94457084bf0b2cba9b9e328e87cbf1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 map_ks_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00354">354</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga38f7e22af3d79990f19c41a252e7818d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_Ns" ref="ga38f7e22af3d79990f19c41a252e7818d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string map_Ns<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00356">356</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga893894a87e5e53a70c6f504fc8dbaeb1"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::map_Ns_scale" ref="ga893894a87e5e53a70c6f504fc8dbaeb1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 map_Ns_scale<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00357">357</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga22c8d4491d9c4aa32bec4d1c803ec09d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::material" ref="ga22c8d4491d9c4aa32bec4d1c803ec09d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string material<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00310">310</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga58f5f9bde2f45b0884e6b3e9ffd716eb"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::materialNumber" ref="ga58f5f9bde2f45b0884e6b3e9ffd716eb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int materialNumber<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00383">383</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga536419e70d4d8c6e46c9105bc17c8085"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mObjDir" ref="ga536419e70d4d8c6e46c9105bc17c8085" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString mObjDir<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00100">100</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gabf1a50096358471ee6904929fb410651"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtllib" ref="gabf1a50096358471ee6904929fb410651" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, mtlMaterial *&gt; mtllib<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00382">382</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9b45b3e13bd9167aab02e17e08916231"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::name" ref="ga9b45b3e13bd9167aab02e17e08916231" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string name<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00309">309</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00779">ObjLoader::getObjects()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga8e13f2bdbadc8fa553bd9eac5f0644d8"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::normal" ref="ga8e13f2bdbadc8fa553bd9eac5f0644d8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 normal<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00110">110</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00567">ObjLoader::addRawVerticeNormalPart()</a>, et <a class="el" href="a00039_source.html#l00484">ObjLoader::addRawVerticeNormalTexturePart()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga62f58489fda2ab18f655752440a464c2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::normalmap" ref="ga62f58489fda2ab18f655752440a464c2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string normalmap<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00366">366</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga0454955e65bae5544f3ad2421d733838"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::normals" ref="ga0454955e65bae5544f3ad2421d733838" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int normals<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00095">95</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf23e430460b100c4d8a43d6a01ff1ea5"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::normals" ref="gaf23e430460b100c4d8a43d6a01ff1ea5" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int normals[4]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00198">198</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gad88b5d2aae58f99b7e27d505d29ce589"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::normalsTable" ref="gad88b5d2aae58f99b7e27d505d29ce589" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;glm::vec3&gt; normalsTable<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00094">94</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00040_source.html#l00126">ObjLoader::VertexObj::VertexObj()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaedbd7adc2f7a2f814d643d3f8b4e787d"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::reflmap" ref="gaedbd7adc2f7a2f814d643d3f8b4e787d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string reflmap<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00371">371</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga916744f2d04ac7cab67b69b3f80c09f0"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::sharpness" ref="ga916744f2d04ac7cab67b69b3f80c09f0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float sharpness<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00342">342</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaaf01223c58664994607143edadcdfd15"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::shininess" ref="gaaf01223c58664994607143edadcdfd15" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float shininess<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00341">341</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga20e5aa14bdb9860597ef38ed9038ddb9"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Group::smoothGroup" ref="ga20e5aa14bdb9860597ef38ed9038ddb9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int smoothGroup<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00311">311</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga8d94128f99dc497b6f32c84933378eb4"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::texcoord" ref="ga8d94128f99dc497b6f32c84933378eb4" args="[2]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float texcoord[2]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00111">111</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00484">ObjLoader::addRawVerticeNormalTexturePart()</a>, et <a class="el" href="a00039_source.html#l00642">ObjLoader::addRawVerticeTexturePart()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga7ca2a287b3636b86fa31373fa0574f52"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::textures" ref="ga7ca2a287b3636b86fa31373fa0574f52" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int textures[4]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00199">199</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gabea595811679a87805c937ebf22b08dd"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::textures" ref="gabea595811679a87805c937ebf22b08dd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int textures<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00097">97</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga705b93c9cca84650c9a5370881ce3f91"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::texturesTable" ref="ga705b93c9cca84650c9a5370881ce3f91" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;glm::vec3&gt; texturesTable<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00096">96</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00040_source.html#l00119">ObjLoader::VertexObj::VertexObj()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa1f7b8c6066eda9e8317686b6b3670d0"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::mtlMaterial::Tf" ref="gaa1f7b8c6066eda9e8317686b6b3670d0" args="[3]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Tf[3]<code> [inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00338">338</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga236ecd4485575dd7b157c9280e146e69"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::type" ref="ga236ecd4485575dd7b157c9280e146e69" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FaceType type<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00201">201</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga22eb84db7df361705429fe16dbed5727"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::vertex" ref="ga22eb84db7df361705429fe16dbed5727" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 vertex<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00109">109</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00039_source.html#l00567">ObjLoader::addRawVerticeNormalPart()</a>, <a class="el" href="a00039_source.html#l00484">ObjLoader::addRawVerticeNormalTexturePart()</a>, <a class="el" href="a00039_source.html#l00713">ObjLoader::addRawVerticePart()</a>, et <a class="el" href="a00039_source.html#l00642">ObjLoader::addRawVerticeTexturePart()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae5383810974df2c2d9e22483fee4334a"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::Face::vertices" ref="gae5383810974df2c2d9e22483fee4334a" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vertices[4]<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00197">197</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gae8f2640efa2f2e1875e75aee1bc7c248"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::vertices" ref="gae8f2640efa2f2e1875e75aee1bc7c248" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int vertices<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00093">93</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga2ecda3c6473b53d3aef5e0fd628bca9c"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::verticesTable" ref="ga2ecda3c6473b53d3aef5e0fd628bca9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;glm::vec3&gt; verticesTable<code> [private, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00092">92</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+<p>Référencé par <a class="el" href="a00040_source.html#l00114">ObjLoader::VertexObj::VertexObj()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Amis</h2>
+<a class="anchor" id="ga14b1aa9f3ce743bae77fa0fad7ffc9c5"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::operator&lt;" ref="ga14b1aa9f3ce743bae77fa0fad7ffc9c5" args="(const VertexObj &amp;a, const VertexObj &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00020.html">VertexObj</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00020.html">VertexObj</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [friend, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00141">141</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa4cb6347d335861fd4ab7b18c7709aca"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::operator&lt;&lt;" ref="gaa4cb6347d335861fd4ab7b18c7709aca" args="(std::ostream &amp;os, const VertexObj &amp;a)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00020.html">VertexObj</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [friend, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00185">185</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga9b7703b62040cd681ef0204730e505a2"></a><!-- doxytag: member="loaders::obj_mtl::ObjLoader::VertexObj::operator==" ref="ga9b7703b62040cd681ef0204730e505a2" args="(const VertexObj &amp;a, const VertexObj &amp;b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00020.html">VertexObj</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00020.html">VertexObj</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [friend, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="a00040_source.html#l00181">181</a> du fichier <a class="el" href="a00040_source.html">objloader.h</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="footer">Généré le Mon Jan 23 2012 19:18:43 pour M1 Informatique - IG3D - Minimal OpenGL Renderer par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+</body>
+</html>

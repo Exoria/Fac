@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -g -O0 -Wall -ansi -fPIC   -shared -Wl,-soname,libfileloaders.so.0.1 -o ../../lib-debug/libfileloaders.so.0.1.0 CMakeFiles/fileloaders.dir/objfileparser.cpp.o CMakeFiles/fileloaders.dir/fileloader.cpp.o CMakeFiles/fileloaders.dir/mesh.cpp.o CMakeFiles/fileloaders.dir/objmesh.cpp.o CMakeFiles/fileloaders.dir/objloader.cpp.o -lQtGui -lQtCore 

@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00009.html#a5176c9496a29e21eacb0f81ca1a29923" title="createActions" alt="" coords="160,111,261,140"/>
+<area shape="rect" id="node24" href="$a00009.html#a5c788b6fcb676c3e1cef7e01eed9a420" title="createMenus" alt="" coords="163,164,259,193"/>
+<area shape="rect" id="node26" href="$a00009.html#a10018925c6ebe4a1f57e60a694b2761f" title="createStatusBar" alt="" coords="153,217,268,247"/>
+<area shape="rect" id="node28" href="$a00009.html#a4a0f747e87cdc5ab3de03f4bb18cd75c" title="readSettings" alt="" coords="164,271,257,300"/>
+<area shape="rect" id="node30" href="$a00009.html#a3d071cbc90e74fbb089ddf03eefb3eea" title="statusChanged" alt="" coords="156,324,265,353"/>
+<area shape="rect" id="node5" href="$a00009.html#a9e8555112049fc2b4945120b3c45f8ab" title="open" alt="" coords="345,59,396,88"/>
+<area shape="rect" id="node11" href="$a00009.html#a395cfd3b5286442312051da532ffa579" title="resetCamera" alt="" coords="903,84,999,113"/>
+<area shape="rect" id="node19" href="$a00009.html#a34a60ccdf038127b8f0461e0cdf0b94b" title="reloadShaders" alt="" coords="319,163,423,192"/>
+<area shape="rect" id="node7" href="$a00009.html#a0e7976b09c57824b1241e7c3d30a67fd" title="loadFile" alt="" coords="552,59,619,88"/>
+<area shape="rect" id="node9" href="$a00009.html#ad20897c5c8bd47f5d4005989bead0e55" title="reset" alt="" coords="773,59,824,88"/>
+<area shape="rect" id="node15" href="$a00009.html#a4d539fd163f34d90b66ce39e30932cb8" title="setCurrentFile" alt="" coords="747,5,851,35"/>
+<area shape="rect" id="node13" href="$a00010.html#a0ca9011af09843d4bcfb7b68c0530101" title="gui::OpenGLWidget::resetView" alt="" coords="1051,84,1253,113"/>
+<area shape="rect" id="node17" href="$a00009.html#a637f43b7cda3ccf9706f7d5ffec636dc" title="strippedName" alt="" coords="900,5,1001,35"/>
+<area shape="rect" id="node21" href="$a00010.html#a34a60ccdf038127b8f0461e0cdf0b94b" title="gui::OpenGLWidget::reloadShaders" alt="" coords="472,163,699,192"/>
+</map>

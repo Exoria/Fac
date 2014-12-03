@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/glm
+END
+glm.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/glm/glm.hpp
+END
+ext.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/glm/ext.hpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vanderha/!svn/ver/713/Courses/M1/ASDSI/trunk/src/glm/CMakeLists.txt
+END

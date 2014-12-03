@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00009.html#a395cfd3b5286442312051da532ffa579" title="gui::MainWindow::resetCamera" alt="" coords="133,5,339,35"/>
+<area shape="rect" id="node5" href="$a00009.html#a5176c9496a29e21eacb0f81ca1a29923" title="gui::MainWindow::createActions" alt="" coords="1027,5,1237,35"/>
+<area shape="rect" id="node9" href="$a00009.html#ad20897c5c8bd47f5d4005989bead0e55" title="gui::MainWindow::reset" alt="" coords="388,31,545,60"/>
+<area shape="rect" id="node7" href="$a00009.html#aeb676574b78bda84d687fdcfd65d84a6" title="gui::MainWindow::MainWindow" alt="" coords="1285,5,1491,35"/>
+<area shape="rect" id="node11" href="$a00009.html#a0e7976b09c57824b1241e7c3d30a67fd" title="gui::MainWindow::loadFile" alt="" coords="596,31,769,60"/>
+<area shape="rect" id="node13" href="$a00009.html#a9e8555112049fc2b4945120b3c45f8ab" title="gui::MainWindow::open" alt="" coords="820,31,977,60"/>
+</map>

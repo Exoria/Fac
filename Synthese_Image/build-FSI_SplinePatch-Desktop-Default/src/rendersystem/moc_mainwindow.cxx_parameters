@@ -1,0 +1,6 @@
+-I/home/mathieu/Documents/Fac/TP/Synthese_Image/FSI_SplinePatch/src/rendersystem/.
+-I/home/mathieu/Documents/Fac/TP/Synthese_Image/FSI_SplinePatch/src
+-I/home/mathieu/Documents/Fac/TP/Synthese_Image/FSI_SplinePatch/src/fileloaders
+-o
+/home/mathieu/Documents/Fac/TP/Synthese_Image/build-FSI_SplinePatch-Desktop-Default/src/rendersystem/moc_mainwindow.cxx
+/home/mathieu/Documents/Fac/TP/Synthese_Image/FSI_SplinePatch/src/rendersystem/mainwindow.h

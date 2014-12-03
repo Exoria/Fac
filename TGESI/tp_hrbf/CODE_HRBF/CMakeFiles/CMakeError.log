@@ -1,0 +1,96 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec897236049/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec897236049.dir/build.make CMakeFiles/cmTryCompileExec897236049.dir/build
+make[1]: entrant dans le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec897236049.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -g -O0 -Wall -ansi -fPIC  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec897236049.dir/CheckSymbolExists.cxx.o -c /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^
+make[1]: *** [CMakeFiles/cmTryCompileExec897236049.dir/CheckSymbolExists.cxx.o] Erreur 1
+make[1]: quittant le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+make: *** [cmTryCompileExec897236049/fast] Erreur 2
+
+File /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec656959149/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec656959149.dir/build.make CMakeFiles/cmTryCompileExec656959149.dir/build
+make[1]: entrant dans le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec656959149.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -g -O0 -Wall -ansi -fPIC  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec656959149.dir/CheckSymbolExists.cxx.o -c /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^
+make[1]: quittant le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+make[1]: *** [CMakeFiles/cmTryCompileExec656959149.dir/CheckSymbolExists.cxx.o] Erreur 1
+make: *** [cmTryCompileExec656959149/fast] Erreur 2
+
+File /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2418398441/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2418398441.dir/build.make CMakeFiles/cmTryCompileExec2418398441.dir/build
+make[1]: entrant dans le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2418398441.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -g -O0 -Wall -ansi -fPIC  -I/usr/include/qt4    -o CMakeFiles/cmTryCompileExec2418398441.dir/CheckSymbolExists.cxx.o -c /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^
+make[1]: *** [CMakeFiles/cmTryCompileExec2418398441.dir/CheckSymbolExists.cxx.o] Erreur 1
+make[1]: quittant le répertoire « /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp »
+make: *** [cmTryCompileExec2418398441/fast] Erreur 2
+
+File /home/mathieu/Documents/Fac/TP/TGESI/tp_hrbf/CODE_HRBF/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

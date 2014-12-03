@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>M1 Informatique - IG3D - Minimal OpenGL Renderer:  Fichier source de objfileparser.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript">
+$(document).ready(initResizable);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Généré par Doxygen 1.7.3 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">M1 Informatique - IG3D - Minimal OpenGL Renderer&#160;<span id="projectnumber">2011-2012</span></div>
+   <div id="projectbrief">Outils logiciels pour la programmation d'une application de synthèse d'images en C++/OpenGL</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="dirs.html"><span>Répertoires</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+</div>
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+  initNavTree('a00038.html','');
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle">
+<h1>objfileparser.h</h1>  </div>
+</div>
+<div class="contents">
+<a href="a00038.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment"> *   Copyright (C) 2012 by Mathias Paulin                                  *</span>
+<a name="l00003"></a>00003 <span class="comment"> *   Mathias.Paulin@irit.fr                                                *</span>
+<a name="l00004"></a>00004 <span class="comment"> *                                                                         *</span>
+<a name="l00005"></a>00005 <span class="comment"> *   This program is free software; you can redistribute it and/or modify  *</span>
+<a name="l00006"></a>00006 <span class="comment"> *   it under the terms of the GNU General Public License as published by  *</span>
+<a name="l00007"></a>00007 <span class="comment"> *   the Free Software Foundation; either version 2 of the License, or     *</span>
+<a name="l00008"></a>00008 <span class="comment"> *   (at your option) any later version.                                   *</span>
+<a name="l00009"></a>00009 <span class="comment"> *                                                                         *</span>
+<a name="l00010"></a>00010 <span class="comment"> *   This program is distributed in the hope that it will be useful,       *</span>
+<a name="l00011"></a>00011 <span class="comment"> *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *</span>
+<a name="l00012"></a>00012 <span class="comment"> *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *</span>
+<a name="l00013"></a>00013 <span class="comment"> *   GNU General Public License for more details.                          *</span>
+<a name="l00014"></a>00014 <span class="comment"> *                                                                         *</span>
+<a name="l00015"></a>00015 <span class="comment"> *   You should have received a copy of the GNU General Public License     *</span>
+<a name="l00016"></a>00016 <span class="comment"> *   along with this program; if not, write to the                         *</span>
+<a name="l00017"></a>00017 <span class="comment"> *   Free Software Foundation, Inc.,                                       *</span>
+<a name="l00018"></a>00018 <span class="comment"> *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *</span>
+<a name="l00019"></a>00019 <span class="comment"> ***************************************************************************/</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#ifndef OBJFILEPARSER_H</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define OBJFILEPARSER_H</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#include &lt;cstddef&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;tr1/tuple&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;istream&gt;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;tr1/functional&gt;</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">namespace </span>loaders {
+<a name="l00031"></a><a class="code" href="a00052.html">00031</a> <span class="keyword">namespace </span>obj_mtl {
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00037"></a><a class="code" href="a00058.html#ga89a6dcafb6130e3e1bcd6d1285e0dd6f">00037</a>         <span class="keyword">typedef</span> std::size_t <a class="code" href="a00058.html#ga89a6dcafb6130e3e1bcd6d1285e0dd6f">size_type</a>;
+<a name="l00038"></a><a class="code" href="a00058.html#gaa511d4e3e646072967e8a42dc6c54194">00038</a>         <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="a00058.html#gaa511d4e3e646072967e8a42dc6c54194">index_type</a>;
+<a name="l00039"></a><a class="code" href="a00058.html#ga4006252ff6772953667c24fa548f20ed">00039</a>         <span class="keyword">typedef</span> <span class="keywordtype">float</span> <a class="code" href="a00058.html#ga4006252ff6772953667c24fa548f20ed">float_type</a>;
+<a name="l00040"></a><a class="code" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">00040</a>         <span class="keyword">typedef</span> std::tr1::tuple&lt;index_type, index_type&gt; <a class="code" href="a00058.html#ga334cde7a2e1c2c3a81dbac0ddf05807d">index_2_tuple_type</a>;
+<a name="l00041"></a><a class="code" href="a00058.html#gaa980617de7f905759d0204f4778f6741">00041</a>         <span class="keyword">typedef</span> std::tr1::tuple&lt;index_type, index_type, index_type&gt; <a class="code" href="a00058.html#gaa980617de7f905759d0204f4778f6741">index_3_tuple_type</a>;
+<a name="l00042"></a><a class="code" href="a00058.html#gab4e9780c27e012d0e037eab8e2088c14">00042</a>         <span class="keyword">typedef</span> std::tr1::tuple&lt;float_type, float_type, float_type&gt; <a class="code" href="a00058.html#gab4e9780c27e012d0e037eab8e2088c14">float_3_tuple_type</a>;
+<a name="l00048"></a><a class="code" href="a00014.html">00048</a>         <span class="keyword">class </span><a class="code" href="a00014.html" title="Class to parse MTL file.">mtl_parser</a> {
+<a name="l00049"></a>00049                 <span class="keyword">public</span>:
+<a name="l00050"></a><a class="code" href="a00014.html#a4c541473642bbabf661e7f95e73c6609">00050</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00014.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>;
+<a name="l00051"></a><a class="code" href="a00014.html#afa42ae2d4b09825dbee2174ff7702d88">00051</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00014.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>;
+<a name="l00052"></a><a class="code" href="a00014.html#afc3022887ff1bfc15328d646fa17db71">00052</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00014.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>;
+<a name="l00053"></a>00053 
+<a name="l00054"></a><a class="code" href="a00014.html#acf25be941b83d2519777e5f70f43bb91">00054</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a>;
+<a name="l00055"></a>00055 
+<a name="l00056"></a><a class="code" href="a00014.html#a7787fe67599f661a4908438dc9b2ae77">00056</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00014.html#a7787fe67599f661a4908438dc9b2ae77">material_Ka_callback_type</a>;
+<a name="l00057"></a><a class="code" href="a00014.html#a52fc4047475acf1e360ca463af0409de">00057</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00014.html#a52fc4047475acf1e360ca463af0409de">material_Kd_callback_type</a>;
+<a name="l00058"></a><a class="code" href="a00014.html#a53ed1480c9aafefb7267238505b87c65">00058</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00014.html#a53ed1480c9aafefb7267238505b87c65">material_Ks_callback_type</a>;
+<a name="l00059"></a><a class="code" href="a00014.html#a0c5f552e0e8b102d2051201be5ebcfb1">00059</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00014.html#a0c5f552e0e8b102d2051201be5ebcfb1">material_Tf_callback_type</a>;
+<a name="l00060"></a><a class="code" href="a00014.html#adf277206043fb5cba04c0e0c762cda7e">00060</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (index_type) &gt; <a class="code" href="a00014.html#adf277206043fb5cba04c0e0c762cda7e">material_Illum_callback_type</a>;
+<a name="l00061"></a><a class="code" href="a00014.html#a1bbe386f62049dcd789be4f462a30d34">00061</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a1bbe386f62049dcd789be4f462a30d34">material_dissolve_callback_type</a>;
+<a name="l00062"></a><a class="code" href="a00014.html#a12811f3c906991359db89a699759ac43">00062</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type) &gt; <a class="code" href="a00014.html#a12811f3c906991359db89a699759ac43">material_shininess_callback_type</a>;
+<a name="l00063"></a><a class="code" href="a00014.html#af20dbbcf037018db35d2dec930f60a3f">00063</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type) &gt; <a class="code" href="a00014.html#af20dbbcf037018db35d2dec930f60a3f">material_sharpness_callback_type</a>;
+<a name="l00064"></a><a class="code" href="a00014.html#ada97976eaa160d1579ebfc734f82ea33">00064</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type) &gt; <a class="code" href="a00014.html#ada97976eaa160d1579ebfc734f82ea33">material_ior_callback_type</a>;
+<a name="l00065"></a>00065 
+<a name="l00066"></a><a class="code" href="a00014.html#aa6214371b90a32ed06d51707d79d865f">00066</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#aa6214371b90a32ed06d51707d79d865f">material_map_Ka_callback_type</a>;
+<a name="l00067"></a><a class="code" href="a00014.html#a794b04e6d4c9792016e8f8ed6f1b46bd">00067</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a794b04e6d4c9792016e8f8ed6f1b46bd">material_map_Kd_callback_type</a>;
+<a name="l00068"></a><a class="code" href="a00014.html#ae4e279d2336ffd24a29fece8b73ae111">00068</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#ae4e279d2336ffd24a29fece8b73ae111">material_map_Ks_callback_type</a>;
+<a name="l00069"></a><a class="code" href="a00014.html#ad9d5f62fc72f94a3df4db5f2b3683c8f">00069</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#ad9d5f62fc72f94a3df4db5f2b3683c8f">material_map_Ns_callback_type</a>;
+<a name="l00070"></a><a class="code" href="a00014.html#adc3458c17c999a5cbbfb6d1edee6adbf">00070</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#adc3458c17c999a5cbbfb6d1edee6adbf">material_map_d_callback_type</a>;
+<a name="l00071"></a><a class="code" href="a00014.html#ad4b0f28315a8a25b7cd42553e350f829">00071</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#ad4b0f28315a8a25b7cd42553e350f829">material_dispmap_callback_type</a>;
+<a name="l00072"></a><a class="code" href="a00014.html#ae8e20937a63e18af0fd968d0f4948ee5">00072</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#ae8e20937a63e18af0fd968d0f4948ee5">material_decalmap_callback_type</a>;
+<a name="l00073"></a><a class="code" href="a00014.html#a4c4b5f8e8bc24f985569198c88c02267">00073</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a4c4b5f8e8bc24f985569198c88c02267">material_bumpmap_callback_type</a>;
+<a name="l00074"></a><a class="code" href="a00014.html#a8e09129aa1e7c3f41ca50be4c1c3c988">00074</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a8e09129aa1e7c3f41ca50be4c1c3c988">material_reflmap_callback_type</a>;
+<a name="l00075"></a><a class="code" href="a00014.html#a5dd2cbfbdfb2df7b04c4164cdf92c95c">00075</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a5dd2cbfbdfb2df7b04c4164cdf92c95c">material_normalmap_callback_type</a>;
+<a name="l00076"></a>00076 
+<a name="l00077"></a><a class="code" href="a00014.html#a6535fc6855ac24c7ea920b75172e1bf8">00077</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00014.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a>;
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="a00014.html#aa4ab69a70383bb62f7fcc9fe9a501eba">00079</a>                         <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="a00014.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a>;
+<a name="l00080"></a>00080 
+<a name="l00081"></a><a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953">00081</a>                         <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00082"></a><a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953a0831009eec8e23f5d0f71a33663c611b">00082</a>                                 <a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953a0831009eec8e23f5d0f71a33663c611b">parse_blank_lines_as_comment</a> = 1 &lt;&lt; 0,
+<a name="l00083"></a><a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953ace51bb6eea9b3bc170e9f4f16bcecc52">00083</a>                                 <a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953ace51bb6eea9b3bc170e9f4f16bcecc52">texture_filenameonly</a> = 1 &lt;&lt; 1
+<a name="l00084"></a>00084                         } <a class="code" href="a00014.html#a75d959e49115b9725f45898e8e2e0953">ParseOptions</a>;
+<a name="l00085"></a>00085                         <a class="code" href="a00014.html#a5e5e4fca2db7a37de6b06dd0dce57bfa">mtl_parser</a> (<a class="code" href="a00014.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> flags = 0);
+<a name="l00086"></a>00086                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#af2732d6f92b18397b3fb191a955ed3b4">info_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>&amp; <a class="code" href="a00014.html#af2732d6f92b18397b3fb191a955ed3b4">info_callback</a>);
+<a name="l00087"></a>00087                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#acf6e027ff93fde1d0c097f1761589482">warning_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>&amp; <a class="code" href="a00014.html#acf6e027ff93fde1d0c097f1761589482">warning_callback</a>);
+<a name="l00088"></a>00088                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a0ee382164283fabb36f0f5ed41f1e67c">error_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>&amp; <a class="code" href="a00014.html#a0ee382164283fabb36f0f5ed41f1e67c">error_callback</a>);
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a099e09ca292b2bb6294cf8f3186e4adf">material_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a> &amp;name_callback);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#aac9f9b19eacdf77939a13169c3da1ed5">material_Ka_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a7787fe67599f661a4908438dc9b2ae77">material_Ka_callback_type</a>&amp; Ka_callback);
+<a name="l00093"></a>00093                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a87494ae4f219f4a38c59e45f9cb4c65f">material_Kd_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a52fc4047475acf1e360ca463af0409de">material_Kd_callback_type</a>&amp; Kd_callback);
+<a name="l00094"></a>00094                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a54b7860d04f1c14695a549020953673b">material_Ks_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a53ed1480c9aafefb7267238505b87c65">material_Ks_callback_type</a>&amp; Ks_callback);
+<a name="l00095"></a>00095                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a229d9596f50a0f76136ac8e90632cd7a">material_Tf_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a0c5f552e0e8b102d2051201be5ebcfb1">material_Tf_callback_type</a>&amp; Tf_callback);
+<a name="l00096"></a>00096                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a8c89ce5517d12cd2c0b1f4ac60a4c482">material_Illum_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#adf277206043fb5cba04c0e0c762cda7e">material_Illum_callback_type</a>&amp; Illum_callback);
+<a name="l00097"></a>00097                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a22a6a424d890c37742656665204c84cc">material_dissolve_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a1bbe386f62049dcd789be4f462a30d34">material_dissolve_callback_type</a>&amp; dissolve_callback);
+<a name="l00098"></a>00098                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#adcc2ee0068dcdacaea7ee82d180eea37">material_shininess_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a12811f3c906991359db89a699759ac43">material_shininess_callback_type</a>&amp; shininess_callback);
+<a name="l00099"></a>00099                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a91aa519dfcae51a9fa24becef731703e">material_sharpness_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#af20dbbcf037018db35d2dec930f60a3f">material_sharpness_callback_type</a>&amp; sharpness_callback);
+<a name="l00100"></a>00100                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a58694d5dcf3cd789be1ad9dd250993b2">material_ior_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ada97976eaa160d1579ebfc734f82ea33">material_ior_callback_type</a>&amp; ior_callback);
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#ae8eda373725a598f225f6ffee725871b">material_map_Ka_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#aa6214371b90a32ed06d51707d79d865f">material_map_Ka_callback_type</a>&amp; map_Ka_callback);
+<a name="l00103"></a>00103                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#ad0028bc1cd6ea73a8f6e3107a2520a0d">material_map_Kd_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a794b04e6d4c9792016e8f8ed6f1b46bd">material_map_Kd_callback_type</a>&amp; map_Kd_callback);
+<a name="l00104"></a>00104                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#aa492a33cd47c05c65b97bd419d51d742">material_map_Ks_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ae4e279d2336ffd24a29fece8b73ae111">material_map_Ks_callback_type</a>&amp; map_Ks_callback);
+<a name="l00105"></a>00105                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a7e0413dcb5dce0396450d9cbc018d6a5">material_map_Ns_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ad9d5f62fc72f94a3df4db5f2b3683c8f">material_map_Ns_callback_type</a>&amp; map_Ns_callback);
+<a name="l00106"></a>00106                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a8e02f64eea223bc088c61d8e01d3e958">material_map_d_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#adc3458c17c999a5cbbfb6d1edee6adbf">material_map_d_callback_type</a>&amp; map_d_callback);
+<a name="l00107"></a>00107                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#af388fca5d23867845805d722bda86dfc">material_dispmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ad4b0f28315a8a25b7cd42553e350f829">material_dispmap_callback_type</a>&amp; dispmap_callback);
+<a name="l00108"></a>00108                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a4fa3283ca0dee14b76034aa01dc431b5">material_decalmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ae8e20937a63e18af0fd968d0f4948ee5">material_decalmap_callback_type</a>&amp; decalmap_callback);
+<a name="l00109"></a>00109                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#a172ff810f6463ab03da9b6e6da4e90f9">material_bumpmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a4c4b5f8e8bc24f985569198c88c02267">material_bumpmap_callback_type</a>&amp; bumpmap_callback);
+<a name="l00110"></a>00110                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#aaebec16072e89b232c6d73bc138e57fd">material_reflmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a8e09129aa1e7c3f41ca50be4c1c3c988">material_reflmap_callback_type</a>&amp; reflmap_callback);
+<a name="l00111"></a>00111                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#aa167ac5bd2efb8fd4a3938713d86fdbf">material_normalmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a5dd2cbfbdfb2df7b04c4164cdf92c95c">material_normalmap_callback_type</a>&amp; normalmap_callback);
+<a name="l00112"></a>00112                         <span class="keywordtype">void</span> <a class="code" href="a00014.html#ad0e5340f01e656183cfc8033b21897d3">comment_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a>&amp; <a class="code" href="a00014.html#ad0e5340f01e656183cfc8033b21897d3">comment_callback</a>);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114                         <span class="keywordtype">bool</span> <a class="code" href="a00014.html#aafa92a7789eb9eb29d7eaa9fec52d96d">parse</a> (std::istream&amp; istream);
+<a name="l00115"></a>00115                         <span class="keywordtype">bool</span> <a class="code" href="a00014.html#aafa92a7789eb9eb29d7eaa9fec52d96d">parse</a> (<span class="keyword">const</span> std::string&amp; filename);
+<a name="l00116"></a>00116                 <span class="keyword">private</span>:
+<a name="l00117"></a><a class="code" href="a00014.html#aa56342618907fbd6b5ccd6830820b46b">00117</a>                         <a class="code" href="a00014.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> <a class="code" href="a00014.html#aa56342618907fbd6b5ccd6830820b46b">flags_</a>;
+<a name="l00118"></a><a class="code" href="a00014.html#ac79e5152d14849484beaca4bfccf76c3">00118</a>                         <a class="code" href="a00014.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a> <a class="code" href="a00014.html#ac79e5152d14849484beaca4bfccf76c3">info_callback_</a>;
+<a name="l00119"></a><a class="code" href="a00014.html#a9e9f1caadfcf3478350ebceee0656048">00119</a>                         <a class="code" href="a00014.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a> <a class="code" href="a00014.html#a9e9f1caadfcf3478350ebceee0656048">warning_callback_</a>;
+<a name="l00120"></a><a class="code" href="a00014.html#ae8a39855abe0d4ab60338bfebc1824dd">00120</a>                         <a class="code" href="a00014.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a> <a class="code" href="a00014.html#ae8a39855abe0d4ab60338bfebc1824dd">error_callback_</a>;
+<a name="l00121"></a><a class="code" href="a00014.html#a44fe9acbb99d5909f73501dc0ca0b66b">00121</a>                         <a class="code" href="a00014.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a> <a class="code" href="a00014.html#a44fe9acbb99d5909f73501dc0ca0b66b">material_name_callback_</a>;
+<a name="l00122"></a><a class="code" href="a00014.html#a20c3edc6f68f92aabef97562a1f68847">00122</a>                         <a class="code" href="a00014.html#a7787fe67599f661a4908438dc9b2ae77">material_Ka_callback_type</a> <a class="code" href="a00014.html#a20c3edc6f68f92aabef97562a1f68847">material_Ka_callback_</a>;
+<a name="l00123"></a><a class="code" href="a00014.html#a4b3cc5aa8ce7d6c2f6dc70a8b9b86553">00123</a>                         <a class="code" href="a00014.html#a52fc4047475acf1e360ca463af0409de">material_Kd_callback_type</a> <a class="code" href="a00014.html#a4b3cc5aa8ce7d6c2f6dc70a8b9b86553">material_Kd_callback_</a>;
+<a name="l00124"></a><a class="code" href="a00014.html#a32b5b91fd67ab60550ef8701b61271d8">00124</a>                         <a class="code" href="a00014.html#a53ed1480c9aafefb7267238505b87c65">material_Ks_callback_type</a> <a class="code" href="a00014.html#a32b5b91fd67ab60550ef8701b61271d8">material_Ks_callback_</a>;
+<a name="l00125"></a><a class="code" href="a00014.html#aa1a5a501431d0915753268b72ce2970c">00125</a>                         <a class="code" href="a00014.html#a0c5f552e0e8b102d2051201be5ebcfb1">material_Tf_callback_type</a> <a class="code" href="a00014.html#aa1a5a501431d0915753268b72ce2970c">material_Tf_callback_</a>;
+<a name="l00126"></a><a class="code" href="a00014.html#ac44b0111115d80d70c7ae50a4c3c61ba">00126</a>                         <a class="code" href="a00014.html#adf277206043fb5cba04c0e0c762cda7e">material_Illum_callback_type</a> <a class="code" href="a00014.html#ac44b0111115d80d70c7ae50a4c3c61ba">material_Illum_callback_</a>;
+<a name="l00127"></a><a class="code" href="a00014.html#a896eaee58540f4eae8cef100b6d5a02d">00127</a>                         <a class="code" href="a00014.html#a1bbe386f62049dcd789be4f462a30d34">material_dissolve_callback_type</a> <a class="code" href="a00014.html#a896eaee58540f4eae8cef100b6d5a02d">material_dissolve_callback_</a>;
+<a name="l00128"></a><a class="code" href="a00014.html#abad99fa152d993320d4dd55cfca1566d">00128</a>                         <a class="code" href="a00014.html#a12811f3c906991359db89a699759ac43">material_shininess_callback_type</a> <a class="code" href="a00014.html#abad99fa152d993320d4dd55cfca1566d">material_shininess_callback_</a>;
+<a name="l00129"></a><a class="code" href="a00014.html#a375d7cedc9f379610fdee16836e65f0b">00129</a>                         <a class="code" href="a00014.html#af20dbbcf037018db35d2dec930f60a3f">material_sharpness_callback_type</a> <a class="code" href="a00014.html#a375d7cedc9f379610fdee16836e65f0b">material_sharpness_callback_</a>;
+<a name="l00130"></a><a class="code" href="a00014.html#a6f130dc2427f210b69be7d6f4feb803b">00130</a>                         <a class="code" href="a00014.html#ada97976eaa160d1579ebfc734f82ea33">material_ior_callback_type</a> <a class="code" href="a00014.html#a6f130dc2427f210b69be7d6f4feb803b">material_ior_callback_</a>;
+<a name="l00131"></a><a class="code" href="a00014.html#a0609074ae9d4e223e0078e3bf957b65c">00131</a>                         <a class="code" href="a00014.html#aa6214371b90a32ed06d51707d79d865f">material_map_Ka_callback_type</a> <a class="code" href="a00014.html#a0609074ae9d4e223e0078e3bf957b65c">material_map_Ka_callback_</a>;
+<a name="l00132"></a><a class="code" href="a00014.html#a07be9cde8ba8fe5e0237abd870c7fcca">00132</a>                         <a class="code" href="a00014.html#a794b04e6d4c9792016e8f8ed6f1b46bd">material_map_Kd_callback_type</a> <a class="code" href="a00014.html#a07be9cde8ba8fe5e0237abd870c7fcca">material_map_Kd_callback_</a>;
+<a name="l00133"></a><a class="code" href="a00014.html#af1b68fa3f8dd530385843d86f7e74e63">00133</a>                         <a class="code" href="a00014.html#ae4e279d2336ffd24a29fece8b73ae111">material_map_Ks_callback_type</a> <a class="code" href="a00014.html#af1b68fa3f8dd530385843d86f7e74e63">material_map_Ks_callback_</a>;
+<a name="l00134"></a><a class="code" href="a00014.html#abb3f797c61f328b8d7e22dbb8d16a79f">00134</a>                         <a class="code" href="a00014.html#ad9d5f62fc72f94a3df4db5f2b3683c8f">material_map_Ns_callback_type</a> <a class="code" href="a00014.html#abb3f797c61f328b8d7e22dbb8d16a79f">material_map_Ns_callback_</a>;
+<a name="l00135"></a><a class="code" href="a00014.html#a3313128974e34bb61f6c57bee7ef8659">00135</a>                         <a class="code" href="a00014.html#adc3458c17c999a5cbbfb6d1edee6adbf">material_map_d_callback_type</a> <a class="code" href="a00014.html#a3313128974e34bb61f6c57bee7ef8659">material_map_d_callback_</a>;
+<a name="l00136"></a><a class="code" href="a00014.html#a15e4e38ca9022b585ca8708693f072d8">00136</a>                         <a class="code" href="a00014.html#ad4b0f28315a8a25b7cd42553e350f829">material_dispmap_callback_type</a> <a class="code" href="a00014.html#a15e4e38ca9022b585ca8708693f072d8">material_dispmap_callback_</a>;
+<a name="l00137"></a><a class="code" href="a00014.html#abe1ebc59d8bcc1e8dab1d6b021769d0c">00137</a>                         <a class="code" href="a00014.html#ae8e20937a63e18af0fd968d0f4948ee5">material_decalmap_callback_type</a> <a class="code" href="a00014.html#abe1ebc59d8bcc1e8dab1d6b021769d0c">material_decalmap_callback_</a>;
+<a name="l00138"></a><a class="code" href="a00014.html#ad2470ab0b4192ae40fd52f8d4eff2b61">00138</a>                         <a class="code" href="a00014.html#a4c4b5f8e8bc24f985569198c88c02267">material_bumpmap_callback_type</a> <a class="code" href="a00014.html#ad2470ab0b4192ae40fd52f8d4eff2b61">material_bumpmap_callback_</a>;
+<a name="l00139"></a><a class="code" href="a00014.html#ad216ea0b0dfae5c6ffab07418567276e">00139</a>                         <a class="code" href="a00014.html#a8e09129aa1e7c3f41ca50be4c1c3c988">material_reflmap_callback_type</a> <a class="code" href="a00014.html#ad216ea0b0dfae5c6ffab07418567276e">material_reflmap_callback_</a>;
+<a name="l00140"></a><a class="code" href="a00014.html#ab63e2697abf9fc2dc520361f4500b67a">00140</a>                         <a class="code" href="a00014.html#a5dd2cbfbdfb2df7b04c4164cdf92c95c">material_normalmap_callback_type</a> <a class="code" href="a00014.html#ab63e2697abf9fc2dc520361f4500b67a">material_normalmap_callback_</a>;
+<a name="l00141"></a><a class="code" href="a00014.html#a10cafef340adfd65c8cf7469c5273884">00141</a>                         <a class="code" href="a00014.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a> <a class="code" href="a00014.html#a10cafef340adfd65c8cf7469c5273884">comment_callback_</a>;
+<a name="l00142"></a>00142         };
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 
+<a name="l00149"></a><a class="code" href="a00015.html">00149</a>         <span class="keyword">class </span><a class="code" href="a00015.html" title="Class to parse OBJ file.">obj_parser</a> {
+<a name="l00150"></a>00150                 <span class="keyword">public</span>:
+<a name="l00151"></a><a class="code" href="a00015.html#a4c541473642bbabf661e7f95e73c6609">00151</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00015.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>;
+<a name="l00152"></a><a class="code" href="a00015.html#afa42ae2d4b09825dbee2174ff7702d88">00152</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00015.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>;
+<a name="l00153"></a><a class="code" href="a00015.html#afc3022887ff1bfc15328d646fa17db71">00153</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (std::size_t, const std::string&amp;) &gt; <a class="code" href="a00015.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>;
+<a name="l00154"></a>00154 
+<a name="l00155"></a><a class="code" href="a00015.html#a2eb7eb4dbf4da5cb7ae600bec88b0555">00155</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00015.html#a2eb7eb4dbf4da5cb7ae600bec88b0555">geometric_vertex_callback_type</a>;
+<a name="l00156"></a><a class="code" href="a00015.html#af0a0b22863f57c1514562401109cc162">00156</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type) &gt; <a class="code" href="a00015.html#af0a0b22863f57c1514562401109cc162">texture_vertex_callback_type</a>;
+<a name="l00157"></a><a class="code" href="a00015.html#ad4f2cd028e4759215197ef9ee41257c6">00157</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (float_type, float_type, float_type) &gt; <a class="code" href="a00015.html#ad4f2cd028e4759215197ef9ee41257c6">vertex_normal_callback_type</a>;
+<a name="l00158"></a>00158 
+<a name="l00159"></a><a class="code" href="a00015.html#a755f7c5b6865296c9cb86762f955ced3">00159</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (index_type, index_type, index_type) &gt; <a class="code" href="a00015.html#a755f7c5b6865296c9cb86762f955ced3">triangular_face_geometric_vertices_callback_type</a>;
+<a name="l00160"></a><a class="code" href="a00015.html#aad264282fec08ffa9a1e7ba00036c1ab">00160</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#aad264282fec08ffa9a1e7ba00036c1ab">triangular_face_geometric_vertices_texture_vertices_callback_type</a>;
+<a name="l00161"></a><a class="code" href="a00015.html#ae2e1a96b30b53ee83963a99cd61cffe0">00161</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#ae2e1a96b30b53ee83963a99cd61cffe0">triangular_face_geometric_vertices_vertex_normals_callback_type</a>;
+<a name="l00162"></a><a class="code" href="a00015.html#ade1d1b275cd14425bbab7929eefb5663">00162</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_3_tuple_type&amp;, const index_3_tuple_type&amp;, const index_3_tuple_type&amp;) &gt; <a class="code" href="a00015.html#ade1d1b275cd14425bbab7929eefb5663">triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>;
+<a name="l00163"></a>00163 
+<a name="l00164"></a><a class="code" href="a00015.html#a18affba72dc2fe04dc915635819ffd5e">00164</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (index_type, index_type, index_type, index_type) &gt; <a class="code" href="a00015.html#a18affba72dc2fe04dc915635819ffd5e">quadrilateral_face_geometric_vertices_callback_type</a>;
+<a name="l00165"></a><a class="code" href="a00015.html#a52239d98472e86aa9a1e1f24d2da7be3">00165</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a52239d98472e86aa9a1e1f24d2da7be3">quadrilateral_face_geometric_vertices_texture_vertices_callback_type</a>;
+<a name="l00166"></a><a class="code" href="a00015.html#a3a21a30b5cae005be92f65f987dac531">00166</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a3a21a30b5cae005be92f65f987dac531">quadrilateral_face_geometric_vertices_vertex_normals_callback_type</a>;
+<a name="l00167"></a><a class="code" href="a00015.html#acc47b579ccb554951a247e7b8b3e8f96">00167</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_3_tuple_type&amp;, const index_3_tuple_type&amp;, const index_3_tuple_type&amp;, const index_3_tuple_type&amp;) &gt; <a class="code" href="a00015.html#acc47b579ccb554951a247e7b8b3e8f96">quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>;
+<a name="l00168"></a>00168 
+<a name="l00169"></a><a class="code" href="a00015.html#ab1427f8affdb50f5bbf028bc3a312302">00169</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (index_type, index_type, index_type) &gt; <a class="code" href="a00015.html#ab1427f8affdb50f5bbf028bc3a312302">polygonal_face_geometric_vertices_begin_callback_type</a>;
+<a name="l00170"></a><a class="code" href="a00015.html#a7a4a87a7e566ac4eddb8d862408cac70">00170</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (index_type) &gt; <a class="code" href="a00015.html#a7a4a87a7e566ac4eddb8d862408cac70">polygonal_face_geometric_vertices_vertex_callback_type</a>;
+<a name="l00171"></a><a class="code" href="a00015.html#a57cc23bedd09c5bf74786c47304f8102">00171</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void () &gt; <a class="code" href="a00015.html#a57cc23bedd09c5bf74786c47304f8102">polygonal_face_geometric_vertices_end_callback_type</a>;
+<a name="l00172"></a><a class="code" href="a00015.html#a94f8a6f223ab69d859d0759ed3266af6">00172</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a94f8a6f223ab69d859d0759ed3266af6">polygonal_face_geometric_vertices_texture_vertices_begin_callback_type</a>;
+<a name="l00173"></a><a class="code" href="a00015.html#a9011716bddd043875914435cd2505d54">00173</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a9011716bddd043875914435cd2505d54">polygonal_face_geometric_vertices_texture_vertices_vertex_callback_type</a>;
+<a name="l00174"></a><a class="code" href="a00015.html#a5d597b6bb402e23ad2b88f5018870d78">00174</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void () &gt; <a class="code" href="a00015.html#a5d597b6bb402e23ad2b88f5018870d78">polygonal_face_geometric_vertices_texture_vertices_end_callback_type</a>;
+<a name="l00175"></a><a class="code" href="a00015.html#af5bcfc50f1722367571fafb69f7dc71c">00175</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;, const index_2_tuple_type&amp;, const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#af5bcfc50f1722367571fafb69f7dc71c">polygonal_face_geometric_vertices_vertex_normals_begin_callback_type</a>;
+<a name="l00176"></a><a class="code" href="a00015.html#a7435cc552f922546cbd5a14fa1b98a72">00176</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_2_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a7435cc552f922546cbd5a14fa1b98a72">polygonal_face_geometric_vertices_vertex_normals_vertex_callback_type</a>;
+<a name="l00177"></a><a class="code" href="a00015.html#ad726aa5939cdafca9298d131b4acbf91">00177</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void () &gt; <a class="code" href="a00015.html#ad726aa5939cdafca9298d131b4acbf91">polygonal_face_geometric_vertices_vertex_normals_end_callback_type</a>;
+<a name="l00178"></a><a class="code" href="a00015.html#a67c5036853278ac0664683167ce170ac">00178</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_3_tuple_type&amp;, const index_3_tuple_type&amp;, const index_3_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a67c5036853278ac0664683167ce170ac">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_type</a>;
+<a name="l00179"></a><a class="code" href="a00015.html#a63769df74a7c31937594657f96232d29">00179</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const index_3_tuple_type&amp;) &gt; <a class="code" href="a00015.html#a63769df74a7c31937594657f96232d29">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_type</a>;
+<a name="l00180"></a><a class="code" href="a00015.html#a1ce053a19bb685fb7657b121b97c538b">00180</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void () &gt; <a class="code" href="a00015.html#a1ce053a19bb685fb7657b121b97c538b">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_type</a>;
+<a name="l00181"></a>00181 
+<a name="l00182"></a><a class="code" href="a00015.html#a809e54200770c627de2831e4f599b89b">00182</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00015.html#a809e54200770c627de2831e4f599b89b">group_name_callback_type</a>;
+<a name="l00183"></a><a class="code" href="a00015.html#aea98a86be24c730df84951e21c7849dd">00183</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (size_type) &gt; <a class="code" href="a00015.html#aea98a86be24c730df84951e21c7849dd">smoothing_group_callback_type</a>;
+<a name="l00184"></a><a class="code" href="a00015.html#a396dbc5d51a639f568bbea95bb411743">00184</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00015.html#a396dbc5d51a639f568bbea95bb411743">object_name_callback_type</a>;
+<a name="l00185"></a><a class="code" href="a00015.html#ae5f35e5d2ddb823d22fc97ddf448a53d">00185</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00015.html#ae5f35e5d2ddb823d22fc97ddf448a53d">material_library_callback_type</a>;
+<a name="l00186"></a><a class="code" href="a00015.html#acf25be941b83d2519777e5f70f43bb91">00186</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00015.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a>;
+<a name="l00187"></a><a class="code" href="a00015.html#a6535fc6855ac24c7ea920b75172e1bf8">00187</a>                         <span class="keyword">typedef</span> std::tr1::function &lt; void (const std::string&amp;) &gt; <a class="code" href="a00015.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a>;
+<a name="l00188"></a>00188 
+<a name="l00189"></a><a class="code" href="a00015.html#aa4ab69a70383bb62f7fcc9fe9a501eba">00189</a>                         <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="a00015.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a>;
+<a name="l00190"></a>00190 
+<a name="l00191"></a><a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953">00191</a>                         <span class="keyword">typedef</span> <span class="keyword">enum</span> {
+<a name="l00192"></a><a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a0831009eec8e23f5d0f71a33663c611b">00192</a>                                 <a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a0831009eec8e23f5d0f71a33663c611b">parse_blank_lines_as_comment</a> = 1 &lt;&lt; 0,
+<a name="l00193"></a><a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a1ffd7e4533506e007c04d1246f6e914d">00193</a>                                 <a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a1ffd7e4533506e007c04d1246f6e914d">triangulate_faces</a> = 1 &lt;&lt; 1,
+<a name="l00194"></a><a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a4c9ae46f951a737d7831223b133c393d">00194</a>                                 <a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953a4c9ae46f951a737d7831223b133c393d">translate_negative_indices</a> = 1 &lt;&lt; 2
+<a name="l00195"></a>00195                         } <a class="code" href="a00015.html#a75d959e49115b9725f45898e8e2e0953">ParseOptions</a>;
+<a name="l00196"></a>00196                         <a class="code" href="a00015.html#a89204be18a4da25ce291053f0b155683">obj_parser</a> (<a class="code" href="a00015.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> flags = 0);
+<a name="l00197"></a>00197                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#af2732d6f92b18397b3fb191a955ed3b4">info_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>&amp; <a class="code" href="a00015.html#af2732d6f92b18397b3fb191a955ed3b4">info_callback</a>);
+<a name="l00198"></a>00198                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#acf6e027ff93fde1d0c097f1761589482">warning_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>&amp; <a class="code" href="a00015.html#acf6e027ff93fde1d0c097f1761589482">warning_callback</a>);
+<a name="l00199"></a>00199                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a0ee382164283fabb36f0f5ed41f1e67c">error_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>&amp; <a class="code" href="a00015.html#a0ee382164283fabb36f0f5ed41f1e67c">error_callback</a>);
+<a name="l00200"></a>00200                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a0b745ec59f7805d3dd93c1626a73b58a">geometric_vertex_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a2eb7eb4dbf4da5cb7ae600bec88b0555">geometric_vertex_callback_type</a>&amp; <a class="code" href="a00015.html#a0b745ec59f7805d3dd93c1626a73b58a">geometric_vertex_callback</a>);
+<a name="l00201"></a>00201                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a7923f5922a4f65e0daa28937243818dc">texture_vertex_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#af0a0b22863f57c1514562401109cc162">texture_vertex_callback_type</a>&amp; <a class="code" href="a00015.html#a7923f5922a4f65e0daa28937243818dc">texture_vertex_callback</a>);
+<a name="l00202"></a>00202                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a1f32fcb6ca6bd722822bf0fd3658b1f8">vertex_normal_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#ad4f2cd028e4759215197ef9ee41257c6">vertex_normal_callback_type</a>&amp; <a class="code" href="a00015.html#a1f32fcb6ca6bd722822bf0fd3658b1f8">vertex_normal_callback</a>);
+<a name="l00203"></a>00203                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a2d64bceaf553b7bad2c1a88e7deae289">face_callbacks</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a755f7c5b6865296c9cb86762f955ced3">triangular_face_geometric_vertices_callback_type</a>&amp; triangular_face_geometric_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#aad264282fec08ffa9a1e7ba00036c1ab">triangular_face_geometric_vertices_texture_vertices_callback_type</a>&amp; triangular_face_geometric_vertices_texture_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#ae2e1a96b30b53ee83963a99cd61cffe0">triangular_face_geometric_vertices_vertex_normals_callback_type</a>&amp; triangular_face_geometric_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#ade1d1b275cd14425bbab7929eefb5663">triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>&amp; triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a18affba72dc2fe04dc915635819ffd5e">quadrilateral_face_geometric_vertices_callback_type</a>&amp; quadrilateral_face_geometric_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a52239d98472e86aa9a1e1f24d2da7be3">quadrilateral_face_geometric_vertices_texture_vertices_callback_type</a>&amp; quadrilateral_face_geometric_vertices_texture_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a3a21a30b5cae005be92f65f987dac531">quadrilateral_face_geometric_vertices_vertex_normals_callback_type</a>&amp; quadrilateral_face_geometric_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#acc47b579ccb554951a247e7b8b3e8f96">quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>&amp; quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback);  <span class="comment">/*, const polygonal_face_geometric_vertices_begin_callback_type&amp; polygonal_face_geometric_vertices_begin_callback, const polygonal_face_geometric_vertices_vertex_callback_type&amp; polygonal_face_geometric_vertices_vertex_callback, const polygonal_face_geometric_vertices_end_callback_type&amp; polygonal_face_geometric_vertices_end_callback, const polygonal_face_geometric_vertices_texture_vertices_begin_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_begin_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_callback, const polygonal_face_geometric_vertices_texture_vertices_end_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_end_callback, const polygonal_face_geometric_vertices_vertex_normals_begin_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_begin_callback, const polygonal_face_geometric_vertices_vertex_normals_vertex_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_vertex_callback, const polygonal_face_geometric_vertices_vertex_normals_end_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_end_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback);*/</span>
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a509d5b25fa534aa3789f4074afe7be70">group_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a809e54200770c627de2831e4f599b89b">group_name_callback_type</a>&amp; <a class="code" href="a00015.html#a509d5b25fa534aa3789f4074afe7be70">group_name_callback</a>);
+<a name="l00206"></a>00206                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#afeed6ec2367ec63536ae93aff8735344">smoothing_group_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#aea98a86be24c730df84951e21c7849dd">smoothing_group_callback_type</a>&amp; <a class="code" href="a00015.html#afeed6ec2367ec63536ae93aff8735344">smoothing_group_callback</a>);
+<a name="l00207"></a>00207                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#aa67dc2cf8cc9512111d0c5330c7e0d71">object_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a396dbc5d51a639f568bbea95bb411743">object_name_callback_type</a>&amp; <a class="code" href="a00015.html#aa67dc2cf8cc9512111d0c5330c7e0d71">object_name_callback</a>);
+<a name="l00208"></a>00208                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#a9f32db53f16f42f6ba0ac665ab2b3a41">material_library_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#ae5f35e5d2ddb823d22fc97ddf448a53d">material_library_callback_type</a>&amp; <a class="code" href="a00015.html#a9f32db53f16f42f6ba0ac665ab2b3a41">material_library_callback</a>);
+<a name="l00209"></a>00209                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#ad3fd7d679915787a48037dbc4bf38dc4">material_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a>&amp; <a class="code" href="a00015.html#ad3fd7d679915787a48037dbc4bf38dc4">material_name_callback</a>);
+<a name="l00210"></a>00210                         <span class="keywordtype">void</span> <a class="code" href="a00015.html#ad0e5340f01e656183cfc8033b21897d3">comment_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a>&amp; <a class="code" href="a00015.html#ad0e5340f01e656183cfc8033b21897d3">comment_callback</a>);
+<a name="l00211"></a>00211                         <span class="keywordtype">bool</span> <a class="code" href="a00015.html#a28b4544e49c0dc125982c5157833e855">parse</a> (std::istream&amp; istream);
+<a name="l00212"></a>00212                         <span class="keywordtype">bool</span> <a class="code" href="a00015.html#a28b4544e49c0dc125982c5157833e855">parse</a> (<span class="keyword">const</span> std::string&amp; filename);
+<a name="l00213"></a>00213                 <span class="keyword">private</span>:
+<a name="l00214"></a><a class="code" href="a00015.html#aa56342618907fbd6b5ccd6830820b46b">00214</a>                         <a class="code" href="a00015.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> <a class="code" href="a00015.html#aa56342618907fbd6b5ccd6830820b46b">flags_</a>;
+<a name="l00215"></a><a class="code" href="a00015.html#ac79e5152d14849484beaca4bfccf76c3">00215</a>                         <a class="code" href="a00015.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a> <a class="code" href="a00015.html#ac79e5152d14849484beaca4bfccf76c3">info_callback_</a>;
+<a name="l00216"></a><a class="code" href="a00015.html#a9e9f1caadfcf3478350ebceee0656048">00216</a>                         <a class="code" href="a00015.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a> <a class="code" href="a00015.html#a9e9f1caadfcf3478350ebceee0656048">warning_callback_</a>;
+<a name="l00217"></a><a class="code" href="a00015.html#ae8a39855abe0d4ab60338bfebc1824dd">00217</a>                         <a class="code" href="a00015.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a> <a class="code" href="a00015.html#ae8a39855abe0d4ab60338bfebc1824dd">error_callback_</a>;
+<a name="l00218"></a><a class="code" href="a00015.html#a5ec6d7d1d3dfcfacb7236a974acbeca9">00218</a>                         <a class="code" href="a00015.html#a2eb7eb4dbf4da5cb7ae600bec88b0555">geometric_vertex_callback_type</a> <a class="code" href="a00015.html#a5ec6d7d1d3dfcfacb7236a974acbeca9">geometric_vertex_callback_</a>;
+<a name="l00219"></a><a class="code" href="a00015.html#ae836196024df6f140af45f7aa803bac7">00219</a>                         <a class="code" href="a00015.html#af0a0b22863f57c1514562401109cc162">texture_vertex_callback_type</a> <a class="code" href="a00015.html#ae836196024df6f140af45f7aa803bac7">texture_vertex_callback_</a>;
+<a name="l00220"></a><a class="code" href="a00015.html#a2c777c3342688b918d1108e7bbd02c85">00220</a>                         <a class="code" href="a00015.html#ad4f2cd028e4759215197ef9ee41257c6">vertex_normal_callback_type</a> <a class="code" href="a00015.html#a2c777c3342688b918d1108e7bbd02c85">vertex_normal_callback_</a>;
+<a name="l00221"></a><a class="code" href="a00015.html#ac9f7c7b73a3a99ce61a861ed01824865">00221</a>                         <a class="code" href="a00015.html#a755f7c5b6865296c9cb86762f955ced3">triangular_face_geometric_vertices_callback_type</a> <a class="code" href="a00015.html#ac9f7c7b73a3a99ce61a861ed01824865">triangular_face_geometric_vertices_callback_</a>;
+<a name="l00222"></a><a class="code" href="a00015.html#a8ac8ee79174b6b126db2165296f17fb7">00222</a>                         <a class="code" href="a00015.html#aad264282fec08ffa9a1e7ba00036c1ab">triangular_face_geometric_vertices_texture_vertices_callback_type</a> <a class="code" href="a00015.html#a8ac8ee79174b6b126db2165296f17fb7">triangular_face_geometric_vertices_texture_vertices_callback_</a>;
+<a name="l00223"></a><a class="code" href="a00015.html#a81f1c9c15c24a40dcb470d63f158cf39">00223</a>                         <a class="code" href="a00015.html#ae2e1a96b30b53ee83963a99cd61cffe0">triangular_face_geometric_vertices_vertex_normals_callback_type</a> <a class="code" href="a00015.html#a81f1c9c15c24a40dcb470d63f158cf39">triangular_face_geometric_vertices_vertex_normals_callback_</a>;
+<a name="l00224"></a><a class="code" href="a00015.html#a24feeebe68d82d1564e5ae52c8857752">00224</a>                         <a class="code" href="a00015.html#ade1d1b275cd14425bbab7929eefb5663">triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a> <a class="code" href="a00015.html#a24feeebe68d82d1564e5ae52c8857752">triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_</a>;
+<a name="l00225"></a><a class="code" href="a00015.html#a716f5840f21deb71224e40d3ad7e23ed">00225</a>                         <a class="code" href="a00015.html#a18affba72dc2fe04dc915635819ffd5e">quadrilateral_face_geometric_vertices_callback_type</a> <a class="code" href="a00015.html#a716f5840f21deb71224e40d3ad7e23ed">quadrilateral_face_geometric_vertices_callback_</a>;
+<a name="l00226"></a><a class="code" href="a00015.html#a6c48061aa3883e01071b266165c989b4">00226</a>                         <a class="code" href="a00015.html#a52239d98472e86aa9a1e1f24d2da7be3">quadrilateral_face_geometric_vertices_texture_vertices_callback_type</a> <a class="code" href="a00015.html#a6c48061aa3883e01071b266165c989b4">quadrilateral_face_geometric_vertices_texture_vertices_callback_</a>;
+<a name="l00227"></a><a class="code" href="a00015.html#ac47abe5798908aea6bee5dd6fa7ef494">00227</a>                         <a class="code" href="a00015.html#a3a21a30b5cae005be92f65f987dac531">quadrilateral_face_geometric_vertices_vertex_normals_callback_type</a> <a class="code" href="a00015.html#ac47abe5798908aea6bee5dd6fa7ef494">quadrilateral_face_geometric_vertices_vertex_normals_callback_</a>;
+<a name="l00228"></a><a class="code" href="a00015.html#af739a50456b8ddbaf38e9506e6630c01">00228</a>                         <a class="code" href="a00015.html#acc47b579ccb554951a247e7b8b3e8f96">quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a> <a class="code" href="a00015.html#af739a50456b8ddbaf38e9506e6630c01">quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_</a>;
+<a name="l00229"></a><a class="code" href="a00015.html#a6517cefc9531bb259056f6853c008612">00229</a>                         <a class="code" href="a00015.html#ab1427f8affdb50f5bbf028bc3a312302">polygonal_face_geometric_vertices_begin_callback_type</a> <a class="code" href="a00015.html#a6517cefc9531bb259056f6853c008612">polygonal_face_geometric_vertices_begin_callback_</a>;
+<a name="l00230"></a><a class="code" href="a00015.html#a56c6480e16c2fc3a24efc05d9b428f7f">00230</a>                         <a class="code" href="a00015.html#a7a4a87a7e566ac4eddb8d862408cac70">polygonal_face_geometric_vertices_vertex_callback_type</a> <a class="code" href="a00015.html#a56c6480e16c2fc3a24efc05d9b428f7f">polygonal_face_geometric_vertices_vertex_callback_</a>;
+<a name="l00231"></a><a class="code" href="a00015.html#a2efa11cfcfc25297486d3d23b2c73173">00231</a>                         <a class="code" href="a00015.html#a57cc23bedd09c5bf74786c47304f8102">polygonal_face_geometric_vertices_end_callback_type</a> <a class="code" href="a00015.html#a2efa11cfcfc25297486d3d23b2c73173">polygonal_face_geometric_vertices_end_callback_</a>;
+<a name="l00232"></a><a class="code" href="a00015.html#a3d4b2cb4afb124c3d71332ccc6a06a53">00232</a>                         <a class="code" href="a00015.html#a94f8a6f223ab69d859d0759ed3266af6">polygonal_face_geometric_vertices_texture_vertices_begin_callback_type</a> <a class="code" href="a00015.html#a3d4b2cb4afb124c3d71332ccc6a06a53">polygonal_face_geometric_vertices_texture_vertices_begin_callback_</a>;
+<a name="l00233"></a><a class="code" href="a00015.html#afb3c284135bb251adc6b28f5aa082198">00233</a>                         <a class="code" href="a00015.html#a9011716bddd043875914435cd2505d54">polygonal_face_geometric_vertices_texture_vertices_vertex_callback_type</a> <a class="code" href="a00015.html#afb3c284135bb251adc6b28f5aa082198">polygonal_face_geometric_vertices_texture_vertices_vertex_callback_</a>;
+<a name="l00234"></a><a class="code" href="a00015.html#aae13fcb2a950bff4a5ce597726e73519">00234</a>                         <a class="code" href="a00015.html#a5d597b6bb402e23ad2b88f5018870d78">polygonal_face_geometric_vertices_texture_vertices_end_callback_type</a> <a class="code" href="a00015.html#aae13fcb2a950bff4a5ce597726e73519">polygonal_face_geometric_vertices_texture_vertices_end_callback_</a>;
+<a name="l00235"></a><a class="code" href="a00015.html#ac95af73395ab219277bc9cfdd138060b">00235</a>                         <a class="code" href="a00015.html#af5bcfc50f1722367571fafb69f7dc71c">polygonal_face_geometric_vertices_vertex_normals_begin_callback_type</a> <a class="code" href="a00015.html#ac95af73395ab219277bc9cfdd138060b">polygonal_face_geometric_vertices_vertex_normals_begin_callback_</a>;
+<a name="l00236"></a><a class="code" href="a00015.html#ae2bf5c42f325f75ccdb5fa0aef30e4e4">00236</a>                         <a class="code" href="a00015.html#a7435cc552f922546cbd5a14fa1b98a72">polygonal_face_geometric_vertices_vertex_normals_vertex_callback_type</a> <a class="code" href="a00015.html#ae2bf5c42f325f75ccdb5fa0aef30e4e4">polygonal_face_geometric_vertices_vertex_normals_vertex_callback_</a>;
+<a name="l00237"></a><a class="code" href="a00015.html#a0656dfb06bebec257aa70b55ca3eb598">00237</a>                         <a class="code" href="a00015.html#ad726aa5939cdafca9298d131b4acbf91">polygonal_face_geometric_vertices_vertex_normals_end_callback_type</a> <a class="code" href="a00015.html#a0656dfb06bebec257aa70b55ca3eb598">polygonal_face_geometric_vertices_vertex_normals_end_callback_</a>;
+<a name="l00238"></a><a class="code" href="a00015.html#ac4b125d6f4dbd5b49454ad9137b9d601">00238</a>                         <a class="code" href="a00015.html#a67c5036853278ac0664683167ce170ac">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_type</a> <a class="code" href="a00015.html#ac4b125d6f4dbd5b49454ad9137b9d601">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_</a>;
+<a name="l00239"></a><a class="code" href="a00015.html#a14cab6f54e2e852b0dc9d119d868b424">00239</a>                         <a class="code" href="a00015.html#a63769df74a7c31937594657f96232d29">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_type</a> <a class="code" href="a00015.html#a14cab6f54e2e852b0dc9d119d868b424">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_</a>;
+<a name="l00240"></a><a class="code" href="a00015.html#abf34e9c078914022b9ecd4067828c5aa">00240</a>                         <a class="code" href="a00015.html#a1ce053a19bb685fb7657b121b97c538b">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_type</a> <a class="code" href="a00015.html#abf34e9c078914022b9ecd4067828c5aa">polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_</a>;
+<a name="l00241"></a><a class="code" href="a00015.html#a5fa8795c636808f16e3a741e87f767d5">00241</a>                         <a class="code" href="a00015.html#a809e54200770c627de2831e4f599b89b">group_name_callback_type</a> <a class="code" href="a00015.html#a5fa8795c636808f16e3a741e87f767d5">group_name_callback_</a>;
+<a name="l00242"></a><a class="code" href="a00015.html#a19865ab12e86cacc036d3fb5348f0452">00242</a>                         <a class="code" href="a00015.html#aea98a86be24c730df84951e21c7849dd">smoothing_group_callback_type</a> <a class="code" href="a00015.html#a19865ab12e86cacc036d3fb5348f0452">smoothing_group_callback_</a>;
+<a name="l00243"></a><a class="code" href="a00015.html#aca220497bd721e4f455e2f5d595a23b5">00243</a>                         <a class="code" href="a00015.html#a396dbc5d51a639f568bbea95bb411743">object_name_callback_type</a> <a class="code" href="a00015.html#aca220497bd721e4f455e2f5d595a23b5">object_name_callback_</a>;
+<a name="l00244"></a><a class="code" href="a00015.html#a19bc0e8514a798f06fde3e2646e3322e">00244</a>                         <a class="code" href="a00015.html#ae5f35e5d2ddb823d22fc97ddf448a53d">material_library_callback_type</a> <a class="code" href="a00015.html#a19bc0e8514a798f06fde3e2646e3322e">material_library_callback_</a>;
+<a name="l00245"></a><a class="code" href="a00015.html#a44fe9acbb99d5909f73501dc0ca0b66b">00245</a>                         <a class="code" href="a00015.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a> <a class="code" href="a00015.html#a44fe9acbb99d5909f73501dc0ca0b66b">material_name_callback_</a>;
+<a name="l00246"></a><a class="code" href="a00015.html#a10cafef340adfd65c8cf7469c5273884">00246</a>                         <a class="code" href="a00015.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a> <a class="code" href="a00015.html#a10cafef340adfd65c8cf7469c5273884">comment_callback_</a>;
+<a name="l00247"></a>00247         };
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249 } <span class="comment">// namespace obj</span>
+<a name="l00250"></a>00250 
+<a name="l00251"></a><a class="code" href="a00015.html#a89204be18a4da25ce291053f0b155683">00251</a> <span class="keyword">inline</span> <a class="code" href="a00015.html#a89204be18a4da25ce291053f0b155683">obj_mtl::obj_parser::obj_parser</a> (<a class="code" href="a00015.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> flags)
+<a name="l00252"></a>00252                 : flags_ (flags) {
+<a name="l00253"></a>00253 }
+<a name="l00254"></a>00254 
+<a name="l00255"></a><a class="code" href="a00015.html#a620db3a256dd6c1a9bd9f80c242aff62">00255</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00015.html#a28b4544e49c0dc125982c5157833e855">obj_mtl::obj_parser::parse</a> (<span class="keyword">const</span> std::string&amp; filename) {
+<a name="l00256"></a>00256         std::ifstream ifstream (filename.c_str());
+<a name="l00257"></a>00257         <span class="keywordflow">return</span> parse (ifstream);
+<a name="l00258"></a>00258 }
+<a name="l00259"></a>00259 
+<a name="l00260"></a><a class="code" href="a00015.html#af2732d6f92b18397b3fb191a955ed3b4">00260</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#af2732d6f92b18397b3fb191a955ed3b4">obj_mtl::obj_parser::info_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>&amp; info_callback) {
+<a name="l00261"></a>00261         info_callback_ = info_callback;
+<a name="l00262"></a>00262 }
+<a name="l00263"></a>00263 
+<a name="l00264"></a><a class="code" href="a00015.html#acf6e027ff93fde1d0c097f1761589482">00264</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#acf6e027ff93fde1d0c097f1761589482">obj_mtl::obj_parser::warning_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>&amp; warning_callback) {
+<a name="l00265"></a>00265         warning_callback_ = warning_callback;
+<a name="l00266"></a>00266 }
+<a name="l00267"></a>00267 
+<a name="l00268"></a><a class="code" href="a00015.html#a0ee382164283fabb36f0f5ed41f1e67c">00268</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a0ee382164283fabb36f0f5ed41f1e67c">obj_mtl::obj_parser::error_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>&amp; error_callback) {
+<a name="l00269"></a>00269         error_callback_ = error_callback;
+<a name="l00270"></a>00270 }
+<a name="l00271"></a>00271 
+<a name="l00272"></a><a class="code" href="a00015.html#a0b745ec59f7805d3dd93c1626a73b58a">00272</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a0b745ec59f7805d3dd93c1626a73b58a">obj_mtl::obj_parser::geometric_vertex_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a2eb7eb4dbf4da5cb7ae600bec88b0555">geometric_vertex_callback_type</a>&amp; geometric_vertex_callback) {
+<a name="l00273"></a>00273         geometric_vertex_callback_ = geometric_vertex_callback;
+<a name="l00274"></a>00274 }
+<a name="l00275"></a>00275 
+<a name="l00276"></a><a class="code" href="a00015.html#a7923f5922a4f65e0daa28937243818dc">00276</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a7923f5922a4f65e0daa28937243818dc">obj_mtl::obj_parser::texture_vertex_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#af0a0b22863f57c1514562401109cc162">texture_vertex_callback_type</a>&amp; texture_vertex_callback) {
+<a name="l00277"></a>00277         texture_vertex_callback_ = texture_vertex_callback;
+<a name="l00278"></a>00278 }
+<a name="l00279"></a>00279 
+<a name="l00280"></a><a class="code" href="a00015.html#a1f32fcb6ca6bd722822bf0fd3658b1f8">00280</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a1f32fcb6ca6bd722822bf0fd3658b1f8">obj_mtl::obj_parser::vertex_normal_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#ad4f2cd028e4759215197ef9ee41257c6">vertex_normal_callback_type</a>&amp; vertex_normal_callback) {
+<a name="l00281"></a>00281         vertex_normal_callback_ = vertex_normal_callback;
+<a name="l00282"></a>00282 }
+<a name="l00283"></a>00283 
+<a name="l00284"></a><a class="code" href="a00015.html#a2d64bceaf553b7bad2c1a88e7deae289">00284</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a2d64bceaf553b7bad2c1a88e7deae289">obj_mtl::obj_parser::face_callbacks</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a755f7c5b6865296c9cb86762f955ced3">triangular_face_geometric_vertices_callback_type</a>&amp; triangular_face_geometric_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#aad264282fec08ffa9a1e7ba00036c1ab">triangular_face_geometric_vertices_texture_vertices_callback_type</a>&amp; triangular_face_geometric_vertices_texture_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#ae2e1a96b30b53ee83963a99cd61cffe0">triangular_face_geometric_vertices_vertex_normals_callback_type</a>&amp; triangular_face_geometric_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#ade1d1b275cd14425bbab7929eefb5663">triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>&amp; triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a18affba72dc2fe04dc915635819ffd5e">quadrilateral_face_geometric_vertices_callback_type</a>&amp; quadrilateral_face_geometric_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a52239d98472e86aa9a1e1f24d2da7be3">quadrilateral_face_geometric_vertices_texture_vertices_callback_type</a>&amp; quadrilateral_face_geometric_vertices_texture_vertices_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#a3a21a30b5cae005be92f65f987dac531">quadrilateral_face_geometric_vertices_vertex_normals_callback_type</a>&amp; quadrilateral_face_geometric_vertices_vertex_normals_callback, <span class="keyword">const</span> <a class="code" href="a00015.html#acc47b579ccb554951a247e7b8b3e8f96">quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_type</a>&amp; quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback<span class="comment">/*, const polygonal_face_geometric_vertices_begin_callback_type&amp; polygonal_face_geometric_vertices_begin_callback, const polygonal_face_geometric_vertices_vertex_callback_type&amp; polygonal_face_geometric_vertices_vertex_callback, const polygonal_face_geometric_vertices_end_callback_type&amp; polygonal_face_geometric_vertices_end_callback, const polygonal_face_geometric_vertices_texture_vertices_begin_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_begin_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_callback, const polygonal_face_geometric_vertices_texture_vertices_end_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_end_callback, const polygonal_face_geometric_vertices_vertex_normals_begin_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_begin_callback, const polygonal_face_geometric_vertices_vertex_normals_vertex_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_vertex_callback, const polygonal_face_geometric_vertices_vertex_normals_end_callback_type&amp; polygonal_face_geometric_vertices_vertex_normals_end_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback, const polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_type&amp; polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback*/</span>) {
+<a name="l00285"></a>00285         triangular_face_geometric_vertices_callback_ = triangular_face_geometric_vertices_callback;
+<a name="l00286"></a>00286         triangular_face_geometric_vertices_texture_vertices_callback_ = triangular_face_geometric_vertices_texture_vertices_callback;
+<a name="l00287"></a>00287         triangular_face_geometric_vertices_vertex_normals_callback_ = triangular_face_geometric_vertices_vertex_normals_callback;
+<a name="l00288"></a>00288         triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback_ = triangular_face_geometric_vertices_texture_vertices_vertex_normals_callback;
+<a name="l00289"></a>00289         quadrilateral_face_geometric_vertices_callback_ = quadrilateral_face_geometric_vertices_callback;
+<a name="l00290"></a>00290         quadrilateral_face_geometric_vertices_texture_vertices_callback_ = quadrilateral_face_geometric_vertices_texture_vertices_callback;
+<a name="l00291"></a>00291         quadrilateral_face_geometric_vertices_vertex_normals_callback_ = quadrilateral_face_geometric_vertices_vertex_normals_callback;
+<a name="l00292"></a>00292         quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback_ = quadrilateral_face_geometric_vertices_texture_vertices_vertex_normals_callback;
+<a name="l00293"></a>00293         <span class="comment">/*    polygonal_face_geometric_vertices_begin_callback_ = polygonal_face_geometric_vertices_begin_callback;</span>
+<a name="l00294"></a>00294 <span class="comment">                  polygonal_face_geometric_vertices_vertex_callback_ = polygonal_face_geometric_vertices_vertex_callback;</span>
+<a name="l00295"></a>00295 <span class="comment">                  polygonal_face_geometric_vertices_end_callback_ = polygonal_face_geometric_vertices_end_callback;</span>
+<a name="l00296"></a>00296 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_begin_callback_ = polygonal_face_geometric_vertices_texture_vertices_begin_callback;</span>
+<a name="l00297"></a>00297 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_vertex_callback_ = polygonal_face_geometric_vertices_texture_vertices_vertex_callback;</span>
+<a name="l00298"></a>00298 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_end_callback_ = polygonal_face_geometric_vertices_texture_vertices_end_callback;</span>
+<a name="l00299"></a>00299 <span class="comment">                  polygonal_face_geometric_vertices_vertex_normals_begin_callback_ = polygonal_face_geometric_vertices_vertex_normals_begin_callback;</span>
+<a name="l00300"></a>00300 <span class="comment">                  polygonal_face_geometric_vertices_vertex_normals_vertex_callback_ = polygonal_face_geometric_vertices_vertex_normals_vertex_callback;</span>
+<a name="l00301"></a>00301 <span class="comment">                  polygonal_face_geometric_vertices_vertex_normals_end_callback_ = polygonal_face_geometric_vertices_vertex_normals_end_callback;</span>
+<a name="l00302"></a>00302 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback_ = polygonal_face_geometric_vertices_texture_vertices_vertex_normals_begin_callback;</span>
+<a name="l00303"></a>00303 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback_ = polygonal_face_geometric_vertices_texture_vertices_vertex_normals_vertex_callback;</span>
+<a name="l00304"></a>00304 <span class="comment">                  polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback_ = polygonal_face_geometric_vertices_texture_vertices_vertex_normals_end_callback;*/</span>
+<a name="l00305"></a>00305 }
+<a name="l00306"></a>00306 
+<a name="l00307"></a><a class="code" href="a00015.html#a509d5b25fa534aa3789f4074afe7be70">00307</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a509d5b25fa534aa3789f4074afe7be70">obj_mtl::obj_parser::group_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a809e54200770c627de2831e4f599b89b">group_name_callback_type</a>&amp; group_name_callback) {
+<a name="l00308"></a>00308         group_name_callback_ = group_name_callback;
+<a name="l00309"></a>00309 }
+<a name="l00310"></a>00310 
+<a name="l00311"></a><a class="code" href="a00015.html#afeed6ec2367ec63536ae93aff8735344">00311</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#afeed6ec2367ec63536ae93aff8735344">obj_mtl::obj_parser::smoothing_group_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#aea98a86be24c730df84951e21c7849dd">smoothing_group_callback_type</a>&amp; smoothing_group_callback) {
+<a name="l00312"></a>00312         smoothing_group_callback_ = smoothing_group_callback;
+<a name="l00313"></a>00313 }
+<a name="l00314"></a>00314 
+<a name="l00315"></a><a class="code" href="a00015.html#aa67dc2cf8cc9512111d0c5330c7e0d71">00315</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#aa67dc2cf8cc9512111d0c5330c7e0d71">obj_mtl::obj_parser::object_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a396dbc5d51a639f568bbea95bb411743">object_name_callback_type</a>&amp; object_name_callback) {
+<a name="l00316"></a>00316         object_name_callback_ = object_name_callback;
+<a name="l00317"></a>00317 }
+<a name="l00318"></a>00318 
+<a name="l00319"></a><a class="code" href="a00015.html#a9f32db53f16f42f6ba0ac665ab2b3a41">00319</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#a9f32db53f16f42f6ba0ac665ab2b3a41">obj_mtl::obj_parser::material_library_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#ae5f35e5d2ddb823d22fc97ddf448a53d">material_library_callback_type</a>&amp; material_library_callback) {
+<a name="l00320"></a>00320         material_library_callback_ = material_library_callback;
+<a name="l00321"></a>00321 }
+<a name="l00322"></a>00322 
+<a name="l00323"></a><a class="code" href="a00015.html#ad3fd7d679915787a48037dbc4bf38dc4">00323</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#ad3fd7d679915787a48037dbc4bf38dc4">obj_mtl::obj_parser::material_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a>&amp; material_name_callback) {
+<a name="l00324"></a>00324         material_name_callback_ = material_name_callback;
+<a name="l00325"></a>00325 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a><a class="code" href="a00015.html#ad0e5340f01e656183cfc8033b21897d3">00327</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00015.html#ad0e5340f01e656183cfc8033b21897d3">obj_mtl::obj_parser::comment_callback</a> (<span class="keyword">const</span> <a class="code" href="a00015.html#a6535fc6855ac24c7ea920b75172e1bf8">comment_callback_type</a>&amp; comment_callback) {
+<a name="l00328"></a>00328         comment_callback_ = comment_callback;
+<a name="l00329"></a>00329 }
+<a name="l00330"></a>00330 
+<a name="l00331"></a><a class="code" href="a00014.html#af2732d6f92b18397b3fb191a955ed3b4">00331</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#af2732d6f92b18397b3fb191a955ed3b4">obj_mtl::mtl_parser::info_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a4c541473642bbabf661e7f95e73c6609">info_callback_type</a>&amp; info_callback) {
+<a name="l00332"></a>00332         info_callback_ = info_callback;
+<a name="l00333"></a>00333 }
+<a name="l00334"></a>00334 
+<a name="l00335"></a><a class="code" href="a00014.html#acf6e027ff93fde1d0c097f1761589482">00335</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#acf6e027ff93fde1d0c097f1761589482">obj_mtl::mtl_parser::warning_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#afa42ae2d4b09825dbee2174ff7702d88">warning_callback_type</a>&amp; warning_callback) {
+<a name="l00336"></a>00336         warning_callback_ = warning_callback;
+<a name="l00337"></a>00337 }
+<a name="l00338"></a>00338 
+<a name="l00339"></a><a class="code" href="a00014.html#a0ee382164283fabb36f0f5ed41f1e67c">00339</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a0ee382164283fabb36f0f5ed41f1e67c">obj_mtl::mtl_parser::error_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#afc3022887ff1bfc15328d646fa17db71">error_callback_type</a>&amp; error_callback) {
+<a name="l00340"></a>00340         error_callback_ = error_callback;
+<a name="l00341"></a>00341 }
+<a name="l00342"></a>00342 
+<a name="l00343"></a><a class="code" href="a00014.html#a099e09ca292b2bb6294cf8f3186e4adf">00343</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a099e09ca292b2bb6294cf8f3186e4adf">obj_mtl::mtl_parser::material_name_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#acf25be941b83d2519777e5f70f43bb91">material_name_callback_type</a> &amp;name_callback) {
+<a name="l00344"></a>00344         material_name_callback_ = name_callback;
+<a name="l00345"></a>00345 }
+<a name="l00346"></a>00346 
+<a name="l00347"></a><a class="code" href="a00014.html#aac9f9b19eacdf77939a13169c3da1ed5">00347</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#aac9f9b19eacdf77939a13169c3da1ed5">obj_mtl::mtl_parser::material_Ka_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a7787fe67599f661a4908438dc9b2ae77">material_Ka_callback_type</a>&amp; Ka_callback) {
+<a name="l00348"></a>00348         material_Ka_callback_ = Ka_callback;
+<a name="l00349"></a>00349 }
+<a name="l00350"></a>00350 
+<a name="l00351"></a><a class="code" href="a00014.html#a87494ae4f219f4a38c59e45f9cb4c65f">00351</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a87494ae4f219f4a38c59e45f9cb4c65f">obj_mtl::mtl_parser::material_Kd_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a52fc4047475acf1e360ca463af0409de">material_Kd_callback_type</a>&amp; Kd_callback) {
+<a name="l00352"></a>00352         material_Kd_callback_ = Kd_callback;
+<a name="l00353"></a>00353 }
+<a name="l00354"></a>00354 
+<a name="l00355"></a><a class="code" href="a00014.html#a54b7860d04f1c14695a549020953673b">00355</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a54b7860d04f1c14695a549020953673b">obj_mtl::mtl_parser::material_Ks_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a53ed1480c9aafefb7267238505b87c65">material_Ks_callback_type</a>&amp; Ks_callback) {
+<a name="l00356"></a>00356         material_Ks_callback_ = Ks_callback;
+<a name="l00357"></a>00357 }
+<a name="l00358"></a>00358 
+<a name="l00359"></a><a class="code" href="a00014.html#a229d9596f50a0f76136ac8e90632cd7a">00359</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a229d9596f50a0f76136ac8e90632cd7a">obj_mtl::mtl_parser::material_Tf_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a0c5f552e0e8b102d2051201be5ebcfb1">material_Tf_callback_type</a>&amp; Tf_callback) {
+<a name="l00360"></a>00360         material_Tf_callback_ = Tf_callback;
+<a name="l00361"></a>00361 }
+<a name="l00362"></a>00362 
+<a name="l00363"></a><a class="code" href="a00014.html#a8c89ce5517d12cd2c0b1f4ac60a4c482">00363</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a8c89ce5517d12cd2c0b1f4ac60a4c482">obj_mtl::mtl_parser::material_Illum_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#adf277206043fb5cba04c0e0c762cda7e">material_Illum_callback_type</a>&amp; Illum_callback) {
+<a name="l00364"></a>00364         material_Illum_callback_ = Illum_callback;
+<a name="l00365"></a>00365 }
+<a name="l00366"></a>00366 
+<a name="l00367"></a><a class="code" href="a00014.html#a22a6a424d890c37742656665204c84cc">00367</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a22a6a424d890c37742656665204c84cc">obj_mtl::mtl_parser::material_dissolve_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a1bbe386f62049dcd789be4f462a30d34">material_dissolve_callback_type</a>&amp; dissolve_callback) {
+<a name="l00368"></a>00368         material_dissolve_callback_ = dissolve_callback;
+<a name="l00369"></a>00369 }
+<a name="l00370"></a>00370 
+<a name="l00371"></a><a class="code" href="a00014.html#adcc2ee0068dcdacaea7ee82d180eea37">00371</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#adcc2ee0068dcdacaea7ee82d180eea37">obj_mtl::mtl_parser::material_shininess_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a12811f3c906991359db89a699759ac43">material_shininess_callback_type</a>&amp; shininess_callback) {
+<a name="l00372"></a>00372         material_shininess_callback_ = shininess_callback;
+<a name="l00373"></a>00373 }
+<a name="l00374"></a>00374 
+<a name="l00375"></a><a class="code" href="a00014.html#a91aa519dfcae51a9fa24becef731703e">00375</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a91aa519dfcae51a9fa24becef731703e">obj_mtl::mtl_parser::material_sharpness_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#af20dbbcf037018db35d2dec930f60a3f">material_sharpness_callback_type</a>&amp; sharpness_callback) {
+<a name="l00376"></a>00376         material_sharpness_callback_ = sharpness_callback;
+<a name="l00377"></a>00377 }
+<a name="l00378"></a>00378 
+<a name="l00379"></a><a class="code" href="a00014.html#a58694d5dcf3cd789be1ad9dd250993b2">00379</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a58694d5dcf3cd789be1ad9dd250993b2">obj_mtl::mtl_parser::material_ior_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ada97976eaa160d1579ebfc734f82ea33">material_ior_callback_type</a>&amp; ior_callback) {
+<a name="l00380"></a>00380         material_ior_callback_ = ior_callback;
+<a name="l00381"></a>00381 }
+<a name="l00382"></a>00382 
+<a name="l00383"></a>00383 
+<a name="l00384"></a><a class="code" href="a00014.html#ae8eda373725a598f225f6ffee725871b">00384</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#ae8eda373725a598f225f6ffee725871b">obj_mtl::mtl_parser::material_map_Ka_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#aa6214371b90a32ed06d51707d79d865f">material_map_Ka_callback_type</a>&amp; map_Ka_callback) {
+<a name="l00385"></a>00385         material_map_Ka_callback_ = map_Ka_callback;
+<a name="l00386"></a>00386 }
+<a name="l00387"></a>00387 
+<a name="l00388"></a><a class="code" href="a00014.html#ad0028bc1cd6ea73a8f6e3107a2520a0d">00388</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#ad0028bc1cd6ea73a8f6e3107a2520a0d">obj_mtl::mtl_parser::material_map_Kd_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a794b04e6d4c9792016e8f8ed6f1b46bd">material_map_Kd_callback_type</a>&amp; map_Kd_callback) {
+<a name="l00389"></a>00389         material_map_Kd_callback_ = map_Kd_callback;
+<a name="l00390"></a>00390 }
+<a name="l00391"></a>00391 
+<a name="l00392"></a><a class="code" href="a00014.html#aa492a33cd47c05c65b97bd419d51d742">00392</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#aa492a33cd47c05c65b97bd419d51d742">obj_mtl::mtl_parser::material_map_Ks_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ae4e279d2336ffd24a29fece8b73ae111">material_map_Ks_callback_type</a>&amp; map_Ks_callback) {
+<a name="l00393"></a>00393         material_map_Ks_callback_ = map_Ks_callback;
+<a name="l00394"></a>00394 }
+<a name="l00395"></a>00395 
+<a name="l00396"></a><a class="code" href="a00014.html#a7e0413dcb5dce0396450d9cbc018d6a5">00396</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a7e0413dcb5dce0396450d9cbc018d6a5">obj_mtl::mtl_parser::material_map_Ns_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ad9d5f62fc72f94a3df4db5f2b3683c8f">material_map_Ns_callback_type</a>&amp; map_Ns_callback) {
+<a name="l00397"></a>00397         material_map_Ns_callback_ = map_Ns_callback;
+<a name="l00398"></a>00398 }
+<a name="l00399"></a>00399 
+<a name="l00400"></a><a class="code" href="a00014.html#a8e02f64eea223bc088c61d8e01d3e958">00400</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a8e02f64eea223bc088c61d8e01d3e958">obj_mtl::mtl_parser::material_map_d_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#adc3458c17c999a5cbbfb6d1edee6adbf">material_map_d_callback_type</a>&amp; map_d_callback) {
+<a name="l00401"></a>00401         material_map_d_callback_ = map_d_callback;
+<a name="l00402"></a>00402 }
+<a name="l00403"></a>00403 
+<a name="l00404"></a><a class="code" href="a00014.html#af388fca5d23867845805d722bda86dfc">00404</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#af388fca5d23867845805d722bda86dfc">obj_mtl::mtl_parser::material_dispmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ad4b0f28315a8a25b7cd42553e350f829">material_dispmap_callback_type</a>&amp; dispmap_callback) {
+<a name="l00405"></a>00405         material_dispmap_callback_ = dispmap_callback;
+<a name="l00406"></a>00406 }
+<a name="l00407"></a>00407 
+<a name="l00408"></a><a class="code" href="a00014.html#a4fa3283ca0dee14b76034aa01dc431b5">00408</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a4fa3283ca0dee14b76034aa01dc431b5">obj_mtl::mtl_parser::material_decalmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#ae8e20937a63e18af0fd968d0f4948ee5">material_decalmap_callback_type</a>&amp; decalmap_callback) {
+<a name="l00409"></a>00409         material_decalmap_callback_ = decalmap_callback;
+<a name="l00410"></a>00410 }
+<a name="l00411"></a>00411 
+<a name="l00412"></a><a class="code" href="a00014.html#a172ff810f6463ab03da9b6e6da4e90f9">00412</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#a172ff810f6463ab03da9b6e6da4e90f9">obj_mtl::mtl_parser::material_bumpmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a4c4b5f8e8bc24f985569198c88c02267">material_bumpmap_callback_type</a>&amp; bumpmap_callback) {
+<a name="l00413"></a>00413         material_bumpmap_callback_ = bumpmap_callback;
+<a name="l00414"></a>00414 }
+<a name="l00415"></a>00415 
+<a name="l00416"></a><a class="code" href="a00014.html#aaebec16072e89b232c6d73bc138e57fd">00416</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#aaebec16072e89b232c6d73bc138e57fd">obj_mtl::mtl_parser::material_reflmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a8e09129aa1e7c3f41ca50be4c1c3c988">material_reflmap_callback_type</a>&amp; reflmap_callback) {
+<a name="l00417"></a>00417         material_reflmap_callback_ = reflmap_callback;
+<a name="l00418"></a>00418 }
+<a name="l00419"></a>00419 
+<a name="l00420"></a><a class="code" href="a00014.html#aa167ac5bd2efb8fd4a3938713d86fdbf">00420</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="a00014.html#aa167ac5bd2efb8fd4a3938713d86fdbf">obj_mtl::mtl_parser::material_normalmap_callback</a> (<span class="keyword">const</span> <a class="code" href="a00014.html#a5dd2cbfbdfb2df7b04c4164cdf92c95c">material_normalmap_callback_type</a>&amp; normalmap_callback) {
+<a name="l00421"></a>00421         material_normalmap_callback_ = normalmap_callback;
+<a name="l00422"></a>00422 }
+<a name="l00423"></a>00423 
+<a name="l00424"></a><a class="code" href="a00014.html#a620db3a256dd6c1a9bd9f80c242aff62">00424</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="a00014.html#aafa92a7789eb9eb29d7eaa9fec52d96d">obj_mtl::mtl_parser::parse</a> (<span class="keyword">const</span> std::string&amp; filename) {
+<a name="l00425"></a>00425         std::ifstream ifstream (filename.c_str());
+<a name="l00426"></a>00426         <span class="keywordflow">return</span> parse (ifstream);
+<a name="l00427"></a>00427 }
+<a name="l00428"></a>00428 
+<a name="l00429"></a><a class="code" href="a00014.html#a5e5e4fca2db7a37de6b06dd0dce57bfa">00429</a> <span class="keyword">inline</span> <a class="code" href="a00014.html#a5e5e4fca2db7a37de6b06dd0dce57bfa">obj_mtl::mtl_parser::mtl_parser</a> (<a class="code" href="a00014.html#aa4ab69a70383bb62f7fcc9fe9a501eba">flags_type</a> flags)
+<a name="l00430"></a>00430                 : flags_ (flags) {
+<a name="l00431"></a>00431 }
+<a name="l00432"></a>00432 
+<a name="l00433"></a>00433 
+<a name="l00434"></a>00434 } <span class="comment">// end namespace loaders</span>
+<a name="l00435"></a>00435 <span class="preprocessor">#endif</span>
+</pre></div></div>
+</div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="a00038.html">objfileparser.h</a>      </li>
+      <li class="footer">Généré le Mon Jan 23 2012 19:18:42 pour M1 Informatique - IG3D - Minimal OpenGL Renderer par&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </li>
+    </ul>
+  </div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Définition de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Amis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+
+</body>
+</html>

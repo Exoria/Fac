@@ -1,0 +1,195 @@
+#include "glintersectiondebug.h"
+
+#include "parametricmeshes.h"
+
+namespace rendersystem {
+
+void GlIntersectionDebug::drawGL(const glm::mat4x4 &sceneToViewMatrix, const glm::mat4x4 &projectionMatrix, int transformLocation[], int colorLocation){
+    glm::mat4x4 localprojectionMatrix = projectionMatrix;
+    glm::mat4x4 localmodelViewMatrix = sceneToViewMatrix;
+    glm::mat4x4 normalMatrix = glm::transpose(glm::inverse(localmodelViewMatrix));
+    glm::mat4x4 MVP = localprojectionMatrix * localmodelViewMatrix;
+    glAssert( glUniformMatrix4fv( transformLocation[0], 1, GL_FALSE, glm::value_ptr(localmodelViewMatrix)) );
+    glAssert( glUniformMatrix4fv( transformLocation[1], 1, GL_FALSE, glm::value_ptr(localprojectionMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[2], 1, GL_FALSE, glm::value_ptr(normalMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[3], 1, GL_FALSE, glm::value_ptr(MVP)));
+
+    glAssert( glBindVertexArray(mVertexArrayObject) );
+    // 2 - Dessiner les triangles. Les sommets des triangles étant indexés et non consécutifs (sauf cas très particulier)
+    // on utilisera la fonction glDrawElements(...)
+    glm::vec4 color;
+    if(mValid){
+        color = glm::vec4(0,1,0, 1);
+    }
+    else{
+        color = glm::vec4(1,0,0, 1);
+    }
+    glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+    glAssert( glDrawElements(GL_LINES, mVertices.size(), GL_UNSIGNED_INT, NULL) );
+    // Fin du code à écrire
+
+    glm::mat4x4 sphereMatrix = glm::mat4(1);
+    sphereMatrix = glm::translate(sphereMatrix, mVertices[mVertices.size()-1]);
+    sphereMatrix = glm::scale(sphereMatrix, glm::vec3(.01));
+
+    localmodelViewMatrix = sceneToViewMatrix*sphereMatrix;
+    normalMatrix = glm::transpose(glm::inverse(localmodelViewMatrix));
+    MVP = localprojectionMatrix * localmodelViewMatrix;
+    glAssert( glUniformMatrix4fv( transformLocation[0], 1, GL_FALSE, glm::value_ptr(localmodelViewMatrix)) );
+    glAssert( glUniformMatrix4fv( transformLocation[1], 1, GL_FALSE, glm::value_ptr(localprojectionMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[2], 1, GL_FALSE, glm::value_ptr(normalMatrix)));
+    glAssert( glUniformMatrix4fv( transformLocation[3], 1, GL_FALSE, glm::value_ptr(MVP)));
+    glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+
+    intersectionPoint->drawGL();
+
+    // Box
+    glEnable(GL_BLEND);
+    glEnable(GL_CULL_FACE);
+    glDepthMask(GL_FALSE);
+    glAssert( glBindVertexArray(mCubeVertexArrayObject) );
+    float intens = 1.f/std::min(std::max(float(mBoxes.size()), 2.f), 100.f);
+    for(BoxList::iterator itr=mBoxes.begin(), stop = mBoxes.end(); itr!=stop; ++itr){
+        glm::mat4 boxMatrix = glm::mat4(1);
+        boxMatrix = glm::translate(boxMatrix, itr->first.getMin());
+        glm::vec3 scale;
+        itr->first.getSize(scale);
+        boxMatrix = glm::scale(boxMatrix, scale);
+        localmodelViewMatrix = sceneToViewMatrix*boxMatrix;
+        normalMatrix = glm::transpose(glm::inverse(localmodelViewMatrix));
+        MVP = localprojectionMatrix * localmodelViewMatrix;
+        glAssert( glUniformMatrix4fv( transformLocation[0], 1, GL_FALSE, glm::value_ptr(localmodelViewMatrix)) );
+        glAssert( glUniformMatrix4fv( transformLocation[1], 1, GL_FALSE, glm::value_ptr(localprojectionMatrix)));
+        glAssert( glUniformMatrix4fv( transformLocation[2], 1, GL_FALSE, glm::value_ptr(normalMatrix)));
+        glAssert( glUniformMatrix4fv( transformLocation[3], 1, GL_FALSE, glm::value_ptr(MVP)));
+
+        if(itr->second){
+            color = .5*glm::vec4(0,1,0, 1);
+        }
+        else{
+            color = intens*glm::vec4(1,0,0, 1);
+        }
+
+        glBlendFunc(GL_ONE, GL_ONE);
+        glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+        glAssert( glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL) );
+        glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+        glLineWidth(1.25);
+        glEnable(GL_LINE_SMOOTH);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+        color = glm::vec4(1,1,1, 1);
+        color.w=0.1;
+        glAssert( glUniform4fv( colorLocation, 1, glm::value_ptr(color)) );
+        glAssert( glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, BUFFER_OFFSET(36*sizeof(int))) );
+        glLineWidth(1.0);
+    }
+    glDepthMask(GL_TRUE);
+    glDisable(GL_BLEND);
+    glDisable(GL_CULL_FACE);
+
+}
+
+void GlIntersectionDebug::compileGL(){
+    glAssert( glGenVertexArrays(1, &mVertexArrayObject) );
+    glAssert( glGenBuffers(2, mVertexBufferObjects) );
+    glAssert( glBindVertexArray(mVertexArrayObject) );
+    glAssert( glBindBuffer(GL_ARRAY_BUFFER, mVertexBufferObjects[VBO_VERTICES]) );
+    glAssert( glBufferData(GL_ARRAY_BUFFER, mVertices.size() * sizeof(glm::vec3),  &(mVertices[0]), GL_STATIC_DRAW) );
+    GLuint stride = sizeof(glm::vec3);
+    GLboolean normalized = GL_FALSE;
+    GLenum type = GL_FLOAT;
+    // position
+    GLuint index = 0;
+    GLint size = 3;
+    GLvoid *pointer = BUFFER_OFFSET(0);
+    glAssert( glVertexAttribPointer(index, size, type, normalized, stride, pointer) );
+    glAssert( glEnableVertexAttribArray(index) );
+
+    glAssert( glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mVertexBufferObjects[VBO_INDICES]) );
+
+    size_t numVertices = mVertices.size();
+    std::vector<int> indices;
+    indices.resize(numVertices);
+    for(unsigned int i = 0; i<numVertices; ++i ){ indices[i] = i; }
+    glAssert( glBufferData(GL_ELEMENT_ARRAY_BUFFER, numVertices * sizeof(int),  &(indices[0]), GL_STATIC_DRAW) );
+    glAssert( glBindVertexArray(0) );
+
+    // CUBE
+    glAssert( glGenVertexArrays(1, &mCubeVertexArrayObject) );
+    glAssert( glGenBuffers(2, mCubeVertexBufferObjects) );
+    glAssert( glBindVertexArray(mCubeVertexArrayObject) );
+    glAssert( glBindBuffer(GL_ARRAY_BUFFER, mCubeVertexBufferObjects[VBO_VERTICES]) );
+
+    glm::vec3 cubeVertices[8];
+    cubeVertices[0]= glm::vec3(1.0f, 0.0f, 0.0f);
+    cubeVertices[1]= glm::vec3(1.0f, 0.0f, 1.0f);
+    cubeVertices[2]= glm::vec3(0.0f, 0.0f, 1.0f);
+    cubeVertices[3]= glm::vec3(0.0f, 0.0f, 0.0f);
+    cubeVertices[4]= glm::vec3(1.0f, 1.0f, 0.0f);
+    cubeVertices[5]= glm::vec3(1.0f, 1.0f, 1.0f);
+    cubeVertices[6]= glm::vec3(0.0f, 1.0f, 1.0f);
+    cubeVertices[7]= glm::vec3(0.0f, 1.0f, 0.0f);
+
+    const int total=36+24;
+    int cubeIndices[total] = {
+        // triangles : one quad per line, so two triangles
+        0, 1, 2, 0, 2, 3,
+        4, 7, 6, 4, 6, 5,
+        0, 4, 5, 0, 5, 1,
+        1, 5, 6, 1, 6, 2,
+        2, 6, 7, 2, 7, 3,
+        4, 0, 3, 4, 3, 7,
+        // lines
+        0, 1, 0, 3, 0, 4,
+        1, 2, 1, 5,
+        2, 3, 2, 6,
+        3, 7,
+        4, 7,  4, 5,
+        5, 6,
+        6, 7
+        };
+
+
+    glAssert( glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(glm::vec3),  &(cubeVertices[0]), GL_STATIC_DRAW) );
+    stride = sizeof(glm::vec3);
+    normalized = GL_FALSE;
+    type = GL_FLOAT;
+    // position
+    index = 0;
+    size = 3;
+    pointer = BUFFER_OFFSET(0);
+    glAssert( glVertexAttribPointer(index, size, type, normalized, stride, pointer) );
+    glAssert( glEnableVertexAttribArray(index) );
+
+    glAssert( glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mCubeVertexBufferObjects[VBO_INDICES]) );
+    glAssert( glBufferData(GL_ELEMENT_ARRAY_BUFFER, total * sizeof(int),  &(cubeIndices[0]), GL_STATIC_DRAW) );
+    glAssert( glBindVertexArray(0) );
+
+    ParametricMesh* sphere = new ParametricSphere();
+    sphere->generateMesh(20,  20 );
+    intersectionPoint = new MyGLMesh(*sphere);
+    intersectionPoint->compileGL();
+    delete sphere;
+}
+
+
+
+void GlIntersectionDebug::destroyGL(){
+
+
+    glAssert(glDeleteVertexArrays(1, &mVertexArrayObject));
+    mVertexArrayObject = 0;
+    glAssert(glDeleteBuffers(2, mVertexBufferObjects));
+    mVertexBufferObjects[0] = 0;
+    mVertexBufferObjects[1] = 1;
+    glAssert(glDeleteVertexArrays(1, &mCubeVertexArrayObject));
+    mCubeVertexArrayObject = 0;
+    glAssert(glDeleteBuffers(2, mCubeVertexBufferObjects));
+    mCubeVertexBufferObjects[0] = 0;
+    mCubeVertexBufferObjects[1] = 1;
+
+    intersectionPoint->destroyGL();
+    intersectionPoint = NULL;
+}
+
+}

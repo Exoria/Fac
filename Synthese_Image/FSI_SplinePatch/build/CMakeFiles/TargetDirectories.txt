@@ -1,0 +1,2 @@
+/home/canezin/PRIVE/TP_M1_SI/FSI_SplinePatch/build/src/fileloaders/CMakeFiles/fileloaders.dir
+/home/canezin/PRIVE/TP_M1_SI/FSI_SplinePatch/build/src/rendersystem/CMakeFiles/minimalrenderer.dir
